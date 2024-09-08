@@ -1,0 +1,435 @@
+{
+    "users":[
+      {
+        "id":1,
+        "name":"Abhay Pc",
+        "username":"abhay",
+        "password":"12345"
+      }
+
+    ],
+    
+    "categorys":[
+        {
+            "category": "sofas",
+            "images": "https://atlas-content-cdn.pixelsquid.com/stock-images/small-sofa-n1Q1E25-600.jpg"
+        },
+        {
+            "category": "beds",
+            "images": "https://img.freepik.com/premium-photo/bed-pillow-with-simple-white-fabric-isolated-white-background-ai-generative_1319687-5436.jpg"
+        },
+        {
+            "category": "dining tables",
+            "images": "https://www.ikea.com/in/en/images/products/ekedalen-ekedalen-table-and-6-chairs-white-white-orrsta-light-grey__1117948_pe872846_s5.jpg?f=l"
+        },
+        {
+            "category": "chairs",
+            "images": "https://atlas-content-cdn.pixelsquid.com/stock-images/wooden-chair-L81rJv8-600.jpg"
+        },
+        {
+            "category": "gaming chairs",
+            "images": "https://png.pngtree.com/png-clipart/20230316/ourmid/pngtree-realistic-3d-gaming-chair-orange-and-black-color-model-png-image_6652204.png"
+        },
+        {
+            "category": "tables",
+            "images": "https://sognoofficefurniture.com/wp-content/uploads/2022/06/wfh-Study-Table-470.png"
+        },
+        {
+            "category": "mattresses",
+            "images": "https://ekbotefurniture.com/wp-content/uploads/2023/11/WhatsAppImage2021-10-27at2.57.21PM_67380911-732d-4b4a-aaa4-c82035b152c6.jpg"
+        }
+    ],
+    "products": [
+        {
+          "id": 1,
+          "name": "GAMMALBYN",
+          "description": "3-seat sofa, grey",
+          "category": "sofas",
+          "price": 1200,
+          "stock": 15,
+          "rating": 4.8,
+          "material": "Leather",
+          "image":"https://www.ikea.com/in/en/images/products/gammalbyn-3-seat-sofa-grey__0868926_pe781434_s5.jpg?f=l",
+          "images": [
+            "https://www.ikea.com/in/en/images/products/gammalbyn-3-seat-sofa-grey__0868926_pe781434_s5.jpg?f=l",
+            "https://www.ikea.com/in/en/images/products/gammalbyn-3-seat-sofa-grey__0868927_pe781435_s5.jpg?f=l",
+            "https://www.ikea.com/in/en/images/products/gammalbyn-3-seat-sofa-grey__0868929_pe781437_s5.jpg?f=l",
+            "https://www.ikea.com/in/en/images/products/gammalbyn-3-seat-sofa-grey__0868928_pe781439_s5.jpg?f=l"
+          ],
+          "tags": ["modern", "leather", "living room"]
+        },
+        {
+          "id": 2,
+          "name": "EKTORP",
+          "description": "3-seat sofa with chaise longue, Kilanda light beige",
+          "category": "sofas",
+          "price": 1500,
+          "stock": 10,
+          "rating": 4.7,
+          "material": "Fabric",
+          "image":"https://www.ikea.com/in/en/images/products/ektorp-3-seat-sofa-with-chaise-longue-kilanda-light-beige__1194849_pe902099_s5.jpg?f=l",
+          "images": [
+            "https://www.ikea.com/in/en/images/products/ektorp-3-seat-sofa-with-chaise-longue-kilanda-light-beige__1194849_pe902099_s5.jpg?f=l",
+            "https://www.ikea.com/in/en/images/products/ektorp-3-seat-sofa-with-chaise-longue-kilanda-light-beige__1194848_pe902098_s5.jpg?f=l",
+            "https://www.ikea.com/in/en/images/products/ektorp-3-seat-sofa-with-chaise-longue-kilanda-light-beige__1194830_pe902079_s5.jpg?f=l",
+            "https://www.ikea.com/in/en/images/products/ektorp-3-seat-sofa-with-chaise-longue-kilanda-light-beige__0717901_pe731384_s5.jpg?f=l"
+          ],
+          "tags": ["sectional", "fabric", "living room"]
+        },
+        {
+          "id": 3,
+          "name": "LANDSKRONA",
+          "description": "3-seat sofa, Gunnared dark grey/wood",
+          "category": "sofas",
+          "price": 950,
+          "stock": 8,
+          "rating": 4.5,
+          "material": "Fabric",
+          "image":"https://www.ikea.com/in/en/images/products/landskrona-3-seat-sofa-gunnared-dark-grey-wood__0602117_pe680186_s5.jpg?f=l",
+          "images": [
+            "https:/https://www.ikea.com/in/en/images/products/landskrona-3-seat-sofa-gunnared-dark-grey-wood__0602117_pe680186_s5.jpg?f=l",
+            "https://www.ikea.com/in/en/images/products/landskrona-3-seat-sofa-gunnared-dark-grey-wood__0828969_pe680187_s5.jpg?f=l",
+            "https://www.ikea.com/in/en/images/products/landskrona-3-seat-sofa-gunnared-dark-grey-wood__0825417_pe707723_s5.jpg?f=l",
+            "https://www.ikea.com/in/en/images/products/landskrona-3-seat-sofa-gunnared-dark-grey-wood__0813416_ph166494_s5.jpg?f=l"
+          ],
+          "tags": ["convertible", "fabric", "sofa bed"]
+        },
+  
+  
+        {
+          "id": 4,
+          "name": "SONGESAND",
+          "description": "Bed frame with 2 storage boxes, white,",
+          "category": "beds",
+          "price": 850,
+          "stock": 8,
+          "rating": 4.6,
+          "material": "Solid Wood",
+          "image":"https://www.ikea.com/in/en/images/products/songesand-bed-frame-with-2-storage-boxes-white__1151019_pe884760_s5.jpg?f=l",
+          "images": [
+            "https://www.ikea.com/in/en/images/products/songesand-bed-frame-with-2-storage-boxes-white__1151019_pe884760_s5.jpg?f=l",
+            "https://www.ikea.com/in/en/images/products/songesand-bed-frame-with-2-storage-boxes-white__0800861_ph162919_s5.jpg?f=l",
+            "https://www.ikea.com/in/en/images/products/songesand-bed-frame-with-2-storage-boxes-white__0734692_pe739587_s5.jpg?f=l",
+            "https://www.ikea.com/in/en/images/products/songesand-bed-frame-with-2-storage-boxes-white__1101546_pe866675_s5.jpg?f=l"
+          ],
+          "tags": ["wood", "king", "bedroom"]
+        },
+        {
+          "id": 5,
+          "name": "IDANÄS",
+          "description": "Upholstered ottoman bed, Gunnared dark grey,",
+          "category": "beds",
+          "price": 950,
+          "stock": 12,
+          "rating": 4.7,
+          "material": "Fabric",
+          "image":"https://www.ikea.com/in/en/images/products/idanaes-upholstered-ottoman-bed-gunnared-dark-grey__1012432_pe829085_s5.jpg?f=l",
+          "images": [
+            "https://www.ikea.com/in/en/images/products/idanaes-upholstered-ottoman-bed-gunnared-dark-grey__1012432_pe829085_s5.jpg?f=l",
+            "https://www.ikea.com/in/en/images/products/idanaes-upholstered-ottoman-bed-gunnared-dark-grey__1079006_pe857430_s5.jpg?f=l",
+            "https://www.ikea.com/in/en/images/products/idanaes-upholstered-ottoman-bed-gunnared-dark-grey__1079017_pe857434_s5.jpg?f=l",
+            "https://www.ikea.com/in/en/images/products/idanaes-upholstered-ottoman-bed-gunnared-dark-grey__1079029_pe857421_s5.jpg?f=l"
+          ],
+          "tags": ["upholstered", "modern", "bedroom"]
+        },
+        {
+          "id": 6,
+          "name": "NODELAND",
+          "description": "NODELAND",
+          "category": "beds",
+          "price": 800,
+          "stock": 5,
+          "rating": 4.4,
+          "material": "Wood",
+          "image":"https://www.ikea.com/in/en/images/products/nodeland-bed-frame-black-brown-luroey__0980296_pe814897_s5.jpg?f=l",
+          "images": [
+            "https://www.ikea.com/in/en/images/products/nodeland-bed-frame-black-brown-luroey__0980296_pe814897_s5.jpg?f=l",
+            "https://www.ikea.com/in/en/images/products/nodeland-bed-frame-black-brown-luroey__0980297_pe814900_s5.jpg?f=l",
+            "https://www.ikea.com/in/en/images/products/nodeland-bed-frame-black-brown-luroey__0980298_pe814899_s5.jpg?f=l",
+            "https://www.ikea.com/in/en/images/products/nodeland-bed-frame-black-brown-luroey__0980299_pe814898_s5.jpg?f=l"
+          ],
+          "tags": ["rustic", "wooden", "bedroom"]
+        },
+  
+
+
+        {
+          "id": 7,
+          "name": "STRANDTORP / MÅRENÄS",
+          "description": "Table and 6 armchairs, brown/black Gunnared beige,",
+          "category": "dining tables",
+          "price": 600,
+          "stock": 20,
+          "rating": 4.7,
+          "material": "Tempered Glass, Solid Wood",
+          "image":"https://www.ikea.com/in/en/images/products/strandtorp-marenaes-table-and-6-armchairs-brown-black-gunnared-beige__1198507_pe904114_s5.jpg?f=xl",
+          "images": [
+            "https://www.ikea.com/in/en/images/products/strandtorp-marenaes-table-and-6-armchairs-brown-black-gunnared-beige__1198507_pe904114_s5.jpg?f=xl",
+            "https://www.ikea.com/in/en/images/products/strandtorp-marenaes-table-and-6-armchairs-brown-black-gunnared-beige__1198506_pe904115_s5.jpg?f=l",
+            "https://www.ikea.com/in/en/images/products/strandtorp-marenaes-table-and-6-armchairs-brown-black-gunnared-beige__1182855_pe897319_s5.jpg?f=l",
+            "https://www.ikea.com/in/en/images/products/strandtorp-marenaes-table-and-6-armchairs-brown-black-gunnared-beige__0964766_pe809165_s5.jpg?f=l"
+          ],
+          "tags": ["modern", "wood", "dining"]
+        },
+        {
+          "id": 8,
+          "name": "EKEDALEN / EKEDALEN",
+          "description": "Table and 6 chairs, white white/Orrsta light grey,",
+          "category": "dining tables",
+          "price": 1100,
+          "stock": 7,
+          "rating": 4.9,
+          "material": "Marble, Metal",
+          "image":"https://www.ikea.com/in/en/images/products/ekedalen-ekedalen-table-and-6-chairs-white-white-orrsta-light-grey__1117948_pe872846_s5.jpg?f=l",
+          "images": [
+            "https://www.ikea.com/in/en/images/products/ekedalen-ekedalen-table-and-6-chairs-white-white-orrsta-light-grey__1117948_pe872846_s5.jpg?f=l",
+            "https://www.ikea.com/in/en/images/products/ekedalen-ekedalen-table-and-6-chairs-white-white-orrsta-light-grey__1097290_pe864874_s5.jpg?f=l",
+            "https://www.ikea.com/in/en/images/products/ekedalen-ekedalen-table-and-6-chairs-white-white-orrsta-light-grey__1052560_pe846215_s5.jpg?f=l",
+            "https://www.ikea.com/in/en/images/products/ekedalen-ekedalen-table-and-6-chairs-white-white-orrsta-light-grey__1052561_pe846216_s5.jpg?f=l"
+          ],
+          "tags": ["modern", "marble", "dining"]
+        },
+        {
+          "id": 9,
+          "name": "SKOGSTA / BERGMUND",
+          "description": "Table and 6 chairs, acacia/Kvillsfors dark blue/blue black, 235x100 cm (92 1/2x39 3/8 )",
+          "category": "dining tables",
+          "price": 900,
+          "stock": 10,
+          "rating": 4.6,
+          "material": "solid wood",
+          "image":"https://www.ikea.com/in/en/images/products/skogsta-bergmund-table-and-6-chairs-acacia-kvillsfors-dark-blue-blue-black__1329483_pe945163_s5.jpg?f=l",
+          "images": [
+            "https://www.ikea.com/in/en/images/products/skogsta-bergmund-table-and-6-chairs-acacia-kvillsfors-dark-blue-blue-black__1329483_pe945163_s5.jpg?f=l",
+            "https://www.ikea.com/in/en/images/products/skogsta-bergmund-table-and-6-chairs-acacia-kvillsfors-dark-blue-blue-black__1340219_pe948521_s5.jpg?f=l",
+            "https://www.ikea.com/in/en/images/products/skogsta-bergmund-table-and-6-chairs-acacia-kvillsfors-dark-blue-blue-black__0809033_ph149979_s5.jpg?f=l",
+            "https://www.ikea.com/in/en/images/products/skogsta-bergmund-table-and-6-chairs-acacia-kvillsfors-dark-blue-blue-black__1034253_pe837584_s5.jpg?f=l"
+          ],
+          "tags": ["modern", "wood", "dining"]
+        },
+        {
+          "id": 10,
+          "name": "POÄNG",
+          "description": "Rocking-chair, brown/Gunnared light green",
+          "category": "chairs",
+          "price": 300,
+          "currency": "USD",
+          "stock": 30,
+          "rating": 4.9,
+          "dimensions": {
+            "width": "26 inches",
+            "height": "45 inches",
+            "depth": "24 inches"
+          },
+          "material": "Mesh, Metal",
+          "image":"https://www.ikea.com/in/en/images/products/poaeng-rocking-chair-brown-gunnared-light-green__1192298_pe901008_s5.jpg?f=l",
+          "images": [
+            "https://www.ikea.com/in/en/images/products/poaeng-rocking-chair-brown-gunnared-light-green__1192298_pe901008_s5.jpg?f=l",
+            "https://www.ikea.com/in/en/images/products/poaeng-rocking-chair-brown-gunnared-light-green__1192297_pe900997_s5.jpg?f=l",
+            "https://www.ikea.com/in/en/images/products/poaeng-rocking-chair-brown-gunnared-light-green__1192296_pe900996_s5.jpg?f=l",
+            "https://www.ikea.com/in/en/images/products/poaeng-rocking-chair-brown-gunnared-light-green__1192113_pe900862_s5.jpg?f=l"
+          ],
+          "tags": ["ergonomic", "office", "adjustable"]
+        },
+        {
+          "id":11,
+          "name": "NISSE",
+          "description": "Folding chair, black",
+          "category": "chairs",
+          "price": 350,
+          "stock": 10,
+          "rating": 4.8,
+          "material": "Velvet, Metal",
+          "image":"https://www.ikea.com/in/en/images/products/nisse-folding-chair-black__0728163_pe736118_s5.jpg?f=l",
+
+          "images": [
+            "https://www.ikea.com/in/en/images/products/nisse-folding-chair-black__0728163_pe736118_s5.jpg?f=l",
+            "https://www.ikea.com/in/en/images/products/nisse-folding-chair-black__82911_pe208987_s5.jpg?f=l",
+            "https://www.ikea.com/in/en/images/products/nisse-folding-chair-black__0209142_pe326498_s5.jpg?f=l",
+            "https://www.ikea.com/in/en/images/products/nisse-folding-chair-black__0209143_pe274501_s5.jpg?f=l"
+          ],
+          "tags": ["velvet", "accent", "living room"]
+        },
+        {
+          "id": 12,
+          "name": "EBBALYCKE",
+          "description": "Chair, Idekulla beige",
+          "category": "chairs",
+          "price": 500,
+          "stock": 12,
+          "rating": 4.5,
+          "material": "Fabric, Metal",
+          "image":"https://www.ikea.com/in/en/images/products/ebbalycke-chair-idekulla-beige__1243346_pe920576_s5.jpg?f=l",
+          "images": [
+            "https://www.ikea.com/in/en/images/products/ebbalycke-chair-idekulla-beige__1243346_pe920576_s5.jpg?f=l",
+            "https://www.ikea.com/in/en/images/products/ebbalycke-chair-idekulla-beige__1277259_pe931036_s5.jpg?f=l",
+            "https://www.ikea.com/in/en/images/products/ebbalycke-chair-idekulla-beige__1276089_ph195884_s5.jpg?f=l",
+            "https://www.ikea.com/in/en/images/products/ebbalycke-chair-idekulla-beige__1276088_ph195437_s5.jpg?f=l"
+          ],
+          "tags": [ "armchair", "living room"]
+        },
+        {
+          "id": 13,
+          "name": "LINNMON / ADILS",
+          "description": "Table, white,",
+          "category": "tables",
+          "price": 400,
+          "stock": 25,
+          "rating": 4.7,
+          "material": "Walnut Wood",
+          "image":"https://www.ikea.com/in/en/images/products/linnmon-adils-table-white__0737165_pe740925_s5.jpg?f=l",
+          "images": [
+            "https://www.ikea.com/in/en/images/products/linnmon-adils-table-white__0737165_pe740925_s5.jpg?f=l",
+            "https://www.ikea.com/in/en/images/products/linnmon-adils-table-white__0734654_pe739562_s5.jpg?f=l",
+            "https://www.ikea.com/in/en/images/products/linnmon-adils-table-white__0734621_pe739540_s5.jpg?f=l",
+            "https://www.ikea.com/in/en/images/products/linnmon-adils-table-white__1327991_pe944603_s5.jpg?f=l"
+          ],
+          "tags": ["modern", "walnut", "living room"]
+        },
+        {
+          "id": 14,
+          "name": "UTESPELARE",
+          "description": "Gaming desk, black,",
+          "category": "tables",
+          "price": 200,
+          "stock": 18,
+          "rating": 4.6,
+          "material": "wood, Metal",
+          "image":"https://www.ikea.com/in/en/images/products/utespelare-gaming-desk-black__0985179_pe816538_s5.jpg?f=l",
+          "images": [
+            "https://www.ikea.com/in/en/images/products/utespelare-gaming-desk-black__0985179_pe816538_s5.jpg?f=l",
+            "https://www.ikea.com/in/en/images/products/utespelare-gaming-desk-black__0997874_pe822843_s5.jpg?f=l",
+            "https://www.ikea.com/in/en/images/products/utespelare-gaming-desk-black__0997777_pe822755_s5.jpg?f=l",
+            "https://www.ikea.com/in/en/images/products/utespelare-gaming-desk-black__0985180_pe816539_s5.jpg?f=l"
+          ],
+          "tags": ["modern", "fiber", "living room"]
+        },
+        {
+          "id": 15,
+          "name": "RIAN",
+          "description": "Side table, black",
+          "category": "tables",
+          "price": 800,
+          "stock": 6,
+          "rating": 4.8,
+          "material": "Reclaimed Wood",
+          "image":"https://www.ikea.com/in/en/images/products/rian-side-table-black__0773157_pe756206_s5.jpg?f=l",
+          "images": [
+            "https://www.ikea.com/in/en/images/products/rian-side-table-black__0773157_pe756206_s5.jpg?f=l",
+            "https://www.ikea.com/in/en/images/products/rian-side-table-black__0773156_pe756207_s5.jpg?f=l",
+            "https://www.ikea.com/in/en/images/products/rian-side-table-black__0773155_pe756205_s5.jpg?f=l",
+            "https://www.ikea.com/in/en/images/products/rian-side-table-black__0773157_pe756206_s5.jpg?f=l"
+          ],
+          "tags": ["rustic", "farmhouse", "dining room"]
+        },
+        {
+          "id": 16,
+          "name": "MATCHSPEL",
+          "description": "Gaming chair, Bomstad light grey",
+          "category": "gaming chairs",
+          "price": 450,
+          "stock": 12,
+          "rating": 4.9,
+          "material": "Faux Leather, Metal",
+          "image":"https://www.ikea.com/in/en/images/products/matchspel-gaming-chair-bomstad-light-grey__1248931_pe923288_s5.jpg?f=xl",
+          "images": [
+            "https://www.ikea.com/in/en/images/products/matchspel-gaming-chair-bomstad-light-grey__1248931_pe923288_s5.jpg?f=xl",
+            "https://www.ikea.com/in/en/images/products/matchspel-gaming-chair-bomstad-light-grey__1236055_pe917427_s5.jpg?f=l",
+            "https://www.ikea.com/in/en/images/products/matchspel-gaming-chair-bomstad-light-grey__1236056_pe917428_s5.jpg?f=l",
+            "https://www.ikea.com/in/en/images/products/matchspel-gaming-chair-bomstad-light-grey__1236054_pe917426_s5.jpg?f=l"
+          ],
+          "tags": ["gaming", "racing", "adjustable"]
+        },
+        {
+          "id": 17,
+          "name": "UTESPELARE",
+          "description": "Gaming chair, Bomstad black",
+          "category": "gaming chairs",
+          "price": 550,
+          "stock": 8,
+          "rating": 4.8,
+          "material": "Leather, Metal",
+          "image":"https://www.ikea.com/in/en/images/products/utespelare-gaming-chair-bomstad-black__0984819_pe816424_s5.jpg?f=l",
+          "images": [
+            "https://www.ikea.com/in/en/images/products/utespelare-gaming-chair-bomstad-black__0984819_pe816424_s5.jpg?f=l",
+            "https://www.ikea.com/in/en/images/products/utespelare-gaming-chair-bomstad-black__0985642_pe816712_s5.jpg?f=l",
+            "https://www.ikea.com/in/en/images/products/utespelare-gaming-chair-bomstad-black__0984820_pe816427_s5.jpg?f=l",
+            "https://www.ikea.com/in/en/images/products/utespelare-gaming-chair-bomstad-black__0997900_pe822868_s5.jpg?f=l"
+          ],
+          "tags": ["executive", "gaming", "luxury"]
+        },
+        {
+          "id": 18,
+          "name": "MATCHSPEL",
+          "description": "Gaming chair, Bomstad black",
+          "category": "gaming chairs",
+          "price": 350,
+          "stock": 25,
+          "rating": 4.9,
+          "material": "Mesh, Leather",
+          "image":"https://www.ikea.com/in/en/images/products/matchspel-gaming-chair-bomstad-black__0985645_pe816716_s5.jpg?f=l",
+          "images": [
+            "https://www.ikea.com/in/en/images/products/matchspel-gaming-chair-bomstad-black__0985645_pe816716_s5.jpg?f=l",
+            "https://www.ikea.com/in/en/images/products/matchspel-gaming-chair-bomstad-black__0984824_pe816429_s5.jpg?f=l",
+            "https://www.ikea.com/in/en/images/products/matchspel-gaming-chair-bomstad-black__0984827_pe816430_s5.jpg?f=l",
+            "https://www.ikea.com/in/en/images/products/matchspel-gaming-chair-bomstad-black__0997853_pe822829_s5.jpg?f=l"
+          ],
+          "tags": ["ergonomic", "gaming", "adjustable"]
+        },
+        {
+          "id": 19,
+          "name": "VALEVÅG",
+          "description": "Pocket sprung mattress, firm/light blue,",
+          "category": "mattresses",
+          "price": 600,
+          "stock": 30,
+          "rating": 4.9,
+          "material": "Memory Foam",
+          "image":"https://www.ikea.com/in/en/images/products/valevag-pocket-sprung-mattress-firm-light-blue__1150857_pe884903_s5.jpg?f=l",
+          "images": [
+            "https://www.ikea.com/in/en/images/products/valevag-pocket-sprung-mattress-firm-light-blue__1150857_pe884903_s5.jpg?f=l",
+            "https://www.ikea.com/in/en/images/products/valevag-pocket-sprung-mattress-firm-light-blue__1044460_pe842180_s5.jpg?f=l",
+            "https://www.ikea.com/in/en/images/products/valevag-pocket-sprung-mattress-firm-light-blue__1071102_pe854864_s5.jpg?f=l",
+            "https://www.ikea.com/in/en/images/products/valevag-pocket-sprung-mattress-firm-light-blue__0905227_pe783082_s5.jpg?f=l"
+          ],
+          "tags": ["memory foam", "cooling", "comfort"]
+        },
+        {
+          "id": 20,
+          "name": "VATNESTRÖM",
+          "description": "Pocket sprung mattress, extra firm/natural,",
+          "category": "mattresses",
+          "price": 700,
+          "stock": 22,
+          "rating": 4.7,
+          "material": "Memory Foam, Pocket Springs",
+          "image":"https://www.ikea.com/in/en/images/products/vatnestroem-pocket-sprung-mattress-extra-firm-natural__1298620_pe936249_s5.jpg?f=l",
+          "images": [
+            "https://www.ikea.com/in/en/images/products/vatnestroem-pocket-sprung-mattress-extra-firm-natural__1298620_pe936249_s5.jpg?f=l",
+            "https://www.ikea.com/in/en/images/products/vatnestroem-pocket-sprung-mattress-extra-firm-natural__0801446_pe768134_s5.jpg?f=l",
+            "https://www.ikea.com/in/en/images/products/vatnestroem-pocket-sprung-mattress-extra-firm-natural__1048653_pe843814_s5.jpg?f=l",
+            "https://www.ikea.com/in/en/images/products/vatnestroem-pocket-sprung-mattress-extra-firm-natural__0997979_ph175780_s5.jpg?f=l"
+          ],
+          "tags": ["hybrid", "memory foam", "pocket springs"]
+        },
+        {
+          "id": 21,
+          "name": "Gel-Infused Mattress",
+          "description": "A firm mattress with gel-infused memory foam for pressure relief and temperature regulation.",
+          "category": "mattresses",
+          "price": 800,
+          "stock": 15,
+          "rating": 4.8,
+          "material": "Gel-Infused Memory Foam",
+          "image":"https://www.ikea.com/in/en/images/products/anneland-foam-mattress-firm-white__1015263_pe829963_s5.jpg?f=l",
+          "images": [
+           "https://www.ikea.com/in/en/images/products/anneland-foam-mattress-firm-white__1015263_pe829963_s5.jpg?f=l",
+           "https://www.ikea.com/in/en/images/products/anneland-foam-mattress-firm-white__1044440_pe842158_s5.jpg?f=l",
+           "https://www.ikea.com/in/en/images/products/anneland-foam-mattress-firm-white__1044422_pe842146_s5.jpg?f=l",
+           "https://www.ikea.com/in/en/images/products/anneland-foam-mattress-firm-white__1050070_pe844631_s5.jpg?f=l"
+          ],
+          "tags": ["gel-infused", "memory foam", "pressure relief"]
+        }
+    ]
+}
+  
