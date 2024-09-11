@@ -9,7 +9,7 @@ function BestSellers() {
     .then((res)=>setData((res.data).sort((a,b)=>{
       return b.rating - a.rating
     })))
-  })
+  },[])
   return (
     <div>
       <div className="p-6 mt-10 flex flex-col items-center">

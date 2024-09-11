@@ -9,7 +9,7 @@ function Budget() {
     .then((res)=>setData((res.data).sort((a,b)=>{
       return a.price - b.price
     })))
-  })
+  },[])
   return (
     <div>
       <div className="p-6 mt-10 flex flex-col items-center">

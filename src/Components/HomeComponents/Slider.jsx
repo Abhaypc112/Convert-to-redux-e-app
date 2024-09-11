@@ -5,9 +5,9 @@ import { NavLink } from 'react-router-dom';
 
 function Slider() {
   const slides=[
-    "https://img.freepik.com/free-photo/image-advertising-property-sale-dream-home-sale_185193-109613.jpg?t=st=1725717119~exp=1725720719~hmac=a3598355c40e5c7a6880eb71f904408b3102db9d8d71718c91d8d67c93d33eda&w=1380",
-        "https://img.freepik.com/free-photo/sale-with-special-discount-couch_23-2150040375.jpg?t=st=1725717235~exp=1725720835~hmac=eaee0dbb85247e5ad5499ba42c78ff300c46404b034f01e611de50748d058d65&w=1380",
-        "https://img.freepik.com/free-photo/solitary-crimson-chair-offers-pop-color-against-geometric-patterned-backdrop_91128-4364.jpg?t=st=1725717118~exp=1725720718~hmac=3deca1f8669e1653adc6d74f3dd0f94cf002001803c4081b7d806f1033eb9a12&w=1380"
+    "https://ahdfurniture.com/wp-content/uploads/2024/04/sectional-sofa-1.webp",
+        "https://cartersfurnitureonline.co.uk/cdn/shop/files/G_Plan_Web_Banner_Kingsbury_1400x.jpg?v=1720020418",
+        "https://www.getmycouch.com/cdn/shop/files/SUMMER_SALE.png?v=1719482589&width=750"
   ]
   const[index,setIndex]=useState(0);
 
