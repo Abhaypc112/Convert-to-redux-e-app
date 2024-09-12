@@ -7,7 +7,7 @@ export const UserProvider=({children})=>{
     const[userData,setUserData]=useState([]);
     const[userInfo,setUserInfo]=useState('');
     const userId=localStorage.getItem('userId')
-    const[cart,setCart]=useState([]);
+    const[carts,setCart]=useState(false);
   
     
     useEffect(()=>{
@@ -37,12 +37,14 @@ export const UserProvider=({children})=>{
             setUserInfo(user.id)
         }
     }
+
+   
     
         // getCartById(userId)
         // .then((res)=>setCart(res))
    
     return(
-        <UserContext.Provider value={{activeUser,userInfo,addUser,cart}}>
+        <UserContext.Provider value={{activeUser,userInfo,addUser,carts,setCart}}>
             {children}
         </UserContext.Provider>
     )

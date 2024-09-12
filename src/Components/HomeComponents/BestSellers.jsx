@@ -21,7 +21,7 @@ function BestSellers() {
             return (
               <NavLink to={`/product/${Obj.id}`}>
                   <div>
-                  <img src={Obj.image} className=' bg-gray-200 h-40 w-40 rounded'/>
+                  <img src={Obj.image} className=' bg-gray-200 h-40 w-40 rounded hover:transform hover:scale-105  transition-all duration-500 ease-in-out'/>
                   <span>⭐{Obj.rating}</span>
                   <p className='text-xs'>{Obj.name}</p>
                 </div>

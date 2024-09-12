@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import { UserContext } from '../../Contexts/UserContext';
 import { addCart, deleteItem, getCartById, getUserById } from '../../Api/UserHelpers/UsersConnection';
 import { useNavigate } from 'react-router-dom';
@@ -6,9 +6,13 @@ import { useNavigate } from 'react-router-dom';
 function CartSection() {
   const [totalPrice, setTotalPrice] = useState(0);
   const [data, setData] = useState({});
-  // const { userInfo } = useContext(UserContext);
+  const {carts,setCart} = useContext(UserContext);
   const userInfo=localStorage.getItem("userId");
   const nav = useNavigate();
+  const[id,setId]=useState('');
+  const modalRef=useRef();
+  const emptyModalRef=useRef();
+
 
   useEffect(() => {
     if (userInfo) {
@@ -28,16 +32,32 @@ function CartSection() {
     }
   }
 
-  function deleteCartItem(id) {
+  function deleteCartItem(cartId) {
+    setId(cartId)
+    modalRef.current.style.top="200px"
+    setTimeout(()=>{
+      modalRef.current.style.top="0px"
+    },3000)
+      
+  }
+  function CheckedState(){
+    modalRef.current.style.top="0px"
     const updatedCart = data.cart.filter((value) => value.id !== id);
-    const updatedData = { ...data, cart: updatedCart };
-    alert("Cart Item Deleted ...")
-    deleteItem(data.id, { cart: updatedCart })
-      .then(() => {
-        setData(updatedData);
-        calculateTotalPrice(updatedCart);
-      })
-      .catch((error) => console.log(error));
+       const updatedData = { ...data, cart: updatedCart };
+        deleteItem(data.id, { cart: updatedCart })
+        .then(() => {
+          setData(updatedData);
+          calculateTotalPrice(updatedCart);
+          if(carts){
+            setCart(false)
+          }else{
+            setCart(true)
+          }
+        })
+        .catch((error) => console.log(error));
+  }
+  function stateCancel(){
+    modalRef.current.style.top="0px"
   }
   async function increment(productId){
     const currentCart = await getCartById(userInfo)
@@ -68,8 +88,14 @@ function CartSection() {
   function buyOrder(){
    if(data.cart.length>0){
     nav('/payment')
+   }else{
+    emptyModalRef.current.style.top="200px"
+    setTimeout(()=>{
+      emptyModalRef.current.style.top="0px"
+    },1000)
    }
   }
+
 
   return (
     <div style={{ marginTop: '10rem' }}>
@@ -80,7 +106,7 @@ function CartSection() {
               data.cart.map((value) => (
                 <div key={value.id} className="md:flex flex-col">
                   <div className="image-details md:flex w-full md:w-[100%] md:m-6 space-y-3">
-                    <img src={value.image} className="big-image bg-white w-full md:w-[40%] md:h-[80%] rounded"alt={value.name}/>
+                    <img src={value.image} className="big-image bg-white w-full md:w-[40%] md:h-[80%] rounded hover:transform hover:scale-105  transition-all duration-500 ease-in-out"alt={value.name} onClick={()=>nav(`/product/${value.id}`)}/>
                     <div className="md:ml-5 ml-2 flex flex-col space-y-3">
                       <h1 className="text-md font-bold">{value.name}</h1>
                       <p className="text-sm max-w-[70%]">{value.description}</p>
@@ -144,6 +170,18 @@ function CartSection() {
                 <span className="font-bold">Pay Online</span>
                 <p>Secure payments through credit card or UPI</p>
               </div>
+              
+              <div ref={modalRef} className="absolute  left-[35%] h-[90px] flex flex-col justify-between w-[300px] bg-black p-3 rounded shadow-lg z-40 top-0 transition-all duration-500 ease-in-out">
+                            <span className='text-center text-yellow-400 '> Item Delete to Cart ❌</span>
+                              <div className='flex justify-center  space-x-5'>
+                              <button onClick={CheckedState} className=' w-20 rounded font-bold bg-yellow-400'>Ok</button>
+                              <button onClick={stateCancel} className='bg-white w-20 rounded font-bold'>Cancel</button>
+                             </div>
+                       </div>
+                       <div ref={emptyModalRef} className="absolute left-[40%]  w-[20%] text-center bg-black p-2 rounded shadow-lg z-40 top-0 transition-all duration-500 ease-in-out">
+                             <span className='text-center text-yellow-400 '> Cart Is Empty ❗</span>
+                       </div>
+
             </div>
           </div>
         </div>

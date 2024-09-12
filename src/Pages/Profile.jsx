@@ -24,7 +24,7 @@ function Profile() {
         }else{
           nav('/login')
         }
-    },[userInfo])
+    },[userInfo,nav])
 
     function addAddressData(){
       const name=fname+lname;

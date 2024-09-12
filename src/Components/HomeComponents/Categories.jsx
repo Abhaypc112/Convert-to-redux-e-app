@@ -16,7 +16,7 @@ function Categories() {
         {
           data.map((Obj)=>{
             return(
-              <NavLink to={`/store/${Obj.category}`}  style={{textAlign:"center"}}><img src={Obj.images} className=' bg-white h-28 w-28 md:h-40 md:w-40 rounded  '/><span>{Obj.category}</span></NavLink>
+              <NavLink to={`/store/${Obj.category}`}  style={{textAlign:"center"}}><img src={Obj.images} className=' bg-white h-28 w-28 md:h-40 md:w-40 rounded hover:transform hover:scale-110  transition-all duration-500 ease-in-out'/><span>{Obj.category}</span></NavLink>
             )
           })
         }

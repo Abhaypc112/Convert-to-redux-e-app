@@ -1,5 +1,5 @@
 
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import { UserContext } from '../../Contexts/UserContext';
 import { addAddress, addCart, addOrder, deleteItem, getAddressById, getCartById, getOrdersById, getUserById } from '../../Api/UserHelpers/UsersConnection';
 import { useNavigate } from 'react-router-dom';
@@ -7,7 +7,6 @@ import { useNavigate } from 'react-router-dom';
 function BuyProduct() {
   const [totalPrice, setTotalPrice] = useState(0);
   const [data, setData] = useState([]);
-  // const { userInfo } = useContext(UserContext);
   const userInfo=localStorage.getItem("userId");
   const nav = useNavigate();
   const [fname,setFname]=useState('');
@@ -20,6 +19,10 @@ function BuyProduct() {
   const [userData,setUSerData]=useState({});
   const [paymentMethode,setPaymentMethod]=useState('')
   const d= new Date()
+  const[state,setState]=useState('')
+  const modalRef=useRef();
+  const {carts,setCart}=useContext(UserContext)
+
 
 
   useEffect(() => {
@@ -53,7 +56,6 @@ function BuyProduct() {
     if(status){
       setPaymentMethod(value);
     }
-    
   }
   async function addOrderData(){
     if(data.length>0 && userData && paymentMethode){
@@ -62,28 +64,43 @@ function BuyProduct() {
     const date={day,time}
     const currentOrders= await getOrdersById(userInfo)
     let updatedOrders;
-    
     const dataSet={id:Date.now(),Items:data,date,userData,paymentMethode}
     if(!currentOrders){
       updatedOrders=[dataSet]
     }else{
       updatedOrders=[...currentOrders,dataSet]
     }
-    
-   
     addOrder(userInfo,{orders:updatedOrders})
     deleteItem(userInfo,{ cart:[]})
-    .then((res)=>setData(res.data))
+    .then((res)=>{setData(res.data)
+      if(carts){
+        setCart(false)
+      }else{
+        setCart(true)
+      }
     nav('/orders')
+    })
     }else{
       if(data.length==0){
-        alert('Add Iteam to Cart')
+        setState('Add Iteam to Cart ❗')
+        modalRef.current.style.top="200px"
+        setTimeout(() => {
+          modalRef.current.style.top="0px"
+        },1000);
       }
       else if(!userData){
-        alert('Fill The Address')
+        setState('Fill The Address ❗')
+        modalRef.current.style.top="200px"
+        setTimeout(() => {
+          modalRef.current.style.top="0px"
+        },1000);
         
       }else if(!paymentMethode){
-        alert('Fill The Payment Methode')
+        setState('Fill The Payment Methode ❗')
+        modalRef.current.style.top="200px"
+        setTimeout(() => {
+          modalRef.current.style.top="0px"
+        }, 1000);
       }
     }
   }
@@ -100,7 +117,7 @@ function BuyProduct() {
                   {
                     data.map((value)=>(
                       <div className="image-details border flex w-[100%] p-3 justify-evenly">
-                    <img src={value.image} className="big-image bg-white w-32  rounded"alt=''/>
+                    <img src={value.image} className="big-image bg-white w-32  rounded hover:transform hover:scale-105  transition-all duration-500 ease-in-out"alt=''/>
                     <div className='flex justify-between w-[60%] '>
                        <div>
                             <h1 className='font-bold'>{value.name}</h1>
@@ -141,7 +158,7 @@ function BuyProduct() {
                       <h1 className='font-bold text-xl'>Delivery Information</h1>
                       <button onClick={addAddressData} className='bg-gray-200 p-1 w-20 text-sm rounded-md'>Add</button>
                     </div>
-                      <form action="">
+                  
                       <div className='flex justify-between w-[90%]'>
                         <input onChange={(e)=>setFname(e.target.value)} value={fname} type="text" placeholder='Firstname'  className='p-3 w-[48%] border rounded-md h-10  focus:outline-yellow-400' />
                         <input onChange={(e)=>setLname(e.target.value)} value={lname} type="text"placeholder='Lastname'  className='p-3 w-[48%] border rounded-md h-10  focus:outline-yellow-400'/>
@@ -155,7 +172,7 @@ function BuyProduct() {
                         <input onChange={(e)=>setMobile(e.target.value)} value={mobile} type="number" placeholder='Enter Mobile'  className='p-3 w-[48%] border rounded-md h-10  focus:outline-yellow-400' />
                         <input onChange={(e)=>setEmail(e.target.value)} value={email} type="text"placeholder='Enter Email'  className='p-3 w-[48%] border rounded-md h-10  focus:outline-yellow-400'/>
                       </div>
-                      </form>
+                      
                     </div>
                     </>
                    }
@@ -200,6 +217,9 @@ function BuyProduct() {
             <div className="cart-buy md:space-x-3 space-y-3 w-[100%]">
               <button onClick={addOrderData}  className="bg-yellow-400 font-bold text-xl text-black px-6 py-3 rounded-lg w-full  hover:bg-black hover:text-yellow-400">Pay now</button>
             </div>
+            <div ref={modalRef} className="absolute left-[40%]  w-[210px] text-center bg-black p-2 rounded shadow-lg z-40 top-0 transition-all duration-500 ease-in-out">
+                             <span className='text-center text-yellow-400 '> {state}</span>
+                       </div>
           </div>
         </div>
       </div>

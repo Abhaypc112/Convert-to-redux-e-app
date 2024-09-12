@@ -30,8 +30,8 @@ function Products() {
           ((!category)?storeData:data).map((Obj)=>{
             return(
                   <NavLink to={`/product/${Obj.id}`}>
-              <div style={{width:"20rem",height:"26rem"}} className=' rounded shadow '>
-              <img src={Obj.image} alt="" className='w-[100%] h-[70%] bg-black rounded relative' />
+              <div style={{width:"20rem",height:"26rem"}} className=' rounded shadow border hover:transform hover:scale-105  transition-all duration-500 ease-in-out'>
+              <img src={Obj.image} alt="" className='w-[100%] h-[70%] bg-black rounded relative ' />
               <div className='flex flex-col ml-1 justify-between'>
               <span className='text-sm font-bold'>{Obj.name}</span>
                 <span className='text-sm text-gray-600'>{Obj.description}</span>

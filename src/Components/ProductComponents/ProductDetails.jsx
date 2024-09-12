@@ -1,8 +1,9 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useEffect, useRef, useState } from 'react'
 import { NavLink, useNavigate, useParams } from 'react-router-dom'
 import { getProductsById } from '../../Api/ProductHelper/ProductConnection'
 import { addCart, getCartById, getUserById } from '../../Api/UserHelpers/UsersConnection';
 import { UserContext } from '../../Contexts/UserContext';
+import Header from '../Header';
 
 
 function ProductDetails() {
@@ -10,9 +11,11 @@ function ProductDetails() {
   const[count,setCount]=useState(1);
   const[imgcount,setImgCount]=useState(0);
   const {id}=useParams();
-  // const {userInfo}=useContext(UserContext);
+  const {carts,setCart}=useContext(UserContext);
   const userInfo=localStorage.getItem("userId");
   const nav = useNavigate();
+  const modalRef=useRef()
+  const [cartUp,setCartUp]=useState(false)
   
   
 
@@ -21,7 +24,7 @@ function ProductDetails() {
     .then((res)=>setObj(res.data))
     .catch((error)=>console.log(error))
   },[id,userInfo])
-
+  
  async function addItemCart(){
     if(userInfo){
        const currentCart= await getCartById(userInfo)
@@ -37,6 +40,19 @@ function ProductDetails() {
         updatedCart=[...currentCart,{...Obj,count,totalPrice}]
        }
        addCart(userInfo,{cart:updatedCart})
+       .then(()=>{
+        modalRef.current.style.top="200px"
+        if(carts){
+          setCart(false)
+        }else{
+          setCart(true)
+        }
+       setTimeout(() => {
+        modalRef.current.style.top="0px"
+      }, 1000);
+        
+       })
+       
       }
     else{
       nav('/login')
@@ -49,7 +65,7 @@ function ProductDetails() {
                 <div className="image md:w-1/2 flex flex-col items-center ">
                     {
                       Obj.images && Obj.images[imgcount]?(
-                        <img src={Obj.images[imgcount]} className="big-image bg-white w-[90%] h-96  m-6 rounded"/>
+                        <img src={Obj.images[imgcount]} className="big-image bg-white w-[90%] h-96  m-6 rounded hover:transform hover:scale-105  transition-all duration-500 ease-in-out"/>
                     
                       ):
                       <span>No Image Available</span>
@@ -59,7 +75,7 @@ function ProductDetails() {
                       Obj.images?.map((image,index)=>{
                         return(
                          
-                        <img onClick={()=>setImgCount(index)} src={image} alt="" className='w-30 h-20 bg-black' />
+                        <img onClick={()=>setImgCount(index)} src={image} alt="" className='w-30 h-20 bg-black hover:transform hover:scale-105  transition-all duration-500 ease-in-out' />
                         
                         )
                       })
@@ -89,6 +105,13 @@ function ProductDetails() {
                         <span className='font-bold'>Pay Online</span>
                         <p>Secure payments through credit card or UPI</p>
                       </div>
+
+                     
+                      <div ref={modalRef} className="absolute left-[40%]  w-[20%] text-center bg-black p-2 rounded shadow-lg z-40 top-0 transition-all duration-500 ease-in-out">
+                             <span className='text-center text-yellow-400 '> Item added to Cart ✅</span>
+                       </div>
+                      
+
                     </div>
                 </div>
               </div>

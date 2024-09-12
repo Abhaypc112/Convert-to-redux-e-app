@@ -11,12 +11,13 @@ import { getProducts } from '../Api/ProductHelper/ProductConnection';
 function Header() {
   const [data, setData] = useState({});
   const nav = useNavigate();
-  // const {cart} = useContext(UserContext);
+ const {carts} = useContext(UserContext);
  const userInfo=localStorage.getItem("userId");
  const[cart,setCart]=useState([]);
  const [searchTerm, setSearchTerm] = useState("");
 const [products, setProducts] = useState([]);
 const [showModal, setShowModal] = useState(false);
+
  
  
   useEffect(() => {
@@ -27,14 +28,10 @@ const [showModal, setShowModal] = useState(false);
           getCartById(userInfo)
           .then((res)=>{
             setCart(res)
-            console.log('Cart');
-            
           })
-          
-        
     }
     
-  },[userInfo]);
+  },[userInfo,carts]);
 
   useEffect(()=>{
     async function fetchProducts(){

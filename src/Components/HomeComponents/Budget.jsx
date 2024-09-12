@@ -21,7 +21,7 @@ function Budget() {
             return(
               <NavLink to={`/product/${Obj.id}`}>
                   <div className=' h-40 w-40 rounded'>
-                  <img src={Obj.image} alt="" className=' bg-gray-200 h-40 w-40 rounded'/>
+                  <img src={Obj.image} alt="" className=' bg-gray-200 h-40 w-40 rounded hover:transform hover:scale-105  transition-all duration-500 ease-in-out'/>
                   <span className='font-bold'>$ {Obj.price}</span>
                   <p className='text-xs'>{Obj.name}</p>
                 
