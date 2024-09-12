@@ -46,13 +46,13 @@ function Profile() {
        <div  className='w-[100%] md:w-[50%] border shadow-sm flex md:flex-row flex-col  '>
         <div className="left flex flex-col space-y-3 p-10  md:w-1/3 items-center h-full justify-evenly border">
           <div className='text-center'>
-            <img src='https://assets.leetcode.com/users/abhaypc112/avatar_1723634306.png' className='w-28 h-28 bg-white rounded-full'/>
+            <img src='https://www.pngkey.com/png/detail/202-2024792_user-profile-icon-png-download-fa-user-circle.png' className='w-30 h-30 bg-white rounded-full'/>
             <h1 className='font-bold text-xl'>{user.name}</h1>
           </div>
-          <button onClick={()=>nav('/orders')} className='text-sm bg-yellow-400 w-[90%] md:w-40 font-bold p-2 rounded-lg'>Orders</button>
-          <button onClick={()=>nav('/Cart')} className='text-sm bg-yellow-400 w-[90%] md:w-40 font-bold p-2 rounded-lg'>Cart</button>
-          <button onClick={()=>nav('/store')} className='text-sm bg-yellow-400 w-[90%] md:w-40 font-bold p-2 rounded-lg'>Store</button>
-          <button onClick={logout} className='text-sm bg-black text-white w-[90%] md:w-40 font-bold  p-2 rounded-lg'>Logout</button>
+          <button onClick={()=>nav('/orders')} className='text-sm bg-yellow-400 w-[90%] md:w-40 font-bold p-2 rounded-lg hover:bg-yellow-500'>Orders</button>
+          <button onClick={()=>nav('/Cart')} className='text-sm bg-yellow-400 w-[90%] md:w-40 font-bold p-2 rounded-lg hover:bg-yellow-500'>Cart</button>
+          <button onClick={()=>nav('/store')} className='text-sm bg-yellow-400 w-[90%] md:w-40 font-bold p-2 rounded-lg hover:bg-yellow-500'>Store</button>
+          <button onClick={logout} className='text-sm bg-black text-white w-[90%] md:w-40 font-bold  p-2 rounded-lg hover:text-yellow-500'>Logout</button>
           
         </div>
         <div className='border p-5 flex flex-col space-y-5 w-[100%] md:w-[90%] items-center'>

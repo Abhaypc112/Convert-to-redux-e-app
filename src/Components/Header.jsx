@@ -24,13 +24,17 @@ const [showModal, setShowModal] = useState(false);
         getUserById(userInfo)
         .then((res) => setData(res.data))
         .catch((err) => console.error('Error fetching user data:', err)); 
-        if(cart){
           getCartById(userInfo)
-          .then((res)=>setCart(res))
-        }
+          .then((res)=>{
+            setCart(res)
+            console.log('Cart');
+            
+          })
+          
+        
     }
     
-  },[userInfo,cart]);
+  },[userInfo]);
 
   useEffect(()=>{
     async function fetchProducts(){
@@ -57,6 +61,7 @@ const [showModal, setShowModal] = useState(false);
   
 function handleProductClick(id){
   setShowModal(false)
+  setSearchTerm('')
   nav(`/product/${id}`)
 }
   return (
@@ -152,7 +157,7 @@ function handleProductClick(id){
           <input 
   onChange={(e) => setSearchTerm(e.target.value)} 
   type="text" 
-  placeholder="Search Product" className="w-40 md:w-48 py-2 bg-transparent text-white focus:outline-none outline-none border-b border-white focus:w-96 transition-all duration-500 ease-in-out"/>
+  placeholder="Search Product" value={searchTerm} className="w-40 md:w-48 py-2 bg-transparent text-white focus:outline-none outline-none border-b border-white focus:w-96 transition-all duration-500 ease-in-out"/>
           {showModal && products.length > 0 && (
             <div className="absolute left-0 mt-12 w-full bg-white rounded shadow-lg z-50 max-h-60  overflow-y-auto custom-scrollbar">
               <ul className="divide-y divide-gray-300">

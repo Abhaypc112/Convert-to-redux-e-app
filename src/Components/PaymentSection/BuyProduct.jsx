@@ -198,7 +198,7 @@ function BuyProduct() {
               </div>
             </div>
             <div className="cart-buy md:space-x-3 space-y-3 w-[100%]">
-              <button onClick={addOrderData}  className="bg-yellow-400 font-bold text-xl text-black px-6 py-3 rounded-lg w-full">Pay now</button>
+              <button onClick={addOrderData}  className="bg-yellow-400 font-bold text-xl text-black px-6 py-3 rounded-lg w-full  hover:bg-black hover:text-yellow-400">Pay now</button>
             </div>
           </div>
         </div>

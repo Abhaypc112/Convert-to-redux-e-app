@@ -31,11 +31,6 @@ function Products() {
             return(
                   <NavLink to={`/product/${Obj.id}`}>
               <div style={{width:"20rem",height:"26rem"}} className=' rounded shadow '>
-              {
-                !wishlist?
-                <FcLike onClick={()=>setWishlist("")} className='absolute z-10 m-5 size-5 hover:size-6'/>
-                : <CgHeart onClick={()=>setWishlist("true")} className='absolute z-10 m-5 size-5 hover:size-6'/>
-              }
               <img src={Obj.image} alt="" className='w-[100%] h-[70%] bg-black rounded relative' />
               <div className='flex flex-col ml-1 justify-between'>
               <span className='text-sm font-bold'>{Obj.name}</span>

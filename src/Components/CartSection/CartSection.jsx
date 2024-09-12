@@ -124,7 +124,6 @@ function CartSection() {
               </div>
               <hr />
               <div>
-                <input type="checkbox" />
                 <span>Plant a tree for Rs.60 only!</span>
               </div>
               <hr />
@@ -134,7 +133,7 @@ function CartSection() {
               </div>
             </div>
             <div className="cart-buy md:space-x-3 space-y-3 w-[100%]">
-              <button onClick={buyOrder} className="bg-yellow-400 text-black px-6 py-3 rounded-lg w-full">Buy Now</button>
+              <button onClick={buyOrder} className="bg-yellow-400 text-black px-6 py-3 rounded-lg w-full hover:bg-black hover:text-yellow-400 font-bold">Buy Now</button>
             </div>
             <div className="delivery space-y-1">
               <div className="free w-[100%] border p-3">

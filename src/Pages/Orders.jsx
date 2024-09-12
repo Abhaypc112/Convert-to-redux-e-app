@@ -32,12 +32,13 @@ function Orders() {
                             <p className='font-bold'>$ {value.totalPrice}</p>
                         </div>
                          <div className='flex flex-col justify-center'>
+                         <p className='text-sm font-bold'>OrderId : {Obj.id}</p>
                          <p className='text-sm'>{Obj.date.day}</p> 
                                 <p className='text-sm'>{Obj.date.time}</p>
-                                <p className='text-sm font-bold'>OrderId : {Obj.id}</p>
+                                
                         </div>
                         <div className='flex flex-col justify-center   w-40'>
-                                <p>{Obj.userData.name}</p>
+                                <p className='font-bold'>{Obj.userData.name}</p>
                                 <p className='text-sm'>{Obj.userData.address}</p>
                         </div>
                         <div className='flex flex-col justify-center  w-40'>

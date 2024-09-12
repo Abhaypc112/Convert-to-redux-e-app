@@ -26,7 +26,7 @@ function SignUp() {
     },
     validationSchema,
     onSubmit: (values) => {
-      const data = { ...values, cart: [] };
+      const data = { ...values, cart: [],orders:[] };
       addUser(data);
       navigate('/login');
     },

@@ -19,14 +19,14 @@ function Slider() {
   
   return (
     <div>
-        <NavLink to={'/store'}>
+        
         <div className=" md:max-w-[90%] max-w-[90%] mx-auto bg-gray-400 rounded ">
-         
+        <NavLink to={'/store'}>
          {/* <a href="#home" className='scroll-smooth'><button className='z-50 bg-yellow-400 p-3 rounded bottom-44 right-32' style={{position:"absolute"}}>Shop Now</button></a> */}
          <img src={slides[index]} alt="" style={{marginTop:"7rem",position:"relative"}} className='rounded min-w-[100%] h-52 md:h-96'/>
-         
+         </NavLink>
        </div>
-        </NavLink>
+        
     </div>
   )
 }

@@ -7,7 +7,6 @@ import Header from '../Components/Header';
 function Login() {
   const [username,setUsername]=useState('');
   const [password,setPassword]=useState('');
-  const [useData,setUSerData]=useState([]);
   const nav=useNavigate();
   const {activeUser}=useContext(UserContext);
   const userInfo=localStorage.getItem('userId')
@@ -18,6 +17,7 @@ function Login() {
     activeUser(data)
     setUsername('')
     setPassword('')
+   
   }
   useEffect(()=>{
     if(userInfo){
