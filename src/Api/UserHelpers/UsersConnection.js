@@ -44,6 +44,11 @@ export async function getOrdersById(id){
     const res= await axios.get(`${USERS_LIST}/${id}`);
     return res.data.orders
 }
+export async function checkUserName(username){
+    const res = await axios.get(`${USERS_LIST}?username=${username}`)
+    return (res.data.length>0);
+    
+}
 // export async function incrementCount(userId,productId){
 //     return
 // }

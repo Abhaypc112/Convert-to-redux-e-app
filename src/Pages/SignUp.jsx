@@ -1,6 +1,7 @@
 import React, { useContext,useEffect,useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { UserContext } from '../Contexts/UserContext';
+import { checkUserName } from '../Api/UserHelpers/UsersConnection';
 
 function SignUp() {
     const navigate=useNavigate();
@@ -11,7 +12,11 @@ function SignUp() {
     const[error,setError]=useState({});
     const {addUser}=useContext(UserContext);
     const userInfo=localStorage.getItem('userId');
-
+    const[usernameAlredy,setUsernameAlerdy]=useState(false);
+    useEffect(()=>{
+        checkUserName(username)
+        .then((res)=>setUsernameAlerdy(res))
+    },[username])
     function addUserData(e){
         e.preventDefault()
         const errors={}
@@ -20,6 +25,8 @@ function SignUp() {
         }
         if(username.trim()===""){
             errors.username="Username Required *";
+        }else if(usernameAlredy){
+            errors.username="Alredy Taken *";
         }
         if(email.trim()===""){
             errors.email="Email Required *";
@@ -29,8 +36,6 @@ function SignUp() {
         }else if(password.length<6){
             errors.password="Must 6 Char *"
         }
-        console.log(errors);
-        
         setError(errors)
         if(Object.keys(errors).length===0){
             const data = { name,username,email,password, cart: [],orders:[] };

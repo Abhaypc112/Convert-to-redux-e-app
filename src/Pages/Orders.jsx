@@ -46,6 +46,7 @@ function Orders() {
                         <div className='flex flex-col justify-center   w-40'>
                                 <p className='font-bold'>{Obj.userData.name}</p>
                                 <p className='text-sm'>{Obj.userData.address}</p>
+                                <p className='text-sm'>{Obj.userData.zipcode}</p>
                         </div>
                         <div className='flex flex-col justify-center  w-40'>
                                 <p className='text-sm font-bold'>{Obj.paymentMethode}</p>
