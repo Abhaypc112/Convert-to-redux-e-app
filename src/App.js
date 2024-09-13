@@ -9,7 +9,6 @@ import Cart from './Pages/Cart';
 import {Route, Routes } from 'react-router-dom'
 import Login from './Pages/Login';
 import SignUp from './Pages/SignUp';
-import { UserProvider } from './Contexts/UserContext';
 import Profile from './Pages/Profile';
 import Payment from './Pages/Payment';
 import Orders from './Pages/Orders';
@@ -21,7 +20,6 @@ function App() {
       
       <Header/> 
         <Routes>
-         
             <Route path='/' element={<Home/>}/>
             <Route path='/home' element={<Home/>}/>
             <Route path='/store/:category' element={<Store/>}/>

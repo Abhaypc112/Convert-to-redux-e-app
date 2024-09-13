@@ -126,7 +126,7 @@ function CartSection() {
               ))
             ) : (
               <div className="empty-cart flex justify-center items-center">
-                <h2 className="text-2xl">Your cart is empty</h2>
+                <img src="https://cdni.iconscout.com/illustration/free/thumb/free-empty-cart-illustration-download-in-svg-png-gif-file-formats--is-explore-box-states-pack-design-development-illustrations-3385483.png?f=webp" alt="" />
               </div>
             )}
           </div>

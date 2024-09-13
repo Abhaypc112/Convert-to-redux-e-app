@@ -1,7 +1,7 @@
 
 import React, { useContext, useEffect, useRef, useState } from 'react';
 import { UserContext } from '../../Contexts/UserContext';
-import { addAddress, addCart, addOrder, deleteItem, getAddressById, getCartById, getOrdersById, getUserById } from '../../Api/UserHelpers/UsersConnection';
+import { addAddress, addOrder, deleteItem, getAddressById, getCartById, getOrdersById} from '../../Api/UserHelpers/UsersConnection';
 import { useNavigate } from 'react-router-dom';
 
 function BuyProduct() {
@@ -81,7 +81,7 @@ function BuyProduct() {
     nav('/orders')
     })
     }else{
-      if(data.length==0){
+      if(data.length===0){
         setState('Add Iteam to Cart ❗')
         modalRef.current.style.top="200px"
         setTimeout(() => {
@@ -196,7 +196,7 @@ function BuyProduct() {
               </div>
               <hr />
               <div className="flex justify-between">
-                <span className="font-bold">Sub Total</span>
+                <span className="font-bold">Total</span>
                 <span className="font-bold">${totalPrice}</span>
               </div>
             </div>
