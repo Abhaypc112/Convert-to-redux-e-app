@@ -1,7 +1,8 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { NavLink, useNavigate } from 'react-router-dom';
-import { UserContext } from '../Contexts/UserContext';
-import Header from '../Components/Header';
+import { UserContext } from '../../Contexts/UserContext';
+import Header from '../../Components/Header&Footer/Users/Header';
+import Footer from '../../Components/Header&Footer/Users/Footer';
 
 
 function Login() {
@@ -71,6 +72,7 @@ function Login() {
         </div>
       </div>
     </div>
+    <Footer/>
     </div>
   )
     

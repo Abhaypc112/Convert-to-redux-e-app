@@ -6,32 +6,7 @@
       "username": "abhay",
       "email": "abhay@gmail.com",
       "password": "123456",
-      "cart": [
-        {
-          "id": "1",
-          "name": "GAMMALBYN",
-          "description": "3-seat sofa, grey",
-          "category": "sofas",
-          "price": 1200,
-          "stock": 15,
-          "rating": 4.8,
-          "material": "Leather",
-          "image": "https://www.ikea.com/in/en/images/products/gammalbyn-3-seat-sofa-grey__0868926_pe781434_s5.jpg?f=l",
-          "images": [
-            "https://www.ikea.com/in/en/images/products/gammalbyn-3-seat-sofa-grey__0868926_pe781434_s5.jpg?f=l",
-            "https://www.ikea.com/in/en/images/products/gammalbyn-3-seat-sofa-grey__0868927_pe781435_s5.jpg?f=l",
-            "https://www.ikea.com/in/en/images/products/gammalbyn-3-seat-sofa-grey__0868929_pe781437_s5.jpg?f=l",
-            "https://www.ikea.com/in/en/images/products/gammalbyn-3-seat-sofa-grey__0868928_pe781439_s5.jpg?f=l"
-          ],
-          "tags": [
-            "modern",
-            "leather",
-            "living room"
-          ],
-          "count": 1,
-          "totalPrice": 1200
-        }
-      ],
+      "cart": [],
       "orders": [
         {
           "id": 1726213281776,
@@ -139,15 +114,183 @@
             "email": "abhay@gmial.com"
           },
           "paymentMethode": "Upi"
+        },
+        {
+          "id": 1726217877606,
+          "Items": [
+            {
+              "id": "1",
+              "name": "GAMMALBYN",
+              "description": "3-seat sofa, grey",
+              "category": "sofas",
+              "price": 1200,
+              "stock": 15,
+              "rating": 4.8,
+              "material": "Leather",
+              "image": "https://www.ikea.com/in/en/images/products/gammalbyn-3-seat-sofa-grey__0868926_pe781434_s5.jpg?f=l",
+              "images": [
+                "https://www.ikea.com/in/en/images/products/gammalbyn-3-seat-sofa-grey__0868926_pe781434_s5.jpg?f=l",
+                "https://www.ikea.com/in/en/images/products/gammalbyn-3-seat-sofa-grey__0868927_pe781435_s5.jpg?f=l",
+                "https://www.ikea.com/in/en/images/products/gammalbyn-3-seat-sofa-grey__0868929_pe781437_s5.jpg?f=l",
+                "https://www.ikea.com/in/en/images/products/gammalbyn-3-seat-sofa-grey__0868928_pe781439_s5.jpg?f=l"
+              ],
+              "tags": [
+                "modern",
+                "leather",
+                "living room"
+              ],
+              "count": 1,
+              "totalPrice": 1200
+            }
+          ],
+          "date": {
+            "day": "Fri Sep 13 2024",
+            "time": "2:27:55 PM"
+          },
+          "userData": {
+            "name": "AbhayPc",
+            "address": "Ramanattukara",
+            "town": "Ramanattukara",
+            "zipcode": "673633",
+            "mobile": "9497860963",
+            "email": "abhay@gmial.com"
+          },
+          "paymentMethode": "Cash on delivery"
+        },
+        {
+          "id": 1726220667559,
+          "Items": [
+            {
+              "id": "1",
+              "name": "GAMMALBYN",
+              "description": "3-seat sofa, grey",
+              "category": "sofas",
+              "price": 1200,
+              "stock": 15,
+              "rating": 4.8,
+              "material": "Leather",
+              "image": "https://www.ikea.com/in/en/images/products/gammalbyn-3-seat-sofa-grey__0868926_pe781434_s5.jpg?f=l",
+              "images": [
+                "https://www.ikea.com/in/en/images/products/gammalbyn-3-seat-sofa-grey__0868926_pe781434_s5.jpg?f=l",
+                "https://www.ikea.com/in/en/images/products/gammalbyn-3-seat-sofa-grey__0868927_pe781435_s5.jpg?f=l",
+                "https://www.ikea.com/in/en/images/products/gammalbyn-3-seat-sofa-grey__0868929_pe781437_s5.jpg?f=l",
+                "https://www.ikea.com/in/en/images/products/gammalbyn-3-seat-sofa-grey__0868928_pe781439_s5.jpg?f=l"
+              ],
+              "tags": [
+                "modern",
+                "leather",
+                "living room"
+              ],
+              "count": 8,
+              "totalPrice": 9600
+            }
+          ],
+          "date": {
+            "day": "Fri Sep 13 2024",
+            "time": "3:14:25 PM"
+          },
+          "userData": {
+            "name": "AbhayPc",
+            "address": "Ramanattukara",
+            "town": "Ramanattukara",
+            "zipcode": "673633",
+            "mobile": "9497860963",
+            "email": "abhay@gmial.com"
+          },
+          "paymentMethode": "Upi"
+        },
+        {
+          "id": 1726220742704,
+          "Items": [
+            {
+              "id": "1",
+              "name": "GAMMALBYN",
+              "description": "3-seat sofa, grey",
+              "category": "sofas",
+              "price": 1200,
+              "stock": 15,
+              "rating": 4.8,
+              "material": "Leather",
+              "image": "https://www.ikea.com/in/en/images/products/gammalbyn-3-seat-sofa-grey__0868926_pe781434_s5.jpg?f=l",
+              "images": [
+                "https://www.ikea.com/in/en/images/products/gammalbyn-3-seat-sofa-grey__0868926_pe781434_s5.jpg?f=l",
+                "https://www.ikea.com/in/en/images/products/gammalbyn-3-seat-sofa-grey__0868927_pe781435_s5.jpg?f=l",
+                "https://www.ikea.com/in/en/images/products/gammalbyn-3-seat-sofa-grey__0868929_pe781437_s5.jpg?f=l",
+                "https://www.ikea.com/in/en/images/products/gammalbyn-3-seat-sofa-grey__0868928_pe781439_s5.jpg?f=l"
+              ],
+              "tags": [
+                "modern",
+                "leather",
+                "living room"
+              ],
+              "count": 1,
+              "totalPrice": 1200
+            }
+          ],
+          "date": {
+            "day": "Fri Sep 13 2024",
+            "time": "3:15:41 PM"
+          },
+          "userData": {
+            "name": "AbhayPc",
+            "address": "Ramanattukara",
+            "town": "Ramanattukara",
+            "zipcode": "673633",
+            "mobile": "9497860963",
+            "email": "abhay@gmial.com"
+          },
+          "paymentMethode": "Cash on delivery"
+        },
+        {
+          "id": 1726221981714,
+          "Items": [
+            {
+              "id": "1",
+              "name": "GAMMALBYN",
+              "description": "3-seat sofa, grey",
+              "category": "sofas",
+              "price": 1200,
+              "stock": 15,
+              "rating": 4.8,
+              "material": "Leather",
+              "image": "https://www.ikea.com/in/en/images/products/gammalbyn-3-seat-sofa-grey__0868926_pe781434_s5.jpg?f=l",
+              "images": [
+                "https://www.ikea.com/in/en/images/products/gammalbyn-3-seat-sofa-grey__0868926_pe781434_s5.jpg?f=l",
+                "https://www.ikea.com/in/en/images/products/gammalbyn-3-seat-sofa-grey__0868927_pe781435_s5.jpg?f=l",
+                "https://www.ikea.com/in/en/images/products/gammalbyn-3-seat-sofa-grey__0868929_pe781437_s5.jpg?f=l",
+                "https://www.ikea.com/in/en/images/products/gammalbyn-3-seat-sofa-grey__0868928_pe781439_s5.jpg?f=l"
+              ],
+              "tags": [
+                "modern",
+                "leather",
+                "living room"
+              ],
+              "count": 6,
+              "totalPrice": 7200
+            }
+          ],
+          "date": {
+            "day": "Fri Sep 13 2024",
+            "time": "3:36:20 PM"
+          },
+          "userData": {
+            "name": "hfewhfpfwefjf[ewjfw",
+            "address": "fpwefe",
+            "town": "kfeowkf",
+            "zipcode": "55345345",
+            "mobile": "55553454361",
+            "email": "fau@gmial.com"
+          },
+          "paymentMethode": "Credit or Debit card"
         }
       ],
       "address": {
-        "name": "AbhayPc",
-        "address": "Ramanattukara",
-        "town": "Ramanattukara",
-        "zipcode": "673633",
-        "mobile": "9497860963",
-        "email": "abhay@gmial.com"
+        "name": "hfewhfpfwefjf[ewjfw",
+        "address": "fpwefe",
+        "town": "kfeowkf",
+        "zipcode": "55345345",
+        "mobile": "55553454361",
+        "email": "fau@gmial.com"
       }
     },
     {
@@ -155,6 +298,15 @@
       "name": "Hrithic Raj",
       "username": "hrj",
       "email": "hrj@gmial.com",
+      "password": "123456",
+      "cart": [],
+      "orders": []
+    },
+    {
+      "id": "4b51",
+      "name": "ZC",
+      "username": "panda",
+      "email": "zc@gmial.com",
       "password": "123456",
       "cart": [],
       "orders": []

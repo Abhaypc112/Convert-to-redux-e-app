@@ -1,11 +1,11 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Menu, MenuButton, MenuItems, MenuItem ,Button } from '@headlessui/react';
 import { ChevronDownIcon } from '@heroicons/react/20/solid';
-import logo from './Logo1.png';
+import logo from '../../../Assets/Logo1.png';
 import { NavLink, useNavigate } from 'react-router-dom';
-import { UserContext } from '../Contexts/UserContext';
-import { getCartById, getUserById } from '../Api/UserHelpers/UsersConnection';
-import { getProducts } from '../Api/ProductHelper/ProductConnection';
+import { UserContext } from '../../Contexts/UserContext';
+import { getCartById, getUserById } from '../../Api/UserHelpers/UsersConnection';
+import { getProducts } from '../../Api/ProductHelper/ProductConnection';
 
 
 function Header() {

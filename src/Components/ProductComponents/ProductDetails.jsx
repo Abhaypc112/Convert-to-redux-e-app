@@ -3,7 +3,7 @@ import { NavLink, useNavigate, useParams } from 'react-router-dom'
 import { getProductsById } from '../../Api/ProductHelper/ProductConnection'
 import { addCart, getCartById, getUserById } from '../../Api/UserHelpers/UsersConnection';
 import { UserContext } from '../../Contexts/UserContext';
-import Header from '../Header';
+import Header from '../Header&Footer/Users/Header';
 
 
 function ProductDetails() {
