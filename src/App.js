@@ -2,8 +2,6 @@ import './App.css';
 import Home from './Pages/Home';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import Store from './Pages/Store';
-import Footer from './Components/Footer';
-import Header from './Components/Header';
 import Product from './Pages/Product';
 import Cart from './Pages/Cart';
 import {Route, Routes } from 'react-router-dom'
@@ -12,13 +10,19 @@ import SignUp from './Pages/SignUp';
 import Profile from './Pages/Profile';
 import Payment from './Pages/Payment';
 import Orders from './Pages/Orders';
+import AdminHome from './Pages/Admin/AdminHome/AdminHome';
+import AddProducts from './Pages/Admin/AdminHome/AddProducts';
+import ViewProducts from './Pages/Admin/AdminHome/ViewProducts';
+import AdminOredersView from './Pages/Admin/AdminHome/AdminOredersView';
+import AdminUserView from './Pages/Admin/AdminHome/AdminUserView';
+import AddUsers from './Pages/Admin/AdminHome/AddUsers';
 
 function App() {
+  const adminId=localStorage.getItem("adminId")
   return (
     <div className="App">
       
       
-      <Header/> 
         <Routes>
             <Route path='/' element={<Home/>}/>
             <Route path='/home' element={<Home/>}/>
@@ -30,13 +34,21 @@ function App() {
             <Route path='/payment' element={<Payment/>}/>
             <Route path='/orders' element={<Orders/>}/>
 
-
             <Route path='/login' element={<Login/>}/>
             <Route path='/signup' element={<SignUp/>}/>
             <Route path='/home/:id' element={<Home/>}/>
           </Routes>
     
-      <Footer/>
+
+          <Routes>
+              <Route path='/admin' element={<AdminHome/>}/>
+              <Route path='/addproduct' element={<AddProducts/>} />
+              <Route path='/viewproducts' element={<ViewProducts/>}/>
+              <Route path='/vieworders' element={<AdminOredersView/>}/>
+              <Route path='/viewusers' element={<AdminUserView/>}/>
+              <Route path='/adduser' element={<AddUsers/>}/>
+              
+          </Routes>
     </div>
   );
 }

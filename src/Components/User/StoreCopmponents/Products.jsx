@@ -1,6 +1,6 @@
 import React, { useEffect,useState } from 'react'
 import { NavLink, useParams } from 'react-router-dom'
-import { getProducts } from '../../Api/ProductHelper/ProductConnection'
+import { getProducts } from '../../../Api/ProductHelper/ProductConnection'
 import { CgHeart } from "react-icons/cg";
 import { FcLike } from "react-icons/fc";
 

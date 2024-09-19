@@ -52,3 +52,12 @@ export async function checkUserName(username){
 // export async function incrementCount(userId,productId){
 //     return
 // }
+
+export function deleteUserById(id){
+    return axios.delete(`${USERS_LIST}/${id}`)
+}
+
+export function blockUserById(id,status){
+   
+    return axios.patch(`${USERS_LIST}/${id}`,{block:status})
+}

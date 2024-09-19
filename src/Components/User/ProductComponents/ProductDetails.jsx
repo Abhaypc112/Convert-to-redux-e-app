@@ -1,9 +1,9 @@
 import React, { useContext, useEffect, useRef, useState } from 'react'
 import { NavLink, useNavigate, useParams } from 'react-router-dom'
-import { getProductsById } from '../../Api/ProductHelper/ProductConnection'
-import { addCart, getCartById, getUserById } from '../../Api/UserHelpers/UsersConnection';
-import { UserContext } from '../../Contexts/UserContext';
-import Header from '../Header';
+import { getProductsById } from '../../../Api/ProductHelper/ProductConnection'
+import { addCart, getCartById, getUserById } from '../../../Api/UserHelpers/UsersConnection';
+import { UserContext } from '../../../Contexts/UserContext';
+import Header from '../../Header';
 
 
 function ProductDetails() {

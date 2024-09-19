@@ -1,11 +1,9 @@
-import React, { useContext,useEffect,useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react'
 import { NavLink, useNavigate } from 'react-router-dom';
-import { UserContext } from '../Contexts/UserContext';
-import { checkUserName } from '../Api/UserHelpers/UsersConnection';
-import Header from '../Components/Header';
-import Footer from '../Components/Footer';
+import { UserContext } from '../../../Contexts/UserContext';
+import { checkUserName } from '../../../Api/UserHelpers/UsersConnection';
 
-function SignUp() {
+function AddUser() {
     const navigate=useNavigate();
     const[name,setName]=useState('');
     const[username,setUsername]=useState('');
@@ -13,7 +11,7 @@ function SignUp() {
     const[password,setPassword]=useState('');
     const[error,setError]=useState({});
     const {addUser}=useContext(UserContext);
-    const userInfo=localStorage.getItem('userId');
+    const adminId=localStorage.getItem('adminId');
     const[usernameAlredy,setUsernameAlerdy]=useState(false);
     useEffect(()=>{
         checkUserName(username)
@@ -42,31 +40,24 @@ function SignUp() {
         if(Object.keys(errors).length===0){
             const data = { name,username,email,password, cart: [],orders:[],block:false };
             addUser(data);
-            navigate('/login');
+            navigate('/viewusers');
         }
     }
-    useEffect(()=>{
-        if(userInfo){
-          navigate('/home')
-        }
-      },[userInfo])
   return (
-    <div>
-        <Header/> 
-        <div className='bg-gray-100 h-screen '>
-      <div className="main flex justify-center">
-        <div style={{height:"32rem",marginTop:"8rem"}} className=" rounded login w-[90%] md:w-[30%] shadow-md flex flex-col justify-center p-10 bg-white">
-            <h3 className='font-bold text-2xl text-center mb-6'>Create New Account</h3>
+    
+    <div className='w-[80%] flex justify-center bg-slate-100 h-lvh'>
+         <div style={{height:"32rem",marginTop:"8rem"}} className=" rounded login w-[90%] md:w-[40%] shadow-md flex flex-col justify-center p-10 bg-white">
+            <h3 className='font-bold text-2xl text-center mb-6'>Create New User</h3>
               <form onSubmit={addUserData} className='flex flex-col'>
-                        <div className='flex justify-between'>
+                        <div className='flex flex-col md:flex-row justify-between'>
                             <div className='flex flex-col'>
                             <label htmlFor="name">Name</label>
-                            <input style={{width:"11rem"}} type="text" name='name' onChange={(e)=>setName(e.target.value)} className='border p-2   rounded-md  focus:outline-yellow-400'/>
+                            <input type="text" name='name' onChange={(e)=>setName(e.target.value)} className='border p-2   rounded-md  focus:outline-yellow-400'/>
                             <p className='text-xs text-red-500 font-bold mb-4'>{error.name}</p>
                             </div>
                             <div className='flex flex-col'>
                             <label htmlFor="username">Username</label>
-                            <input style={{width:"11rem"}} type="text" name='username' onChange={(e)=>setUsername(e.target.value)} className='border p-2 rounded-md  focus:outline-yellow-400' />
+                            <input  type="text" name='username' onChange={(e)=>setUsername(e.target.value)} className='border p-2 rounded-md  focus:outline-yellow-400' />
                             <p className='text-xs text-red-500 font-bold mb-4'>{error.username}</p>
                             </div>
                         </div>
@@ -86,11 +77,9 @@ function SignUp() {
                         </span>
               </form>
         </div>
-      </div>
     </div>
-    <Footer/>
-    </div>
+   
   )
 }
 
-export default SignUp
+export default AddUser

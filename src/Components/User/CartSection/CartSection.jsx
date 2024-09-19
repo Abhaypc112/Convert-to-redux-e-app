@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useRef, useState } from 'react';
-import { UserContext } from '../../Contexts/UserContext';
-import { addCart, deleteItem, getCartById, getUserById } from '../../Api/UserHelpers/UsersConnection';
+import { UserContext } from '../../../Contexts/UserContext';
+import { addCart, deleteItem, getCartById, getUserById } from '../../../Api/UserHelpers/UsersConnection';
 import { useNavigate } from 'react-router-dom';
 
 function CartSection() {

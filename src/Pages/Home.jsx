@@ -1,21 +1,21 @@
 import React from 'react'
-import Slider from '../Components/HomeComponents/Slider'
-import Categories from '../Components/HomeComponents/Categories'
-import BestSellers from '../Components/HomeComponents/BestSellers'
-import Budget from '../Components/HomeComponents/Budget'
+import Slider from '../Components/User/HomeComponents/Slider'
+import Categories from '../Components/User/HomeComponents/Categories'
+import BestSellers from '../Components/User/HomeComponents/BestSellers'
+import Budget from '../Components/User/HomeComponents/Budget'
 import Header from '../Components/Header'
+import Footer from '../Components/Footer'
 
 
 function Home() {
   return (
     <div>
       <Header/>
-      <div>
       <Slider/>
       <Categories/>
       <BestSellers/>
       <Budget/>
-      </div>
+      <Footer/>
     </div>
   )
 }

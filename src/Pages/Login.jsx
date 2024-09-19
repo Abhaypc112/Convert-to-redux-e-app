@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import { NavLink, useNavigate } from 'react-router-dom';
 import { UserContext } from '../Contexts/UserContext';
 import Header from '../Components/Header';
+import Footer from '../Components/Footer';
 
 
 function Login() {
@@ -11,6 +12,7 @@ function Login() {
   const {activeUser}=useContext(UserContext);
   const userInfo=localStorage.getItem('userId');
   const [error,setError]=useState({});
+  const adminId=localStorage.getItem('adminId');
 
   function doSignup(e){
     e.preventDefault();
@@ -26,13 +28,12 @@ function Login() {
     setError(errors)
     if(Object.keys(errors).length===0){
       const data={username,password};
-      activeUser(data)
+      let result=activeUser(data)
       setUsername('')
       setPassword('')
-      if(!userInfo){
-        setError({fetch:"Invalid Username Or Password *"})
+      if(result){
+        setError({fetch:result.errors})
       }
-     
     }
     }
     
@@ -40,7 +41,10 @@ function Login() {
     if(userInfo){
       nav('/home')
     }
-  },[userInfo])
+    else if(adminId){
+      nav('/admin')
+    }
+  },[userInfo,adminId])
   
   
   return (
@@ -71,6 +75,7 @@ function Login() {
         </div>
       </div>
     </div>
+    <Footer/>
     </div>
   )
     

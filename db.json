@@ -1,4 +1,22 @@
 {
+  "sales": [
+    {
+      "id": "9053",
+      "totalPrice": 5400
+    },
+    {
+      "id": "d6db",
+      "totalPrice": 2850
+    },
+    {
+      "id": "1019",
+      "totalPrice": 1200
+    },
+    {
+      "id": "f17a",
+      "totalPrice": 1600
+    }
+  ],
   "users": [
     {
       "id": "6b70",
@@ -6,87 +24,40 @@
       "username": "abhay",
       "email": "abhay@gmail.com",
       "password": "123456",
-      "cart": [
-        {
-          "id": "1",
-          "name": "GAMMALBYN",
-          "description": "3-seat sofa, grey",
-          "category": "sofas",
-          "price": 1200,
-          "stock": 15,
-          "rating": 4.8,
-          "material": "Leather",
-          "image": "https://www.ikea.com/in/en/images/products/gammalbyn-3-seat-sofa-grey__0868926_pe781434_s5.jpg?f=l",
-          "images": [
-            "https://www.ikea.com/in/en/images/products/gammalbyn-3-seat-sofa-grey__0868926_pe781434_s5.jpg?f=l",
-            "https://www.ikea.com/in/en/images/products/gammalbyn-3-seat-sofa-grey__0868927_pe781435_s5.jpg?f=l",
-            "https://www.ikea.com/in/en/images/products/gammalbyn-3-seat-sofa-grey__0868929_pe781437_s5.jpg?f=l",
-            "https://www.ikea.com/in/en/images/products/gammalbyn-3-seat-sofa-grey__0868928_pe781439_s5.jpg?f=l"
-          ],
-          "tags": [
-            "modern",
-            "leather",
-            "living room"
-          ],
-          "count": 1,
-          "totalPrice": 1200
-        }
-      ],
+      "cart": [],
+      "block": true,
       "orders": [
         {
-          "id": 1726213281776,
+          "id": 1726727753377,
           "Items": [
             {
-              "id": "12",
-              "name": "EBBALYCKE",
-              "description": "Chair, Idekulla beige",
-              "category": "chairs",
-              "price": 500,
-              "stock": 12,
-              "rating": 4.5,
-              "material": "Fabric, Metal",
-              "image": "https://www.ikea.com/in/en/images/products/ebbalycke-chair-idekulla-beige__1243346_pe920576_s5.jpg?f=l",
-              "images": [
-                "https://www.ikea.com/in/en/images/products/ebbalycke-chair-idekulla-beige__1243346_pe920576_s5.jpg?f=l",
-                "https://www.ikea.com/in/en/images/products/ebbalycke-chair-idekulla-beige__1277259_pe931036_s5.jpg?f=l",
-                "https://www.ikea.com/in/en/images/products/ebbalycke-chair-idekulla-beige__1276089_ph195884_s5.jpg?f=l",
-                "https://www.ikea.com/in/en/images/products/ebbalycke-chair-idekulla-beige__1276088_ph195437_s5.jpg?f=l"
-              ],
-              "tags": [
-                "armchair",
-                "living room"
-              ],
-              "count": 1,
-              "totalPrice": 500
-            },
-            {
-              "id": "2",
-              "name": "EKTORP",
-              "description": "3-seat sofa with chaise longue, Kilanda light beige",
-              "category": "sofas",
-              "price": 1500,
-              "stock": 10,
+              "id": "7",
+              "name": "STRANDTORP / MÅRENÄS",
+              "description": "Table and 6 armchairs, brown/black Gunnared beige,",
+              "category": "dining tables",
+              "price": 600,
+              "stock": 20,
               "rating": 4.7,
-              "material": "Fabric",
-              "image": "https://www.ikea.com/in/en/images/products/ektorp-3-seat-sofa-with-chaise-longue-kilanda-light-beige__1194849_pe902099_s5.jpg?f=l",
+              "material": "Tempered Glass, Solid Wood",
+              "image": "https://www.ikea.com/in/en/images/products/strandtorp-marenaes-table-and-6-armchairs-brown-black-gunnared-beige__1198507_pe904114_s5.jpg?f=xl",
               "images": [
-                "https://www.ikea.com/in/en/images/products/ektorp-3-seat-sofa-with-chaise-longue-kilanda-light-beige__1194849_pe902099_s5.jpg?f=l",
-                "https://www.ikea.com/in/en/images/products/ektorp-3-seat-sofa-with-chaise-longue-kilanda-light-beige__1194848_pe902098_s5.jpg?f=l",
-                "https://www.ikea.com/in/en/images/products/ektorp-3-seat-sofa-with-chaise-longue-kilanda-light-beige__1194830_pe902079_s5.jpg?f=l",
-                "https://www.ikea.com/in/en/images/products/ektorp-3-seat-sofa-with-chaise-longue-kilanda-light-beige__0717901_pe731384_s5.jpg?f=l"
+                "https://www.ikea.com/in/en/images/products/strandtorp-marenaes-table-and-6-armchairs-brown-black-gunnared-beige__1198507_pe904114_s5.jpg?f=xl",
+                "https://www.ikea.com/in/en/images/products/strandtorp-marenaes-table-and-6-armchairs-brown-black-gunnared-beige__1198506_pe904115_s5.jpg?f=l",
+                "https://www.ikea.com/in/en/images/products/strandtorp-marenaes-table-and-6-armchairs-brown-black-gunnared-beige__1182855_pe897319_s5.jpg?f=l",
+                "https://www.ikea.com/in/en/images/products/strandtorp-marenaes-table-and-6-armchairs-brown-black-gunnared-beige__0964766_pe809165_s5.jpg?f=l"
               ],
               "tags": [
-                "sectional",
-                "fabric",
-                "living room"
+                "modern",
+                "wood",
+                "dining"
               ],
-              "count": 1,
-              "totalPrice": 1500
+              "count": 9,
+              "totalPrice": 5400
             }
           ],
           "date": {
-            "day": "Fri Sep 13 2024",
-            "time": "1:11:19 PM"
+            "day": "Thu Sep 19 2024",
+            "time": "12:05:52 PM"
           },
           "userData": {
             "name": "AbhayPc",
@@ -96,39 +67,40 @@
             "mobile": "9497860963",
             "email": "abhay@gmial.com"
           },
-          "paymentMethode": "Credit or Debit card"
+          "paymentMethode": "Cash on delivery",
+          "totalPrice": 5400
         },
         {
-          "id": 1726215827386,
+          "id": 1726727803304,
           "Items": [
             {
-              "id": "2",
-              "name": "EKTORP",
-              "description": "3-seat sofa with chaise longue, Kilanda light beige",
-              "category": "sofas",
-              "price": 1500,
-              "stock": 10,
+              "id": "5",
+              "name": "IDANÄS",
+              "description": "Upholstered ottoman bed, Gunnared dark grey,",
+              "category": "beds",
+              "price": 950,
+              "stock": 12,
               "rating": 4.7,
               "material": "Fabric",
-              "image": "https://www.ikea.com/in/en/images/products/ektorp-3-seat-sofa-with-chaise-longue-kilanda-light-beige__1194849_pe902099_s5.jpg?f=l",
+              "image": "https://www.ikea.com/in/en/images/products/idanaes-upholstered-ottoman-bed-gunnared-dark-grey__1012432_pe829085_s5.jpg?f=l",
               "images": [
-                "https://www.ikea.com/in/en/images/products/ektorp-3-seat-sofa-with-chaise-longue-kilanda-light-beige__1194849_pe902099_s5.jpg?f=l",
-                "https://www.ikea.com/in/en/images/products/ektorp-3-seat-sofa-with-chaise-longue-kilanda-light-beige__1194848_pe902098_s5.jpg?f=l",
-                "https://www.ikea.com/in/en/images/products/ektorp-3-seat-sofa-with-chaise-longue-kilanda-light-beige__1194830_pe902079_s5.jpg?f=l",
-                "https://www.ikea.com/in/en/images/products/ektorp-3-seat-sofa-with-chaise-longue-kilanda-light-beige__0717901_pe731384_s5.jpg?f=l"
+                "https://www.ikea.com/in/en/images/products/idanaes-upholstered-ottoman-bed-gunnared-dark-grey__1012432_pe829085_s5.jpg?f=l",
+                "https://www.ikea.com/in/en/images/products/idanaes-upholstered-ottoman-bed-gunnared-dark-grey__1079006_pe857430_s5.jpg?f=l",
+                "https://www.ikea.com/in/en/images/products/idanaes-upholstered-ottoman-bed-gunnared-dark-grey__1079017_pe857434_s5.jpg?f=l",
+                "https://www.ikea.com/in/en/images/products/idanaes-upholstered-ottoman-bed-gunnared-dark-grey__1079029_pe857421_s5.jpg?f=l"
               ],
               "tags": [
-                "sectional",
-                "fabric",
-                "living room"
+                "upholstered",
+                "modern",
+                "bedroom"
               ],
-              "count": 1,
-              "totalPrice": 1500
+              "count": 3,
+              "totalPrice": 2850
             }
           ],
           "date": {
-            "day": "Fri Sep 13 2024",
-            "time": "1:53:46 PM"
+            "day": "Thu Sep 19 2024",
+            "time": "12:06:41 PM"
           },
           "userData": {
             "name": "AbhayPc",
@@ -138,7 +110,100 @@
             "mobile": "9497860963",
             "email": "abhay@gmial.com"
           },
-          "paymentMethode": "Upi"
+          "paymentMethode": "Credit or Debit card",
+          "totalPrice": 2850
+        },
+        {
+          "id": 1726729101458,
+          "Items": [
+            {
+              "id": "10",
+              "name": "POÄNG",
+              "description": "Rocking-chair, brown/Gunnared light green",
+              "category": "chairs",
+              "price": 300,
+              "currency": "USD",
+              "stock": 30,
+              "rating": 4.9,
+              "dimensions": {
+                "width": "26 inches",
+                "height": "45 inches",
+                "depth": "24 inches"
+              },
+              "material": "Mesh, Metal",
+              "image": "https://www.ikea.com/in/en/images/products/poaeng-rocking-chair-brown-gunnared-light-green__1192298_pe901008_s5.jpg?f=l",
+              "images": [
+                "https://www.ikea.com/in/en/images/products/poaeng-rocking-chair-brown-gunnared-light-green__1192298_pe901008_s5.jpg?f=l",
+                "https://www.ikea.com/in/en/images/products/poaeng-rocking-chair-brown-gunnared-light-green__1192297_pe900997_s5.jpg?f=l",
+                "https://www.ikea.com/in/en/images/products/poaeng-rocking-chair-brown-gunnared-light-green__1192296_pe900996_s5.jpg?f=l",
+                "https://www.ikea.com/in/en/images/products/poaeng-rocking-chair-brown-gunnared-light-green__1192113_pe900862_s5.jpg?f=l"
+              ],
+              "tags": [
+                "ergonomic",
+                "office",
+                "adjustable"
+              ],
+              "count": 4,
+              "totalPrice": 1200
+            }
+          ],
+          "date": {
+            "day": "Thu Sep 19 2024",
+            "time": "12:28:20 PM"
+          },
+          "userData": {
+            "name": "AbhayPc",
+            "address": "Ramanattukara",
+            "town": "Ramanattukara",
+            "zipcode": "673633",
+            "mobile": "9497860963",
+            "email": "abhay@gmial.com"
+          },
+          "paymentMethode": "Upi",
+          "totalPrice": 1200
+        },
+        {
+          "id": 1726735878200,
+          "Items": [
+            {
+              "id": "6",
+              "name": "NODELAND",
+              "description": "NODELAND",
+              "category": "beds",
+              "price": 800,
+              "stock": 5,
+              "rating": 4.4,
+              "material": "Wood",
+              "image": "https://www.ikea.com/in/en/images/products/nodeland-bed-frame-black-brown-luroey__0980296_pe814897_s5.jpg?f=l",
+              "images": [
+                "https://www.ikea.com/in/en/images/products/nodeland-bed-frame-black-brown-luroey__0980296_pe814897_s5.jpg?f=l",
+                "https://www.ikea.com/in/en/images/products/nodeland-bed-frame-black-brown-luroey__0980297_pe814900_s5.jpg?f=l",
+                "https://www.ikea.com/in/en/images/products/nodeland-bed-frame-black-brown-luroey__0980298_pe814899_s5.jpg?f=l",
+                "https://www.ikea.com/in/en/images/products/nodeland-bed-frame-black-brown-luroey__0980299_pe814898_s5.jpg?f=l"
+              ],
+              "tags": [
+                "rustic",
+                "wooden",
+                "bedroom"
+              ],
+              "count": 2,
+              "totalPrice": 1600
+            }
+          ],
+          "date": {
+            "day": "Thu Sep 19 2024",
+            "time": "2:21:06 PM"
+          },
+          "userData": {
+            "name": "AbhayPc",
+            "address": "Ramanattukara",
+            "town": "Ramanattukara",
+            "zipcode": "673633",
+            "mobile": "9497860963",
+            "email": "abhay@gmial.com"
+          },
+          "paymentMethode": "Upi",
+          "totalPrice": 1600
         }
       ],
       "address": {
@@ -151,13 +216,24 @@
       }
     },
     {
-      "id": "c3a0",
-      "name": "Hrithic Raj",
+      "id": "4dd5",
+      "name": "Vishnumaya Kp",
+      "username": "vishnu",
+      "email": "vishnu@gmail.com",
+      "password": "123456",
+      "cart": [],
+      "orders": [],
+      "block": false
+    },
+    {
+      "id": "e76c",
+      "name": "hrj",
       "username": "hrj",
       "email": "hrj@gmial.com",
       "password": "123456",
       "cart": [],
-      "orders": []
+      "orders": [],
+      "block": false
     }
   ],
   "categorys": [

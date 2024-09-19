@@ -1,8 +1,9 @@
 
 import React, { useContext, useEffect, useRef, useState } from 'react';
-import { UserContext } from '../../Contexts/UserContext';
-import { addAddress, addOrder, deleteItem, getAddressById, getCartById, getOrdersById} from '../../Api/UserHelpers/UsersConnection';
+import { UserContext } from '../../../Contexts/UserContext';
+import { addAddress, addOrder, deleteItem, getAddressById, getCartById, getOrdersById} from '../../../Api/UserHelpers/UsersConnection';
 import { useNavigate } from 'react-router-dom';
+import { totalSales } from '../../../Api/ProductHelper/ProductConnection';
 
 function BuyProduct() {
   const [totalPrice, setTotalPrice] = useState(0);
@@ -64,13 +65,14 @@ function BuyProduct() {
     const date={day,time}
     const currentOrders= await getOrdersById(userInfo)
     let updatedOrders;
-    const dataSet={id:Date.now(),Items:data,date,userData,paymentMethode}
+    const dataSet={id:Date.now(),Items:data,date,userData,paymentMethode,totalPrice}
     if(!currentOrders){
       updatedOrders=[dataSet]
     }else{
       updatedOrders=[...currentOrders,dataSet]
     }
     addOrder(userInfo,{orders:updatedOrders})
+    totalSales({totalPrice})
     deleteItem(userInfo,{ cart:[]})
     .then((res)=>{setData(res.data)
       if(carts){

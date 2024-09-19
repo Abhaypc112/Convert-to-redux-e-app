@@ -2,6 +2,8 @@ import React, { useContext, useEffect, useState } from 'react'
 import { getOrdersById } from '../Api/UserHelpers/UsersConnection'
 import { useNavigate } from 'react-router-dom'
 import { UserContext } from '../Contexts/UserContext'
+import Header from '../Components/Header'
+import Footer from '../Components/Footer'
 
 function Orders() {
     const userInfo=localStorage.getItem('userId')
@@ -17,6 +19,8 @@ function Orders() {
        
     },[userInfo,carts]) 
   return (
+   <div>
+<Header/> 
    <div  style={{marginTop:"8rem",minHeight:"25rem"}}>
     <h1 className='text-2xl font-bold mb-5 text-center'>Orders</h1>
        <div style={{minHeight:"25rem"}} className='flex flex-col-reverse min:h-96 md:space-y-5  items-center'>
@@ -62,6 +66,8 @@ function Orders() {
 
         
     </div>
+   </div>
+   <Footer/>
    </div>
   )
 }

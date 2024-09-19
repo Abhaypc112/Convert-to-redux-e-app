@@ -6,8 +6,8 @@ import { NavLink } from 'react-router-dom';
 function Slider() {
   const slides=[
     "https://ahdfurniture.com/wp-content/uploads/2024/04/sectional-sofa-1.webp",
-        "https://cartersfurnitureonline.co.uk/cdn/shop/files/G_Plan_Web_Banner_Kingsbury_1400x.jpg?v=1720020418",
-        "https://www.getmycouch.com/cdn/shop/files/SUMMER_SALE.png?v=1719482589&width=750"
+    "https://cartersfurnitureonline.co.uk/cdn/shop/files/G_Plan_Web_Banner_Kingsbury_1400x.jpg?v=1720020418",
+    "https://www.getmycouch.com/cdn/shop/files/SUMMER_SALE.png?v=1719482589&width=750"
   ]
   const[index,setIndex]=useState(0);
 

@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { addAddress, getAddressById, getUserById } from '../Api/UserHelpers/UsersConnection'
 import { useNavigate } from 'react-router-dom'
+import Header from '../Components/Header'
+import Footer from '../Components/Footer'
 
 function Profile() {
   const userInfo=localStorage.getItem("userId")
@@ -42,7 +44,9 @@ function Profile() {
     }
   return (
     
-      <div style={{marginTop:"10rem"}} className='flex justify-center'>
+     <div>
+      <Header/> 
+       <div style={{marginTop:"10rem"}} className='flex justify-center'>
        <div  className='w-[100%] md:w-[50%] border shadow-sm flex md:flex-row flex-col  '>
         <div className="left flex flex-col space-y-3 p-10  md:w-1/3 items-center h-full justify-evenly border">
           <div className='text-center'>
@@ -101,6 +105,8 @@ function Profile() {
             </div>
        </div>
     </div>
+    <Footer/>
+     </div>
   )
 }
 
