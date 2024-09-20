@@ -16,6 +16,8 @@ import ViewProducts from './Pages/Admin/AdminHome/ViewProducts';
 import AdminOredersView from './Pages/Admin/AdminHome/AdminOredersView';
 import AdminUserView from './Pages/Admin/AdminHome/AdminUserView';
 import AddUsers from './Pages/Admin/AdminHome/AddUsers';
+import Error from './Pages/Error';
+import ViewProduct from './Pages/Admin/AdminHome/ViewProduct';
 
 function App() {
   const adminId=localStorage.getItem("adminId")
@@ -24,6 +26,9 @@ function App() {
       
       
         <Routes>
+          {/* UserSide */}
+
+          
             <Route path='/' element={<Home/>}/>
             <Route path='/home' element={<Home/>}/>
             <Route path='/store/:category' element={<Store/>}/>
@@ -37,16 +42,18 @@ function App() {
             <Route path='/login' element={<Login/>}/>
             <Route path='/signup' element={<SignUp/>}/>
             <Route path='/home/:id' element={<Home/>}/>
-          </Routes>
-    
 
-          <Routes>
+
+            {/* Admin Side */}
+
+              <Route path='*' element={<Error/>}/>
               <Route path='/admin' element={<AdminHome/>}/>
               <Route path='/addproduct' element={<AddProducts/>} />
               <Route path='/viewproducts' element={<ViewProducts/>}/>
               <Route path='/vieworders' element={<AdminOredersView/>}/>
               <Route path='/viewusers' element={<AdminUserView/>}/>
               <Route path='/adduser' element={<AddUsers/>}/>
+              <Route path='/viewproduct/:id' element={<ViewProduct/>}/>
               
           </Routes>
     </div>

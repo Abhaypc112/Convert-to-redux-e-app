@@ -119,7 +119,7 @@ function BuyProduct() {
                   {
                     data.map((value)=>(
                       <div className="image-details border flex w-[100%] p-3 justify-evenly">
-                    <img src={value.image} className="big-image bg-white w-32  rounded hover:transform hover:scale-105  transition-all duration-500 ease-in-out"alt=''/>
+                    <img src={value.images[0]} className="big-image bg-white w-32  rounded hover:transform hover:scale-105  transition-all duration-500 ease-in-out"alt=''/>
                     <div className='flex justify-between w-[60%] '>
                        <div>
                             <h1 className='font-bold'>{value.name}</h1>

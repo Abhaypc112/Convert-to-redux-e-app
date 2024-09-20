@@ -37,7 +37,7 @@ function BottomSection() {
                       return(
                         <div className='grid grid-cols-3 mt-5 '>
                         <div className='flex'>
-                        <div className='' ><img src={Obj.image} alt="" className='w-10 h-10' /></div>
+                        <div className='' ><img src={Obj.images[0]} alt="" className='w-10 h-10' /></div>
                         <span className='text-center'>{Obj.name}</span>
                         </div>
                         <span className='text-center '>{ord.date.time}</span>

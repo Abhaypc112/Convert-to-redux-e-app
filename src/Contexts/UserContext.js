@@ -8,6 +8,7 @@ export const UserProvider=({children})=>{
     const[userData,setUserData]=useState([]);
     const[userInfo,setUserInfo]=useState('');
     const[carts,setCart]=useState(false);
+    const[editStatus,setEditStatus]=useState(false)
   
     useEffect(()=>{
         getAllUsers()
@@ -52,7 +53,7 @@ export const UserProvider=({children})=>{
     
 
     return(
-        <UserContext.Provider value={{activeUser,userInfo,addUser,carts,setCart}}>
+        <UserContext.Provider value={{editStatus,setEditStatus,activeUser,userInfo,addUser,carts,setCart}}>
             {children}
         </UserContext.Provider>
     )

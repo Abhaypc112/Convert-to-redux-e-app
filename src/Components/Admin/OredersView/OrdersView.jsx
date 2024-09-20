@@ -29,7 +29,7 @@ function OrdersView() {
                     return(
                        
                       <div className='grid grid-cols-9 items-center w-[67rem] '>
-                      <div className='flex justify-center' ><img src={item.image} alt="" className='w-20'/></div>
+                      <div className='flex justify-center' ><img src={item.images[0]} alt="" className='w-20'/></div>
                       <span className='col-span-2 text-center'>{item.name}</span>
                       <span className='text-center '>#{order.id}</span>
                       <span className='text-center'>$ {item.price}</span>

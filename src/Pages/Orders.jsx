@@ -33,7 +33,7 @@ function Orders() {
                      <>
                             <div  className='w-[80%] border flex-col md:flex-row  flex justify-between p-2 '>
                            <div className='flex flex-col justify-center'>
-                           <img onClick={()=>nav(`/product/${value.id}`)} src={value.image} alt="" className='w-28 hover:transform hover:scale-105  transition-all duration-500 ease-in-out'/>
+                           <img onClick={()=>nav(`/product/${value.id}`)} src={value.images[0]} alt="" className='w-28 hover:transform hover:scale-105  transition-all duration-500 ease-in-out'/>
                         </div>
                         <div className='flex flex-col justify-center w-60'>
                             <p className='font-bold'>{value.name}</p>

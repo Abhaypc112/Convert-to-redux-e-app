@@ -33,7 +33,7 @@ function MidSection() {
                 data.map((Obj)=>{
                   return(
                     <div className='grid grid-cols-6 items-center'>
-                      <div className='flex justify-center h-20' ><img src={Obj.image} alt="" /></div>
+                      <div className='flex justify-center h-20' ><img src={Obj.images[0]} alt="" /></div>
                       <span className='col-span-2 text-center'>{Obj.name}</span>
                       <span className='text-center '>{Obj.id}</span>
                       <span className='text-center'>{Obj.price}</span>
