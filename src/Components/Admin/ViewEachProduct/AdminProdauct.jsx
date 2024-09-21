@@ -1,9 +1,10 @@
 import React, { useContext, useEffect, useRef, useState } from 'react'
 import { NavLink, useNavigate, useParams } from 'react-router-dom'
-import { getProductsById } from '../../../Api/ProductHelper/ProductConnection'
+import { deleteProductById, getProductsById } from '../../../Api/ProductHelper/ProductConnection'
 import { addCart, getCartById, getUserById } from '../../../Api/UserHelpers/UsersConnection';
 import { UserContext } from '../../../Contexts/UserContext';
 import Header from '../../Header';
+import EditProduct from '../ViewProducs/EditProduct';
 
 
 function AdminProdauct() {
@@ -14,58 +15,35 @@ function AdminProdauct() {
   const[count,setCount]=useState(1);
   const[imgcount,setImgCount]=useState(0);
   const {id}=useParams();
-  const {carts,setCart}=useContext(UserContext);
-  const userInfo=localStorage.getItem("userId");
-  const nav = useNavigate();
-  const modalRef=useRef()
-  const [cartUp,setCartUp]=useState(false)
+  const adminId=localStorage.getItem("adminId");
+  const [products,setProducts]=useState([]);
+  const navigate=useNavigate();
+  const {editStatus,setEditStatus}=useContext(UserContext);
+  const [productId,setProductId]=useState("");
   
-  
+  function handelEdit(){
+    setProductId(id)
+    setEditStatus(true)
+    
+  }
+
+  function handleDelete(){
+    deleteProductById(id)
+    navigate('/viewproducts')
+  }
 
   useEffect(()=>{
     getProductsById(id)
     .then((res)=>setObj(res.data))
     .catch((error)=>console.log(error))
-  },[id,userInfo])
+  },[handelEdit,handleDelete])
   
- async function addItemCart(){
-    if(userInfo){
-       const currentCart= await getCartById(userInfo)
-       const currentIndex=currentCart.findIndex((item)=>item.id===Obj.id)
-       let updatedCart;
-       const price=Obj.price;
-       const totalPrice=price*count;
-       if(currentIndex>=0){
-        updatedCart=currentCart.map((value,index)=>
-          index===currentIndex?{...value,count:value.count+count,totalPrice:price*(value.count+count)}:value
-        )
-       }else{
-        updatedCart=[...currentCart,{...Obj,count,totalPrice}]
-       }
-       addCart(userInfo,{cart:updatedCart})
-       .then(()=>{
-        modalRef.current.style.top="200px"
-        if(carts){
-          setCart(false)
-        }else{
-          setCart(true)
-        }
-       setTimeout(() => {
-        modalRef.current.style.top="0px"
-      }, 1000);
-        
-       })
-       
-      }
-    else{
-      nav('/login')
-    }
-  }
+
   return (
  
       
-      <div style={{marginTop:"10rem"}} className="main flex justify-center">
-                    <div className="image-details w-[80%] rounded flex border flex-col md:flex-row">
+      <div style={{marginTop:"8rem"}} className="main flex  w-[80%] relative">
+                    <div className="image-details  rounded flex border bg-white shadow-md flex-col md:flex-row">
                 <div className="image md:w-1/2 flex flex-col items-center ">
                     {
                       Obj.images && Obj.images[imgcount]?(
@@ -92,13 +70,9 @@ function AdminProdauct() {
                     <div className='mb-5'><span className='text-sm'>⭐ {Obj.rating}</span><p className='text-red-700'> Only Left {Obj.stock} !</p></div>
                     <hr />
                     <span className='text-3xl font-bold'>${Obj.price}</span>
-                    <div className='count bg-gray-200 w-28 h-9 flex justify-evenly items-center rounded-2xl '>
-                      <button onClick={()=>setCount(pre=>pre===1?1:count-1)} className='rounded-lg w-10 h-7'>-</button>
-                      <span>{count}</span>
-                      <button onClick={()=>setCount(count+1)}  className='rounded-lg w-10 h-7'>+</button>
-                    </div>
                     <div className="cart-buy md:space-x-3 gap-5 w-[100%] ">
-                      <button onClick={addItemCart} className="bg-black text-yellow-400 px-6 py-3 rounded-lg w-full md:w-auto hover:text-white mt-5">Add to Cart </button>
+                      <button onClick={handelEdit} className="bg-yellow-400 text-black px-6 py-3 rounded-lg w-full md:w-auto hover:text-white mt-5">Edit</button>
+                      <button onClick={handleDelete} className="bg-black text-yellow-400 px-6 py-3 rounded-lg w-full md:w-auto hover:text-white mt-5">Delete</button>
                     </div>
                     <div className="delivery space-y-1 ">
                       <div className="free w-[100%] border p-3">
@@ -109,16 +83,18 @@ function AdminProdauct() {
                         <span className='font-bold'>Pay Online</span>
                         <p>Secure payments through credit card or UPI</p>
                       </div>
-
-                     
-                      <div ref={modalRef} className="absolute left-[40%]  w-[20%] text-center bg-black p-2 rounded shadow-lg z-40 top-0 transition-all duration-500 ease-in-out">
-                             <span className='text-center text-yellow-400 '> Item added to Cart ✅</span>
-                       </div>
-                      
-
                     </div>
+                    
                 </div>
+                
               </div>
+              {
+                editStatus?
+                
+                  <EditProduct id={productId}/>
+               
+                :null
+              }
       </div>
    
   )

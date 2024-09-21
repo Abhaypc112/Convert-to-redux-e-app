@@ -19,6 +19,10 @@
     {
       "id": "bf2f",
       "totalPrice": 850
+    },
+    {
+      "id": "f39e",
+      "totalPrice": 900
     }
   ],
   "users": [
@@ -235,7 +239,32 @@
       "username": "hrj",
       "email": "hrj@gmial.com",
       "password": "123456",
-      "cart": [],
+      "cart": [
+        {
+          "id": "9",
+          "name": "SKOGSTA / BERGMUND",
+          "description": "Table and 6 chairs, acacia/Kvillsfors dark blue/blue black, 235x100 cm (92 1/2x39 3/8 )",
+          "category": "dining tables",
+          "price": 900,
+          "stock": 10,
+          "rating": 4.6,
+          "material": "solid wood",
+          "image": "https://www.ikea.com/in/en/images/products/skogsta-bergmund-table-and-6-chairs-acacia-kvillsfors-dark-blue-blue-black__1329483_pe945163_s5.jpg?f=l",
+          "images": [
+            "https://www.ikea.com/in/en/images/products/skogsta-bergmund-table-and-6-chairs-acacia-kvillsfors-dark-blue-blue-black__1329483_pe945163_s5.jpg?f=l",
+            "https://www.ikea.com/in/en/images/products/skogsta-bergmund-table-and-6-chairs-acacia-kvillsfors-dark-blue-blue-black__1340219_pe948521_s5.jpg?f=l",
+            "https://www.ikea.com/in/en/images/products/skogsta-bergmund-table-and-6-chairs-acacia-kvillsfors-dark-blue-blue-black__0809033_ph149979_s5.jpg?f=l",
+            "https://www.ikea.com/in/en/images/products/skogsta-bergmund-table-and-6-chairs-acacia-kvillsfors-dark-blue-blue-black__1034253_pe837584_s5.jpg?f=l"
+          ],
+          "tags": [
+            "modern",
+            "wood",
+            "dining"
+          ],
+          "count": 1,
+          "totalPrice": 900
+        }
+      ],
       "orders": [
         {
           "id": 1726809826573,
@@ -279,6 +308,49 @@
           },
           "paymentMethode": "Credit or Debit card",
           "totalPrice": 850
+        },
+        {
+          "id": 1726894069691,
+          "Items": [
+            {
+              "id": "9",
+              "name": "SKOGSTA / BERGMUND",
+              "description": "Table and 6 chairs, acacia/Kvillsfors dark blue/blue black, 235x100 cm (92 1/2x39 3/8 )",
+              "category": "dining tables",
+              "price": 900,
+              "stock": 10,
+              "rating": 4.6,
+              "material": "solid wood",
+              "image": "https://www.ikea.com/in/en/images/products/skogsta-bergmund-table-and-6-chairs-acacia-kvillsfors-dark-blue-blue-black__1329483_pe945163_s5.jpg?f=l",
+              "images": [
+                "https://www.ikea.com/in/en/images/products/skogsta-bergmund-table-and-6-chairs-acacia-kvillsfors-dark-blue-blue-black__1329483_pe945163_s5.jpg?f=l",
+                "https://www.ikea.com/in/en/images/products/skogsta-bergmund-table-and-6-chairs-acacia-kvillsfors-dark-blue-blue-black__1340219_pe948521_s5.jpg?f=l",
+                "https://www.ikea.com/in/en/images/products/skogsta-bergmund-table-and-6-chairs-acacia-kvillsfors-dark-blue-blue-black__0809033_ph149979_s5.jpg?f=l",
+                "https://www.ikea.com/in/en/images/products/skogsta-bergmund-table-and-6-chairs-acacia-kvillsfors-dark-blue-blue-black__1034253_pe837584_s5.jpg?f=l"
+              ],
+              "tags": [
+                "modern",
+                "wood",
+                "dining"
+              ],
+              "count": 1,
+              "totalPrice": 900
+            }
+          ],
+          "date": {
+            "day": "Sat Sep 21 2024",
+            "time": "10:16:20 AM"
+          },
+          "userData": {
+            "name": "sccccacc",
+            "address": "fqefqefeq",
+            "town": "feqefqq",
+            "zipcode": "f343141345",
+            "mobile": "241414414",
+            "email": "vdvsdvsv"
+          },
+          "paymentMethode": "Pay Later",
+          "totalPrice": 900
         }
       ],
       "block": false,
@@ -773,19 +845,6 @@
         "hybrid",
         "memory foam",
         "pocket springs"
-      ]
-    },
-    {
-      "id": "38cd",
-      "name": "Kedaka 5.0",
-      "price": "500",
-      "category": "beds",
-      "stock": "10",
-      "image": "https://t4.ftcdn.net/jpg/00/89/35/35/360_F_89353593_1gvsjf4dyoxIzhyR31uh0l5ifJ4T3WHv.jpg",
-      "description": "Kidu Kedakka, Poli Kedakka",
-      "rating": 0,
-      "images": [
-        "https://t4.ftcdn.net/jpg/00/89/35/35/360_F_89353593_1gvsjf4dyoxIzhyR31uh0l5ifJ4T3WHv.jpg"
       ]
     }
   ]

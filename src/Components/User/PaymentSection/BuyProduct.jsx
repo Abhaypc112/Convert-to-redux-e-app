@@ -213,6 +213,7 @@ function BuyProduct() {
                   <div><input onChange={(e)=>payMethode(e.target.checked,"Paypal")} name='payMethode' type="radio" /><span> Paypal</span></div>
                   <div><input onChange={(e)=>payMethode(e.target.checked,"Upi")} name='payMethode' type="radio" /><span> Upi</span></div>
                   <div><input onChange={(e)=>payMethode(e.target.checked,"Credit or Debit card")} name='payMethode' type="radio" /><span> Credit or Debit card</span></div>
+                  <div><input onChange={(e)=>payMethode(e.target.checked,"Pay Later")} name='payMethode' type="radio" /><span> Pay Later</span></div>
                   
               </div>
             </div>

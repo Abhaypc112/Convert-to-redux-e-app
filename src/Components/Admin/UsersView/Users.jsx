@@ -5,24 +5,52 @@ import { useNavigate } from 'react-router-dom';
 function Users() {
   const [users,setUsers]=useState([]);
   const navigate=useNavigate();
+ const [searchTerm, setSearchTerm] = useState("");
+ const [filterdUsers,setFilterdUsers]=useState([]);
+
+
 
   function handelDelete(id){
     deleteUserById(id)
+    .then(()=>{
+      getAllUsers()
+    .then((res)=>setUsers(res.data))
+    })
   }
   function handelBlock(id,status){
     blockUserById(id,!status)
-    .then((res)=>console.log(res.data))
+    .then((res)=>{
+      getAllUsers()
+    .then((res)=>setUsers(res.data))
+    })
   }
   useEffect(()=>{
     getAllUsers()
     .then((res)=>setUsers(res.data))
-  },[handelDelete,handelBlock])
+  },[])
+
+  useEffect(()=>{
+    if(searchTerm.trim()===''){
+      setFilterdUsers(users)
+      return ;
+    }
+    else{
+      const searchProducts=users.filter((value)=>
+        value.name.toLowerCase().includes(searchTerm.toLowerCase())
+      )
+      setFilterdUsers(searchProducts)
+    }
+ 
+
+},[searchTerm,users])
+
   
   return (
     <div style={{marginTop:"7rem"}} className='w-[88%] md:w-[80%] flex justify-center bg-slate-100 h-lvh'>
     <div className="form-div w-[95%] space-y-5 shadow-md p-10 bg-white mb-32 rounded overflow-y-auto custom-scrollbar">
     <div className='flex justify-between w-[67rem]'>
           <h1 className='text-2xl font-bold'>Users</h1>
+          <input type="text" placeholder='Search Users' onChange={(e)=>setSearchTerm(e.target.value)} className='className="w-40 md:w-48 py-2 bg-transparent text-black focus:outline-none border-black outline-none border-b focus:w-64 transition-all duration-500 ease-in-out' />
           <button onClick={()=>navigate('/adduser')} className='bg-green-500 rounded p-2 text-white font-bold text-sm'>Add User</button>
           </div>
       <div className='grid grid-cols-7 w-[67rem]'>
@@ -36,7 +64,7 @@ function Users() {
               </div>
             
             {
-              users.map((Obj)=>{
+             filterdUsers.map((Obj)=>{
                 return(
                   <div className='grid grid-cols-7 items-center w-[67rem] '>
                     <span className='text-center'>#{Obj.id}</span>

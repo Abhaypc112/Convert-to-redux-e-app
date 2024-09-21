@@ -16,7 +16,7 @@ function ViewProduct() {
     <div>
         {
             adminId?
-            <div className='flex flex-col bg-slate-100'>
+            <div className='flex flex-col bg-slate-100 h-lvh'>
         <AdminHeader/>
         <div className='flex justify-between'>
             <div><SideBar/></div>
