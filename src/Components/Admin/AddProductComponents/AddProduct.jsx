@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { addProduct } from '../../../Api/ProductHelper/ProductConnection';
+import { toast } from 'react-toastify';
 
 function AddProduct() {
     const data={name:"",price:null,category:"",stock:null,description:"",rating:0,images:[""]}
@@ -28,6 +29,7 @@ function AddProduct() {
         e.preventDefault();
         addProduct(productDetails)
         setProductDetails(data)
+        toast.success("Product Added")
     }
 
   return (

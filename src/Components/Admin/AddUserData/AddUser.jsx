@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import { NavLink, useNavigate } from 'react-router-dom';
 import { UserContext } from '../../../Contexts/UserContext';
 import { checkUserName } from '../../../Api/UserHelpers/UsersConnection';
+import { toast } from 'react-toastify';
 
 function AddUser() {
     const navigate=useNavigate();
@@ -40,6 +41,7 @@ function AddUser() {
         if(Object.keys(errors).length===0){
             const data = { name,username,email,password, cart: [],orders:[],block:false };
             addUser(data);
+            toast.success("User Added")
             navigate('/viewusers');
         }
     }

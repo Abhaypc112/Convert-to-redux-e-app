@@ -1,11 +1,12 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { UserContext } from '../../../Contexts/UserContext'
 import { EditProductById, getProductsById } from '../../../Api/ProductHelper/ProductConnection'
+import { toast } from 'react-toastify'
 
 function EditProduct({id}) {
     const data={name:"",price:null,category:"",stock:null,description:"",rating:0,images:[""]}
     const [productDetails,setProductDetails]=useState(data)
-    const {setEditStatus}=useContext(UserContext);
+    const {editStatus,setEditStatus}=useContext(UserContext);
 
     
     function addImageInput(){
@@ -24,18 +25,18 @@ function EditProduct({id}) {
         const{name,value,type,checked}=e.target;
             setProductDetails(prev=>(
                 {...prev,[name]:value}
-            )) 
-        
+            ))    
     }
     function handleSubmit(e){
         e.preventDefault();
        EditProductById(id,productDetails)
        setEditStatus(false)
+       toast.success("Upadated Product Details")
     }
 
     useEffect(()=>{
         getProductsById(id)
-        .then((res)=>setProductDetails(res.data))
+        .then((res)=>setProductDetails(res.data)) 
     },[])
   return (
     <div className=" form-div md:w-[90%] w-[90%] h-[35rem] space-y-3 shadow-md p-10 bg-gray-300 mb-32 rounded z-50 absolute top-5  overflow-scroll custom-scrollbar ">
@@ -76,15 +77,24 @@ function EditProduct({id}) {
                 </div>
             </div>
             <div className='flex flex-col'>
+            
                 <label htmlFor="image">Image Url</label>
-                <input onChange={(e)=>handleImageChange(e,0)} type="text" value={productDetails.images[0]} name='images'className='border p-2   rounded-md  focus:outline-yellow-400'/>
+                <div className='flex  space-x-2'>
+                    <img src={productDetails.images[0]} alt="" className='w-10 h-10' />
+                    <input onChange={(e)=>handleImageChange(e,0)} type="text" value={productDetails.images[0]} name='images'className='border p-2 w-full  rounded-md  focus:outline-yellow-400'/>
+                </div>
             </div>
                 {
                     productDetails.images.slice(1).map((img,index)=>{
                         return(
                         <div className='flex flex-col'>
+                            
                             <label htmlFor="image">Image Url</label>
-                            <input onChange={(e)=>handleImageChange(e,index+1)} type="text" value={img} name='images'className='border p-2   rounded-md  focus:outline-yellow-400'/>
+                            <div className='flex  space-x-2'>
+                            <img src={img} alt="" className='w-10 h-10' />
+                            <input onChange={(e)=>handleImageChange(e,index+1)} type="text" value={img} name='images'className='border p-2   rounded-md w-full focus:outline-yellow-400'/>
+                            </div>
+                            
                         </div>
                         )
                     })
@@ -93,10 +103,10 @@ function EditProduct({id}) {
           
             <div className='flex flex-col'>
                 <label htmlFor="description">Description</label>
-                <textarea onChange={handleCghange} name="discription" value={productDetails.description} id="" className='border p-2   rounded-md  focus:outline-yellow-400'></textarea>
+                <textarea onChange={handleCghange} name="description" value={productDetails.description} id="" className='border p-2   rounded-md  focus:outline-yellow-400'></textarea>
             </div>
            
-            <button className=' text-yellow-400 w-[100%] p-3 rounded bg-black font-bold'>Add Product</button>
+            <button className=' text-yellow-400 w-[100%] p-3 rounded bg-black font-bold'>Edit Product</button>
           
            
         </form>

@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useRef, useState } from 'react';
 import { UserContext } from '../../../Contexts/UserContext';
 import { addCart, deleteItem, getCartById, getUserById } from '../../../Api/UserHelpers/UsersConnection';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 function CartSection() {
   const [totalPrice, setTotalPrice] = useState(0);
@@ -11,7 +12,6 @@ function CartSection() {
   const nav = useNavigate();
   const[id,setId]=useState('');
   const modalRef=useRef();
-  const emptyModalRef=useRef();
 
 
   useEffect(() => {
@@ -53,6 +53,7 @@ function CartSection() {
           }else{
             setCart(true)
           }
+          toast.success("Cart Iteam Deleted")
         })
         .catch((error) => console.log(error));
   }
@@ -89,16 +90,13 @@ function CartSection() {
    if(data.cart.length>0){
     nav('/payment')
    }else{
-    emptyModalRef.current.style.top="200px"
-    setTimeout(()=>{
-      emptyModalRef.current.style.top="0px"
-    },1000)
+    toast.error("Cart is Empty")
    }
   }
 
 
   return (
-    <div style={{ marginTop: '10rem' }}>
+    <div style={{ marginTop: '8rem' }}>
       <div className="main flex justify-center">
         <div className="image-details w-[80%] rounded flex flex-col md:flex-row">
           <div style={{ height: '40rem' }}className="image space-y-5 md:w-1/2  flex flex-col border overflow-scroll overflow-x-hidden custom-scrollbar">
@@ -178,10 +176,6 @@ function CartSection() {
                               <button onClick={stateCancel} className='bg-white w-20 rounded font-bold'>Cancel</button>
                              </div>
                        </div>
-                       <div ref={emptyModalRef} className="absolute left-[40%]  w-[20%] text-center bg-black p-2 rounded shadow-lg z-40 top-0 transition-all duration-500 ease-in-out">
-                             <span className='text-center text-yellow-400 '> Cart Is Empty ❗</span>
-                       </div>
-
             </div>
           </div>
         </div>

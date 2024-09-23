@@ -5,6 +5,8 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
 import { UserProvider } from './Contexts/UserContext';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.min.css';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -13,6 +15,7 @@ root.render(
   <BrowserRouter>
     <React.StrictMode>
       <App />
+      <ToastContainer/>
     </React.StrictMode>
   </BrowserRouter>
   </UserProvider>

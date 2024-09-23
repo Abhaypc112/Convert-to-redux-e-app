@@ -1,13 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 // import axios from 'axios'
+import b1 from '../../../Assets/b1.png'
+import b2 from '../../../Assets/b2.png'
+import b3 from '../../../Assets/b3.png'
 
 
 function Slider() {
   const slides=[
-    "https://ahdfurniture.com/wp-content/uploads/2024/04/sectional-sofa-1.webp",
-    "https://cartersfurnitureonline.co.uk/cdn/shop/files/G_Plan_Web_Banner_Kingsbury_1400x.jpg?v=1720020418",
-    "https://www.getmycouch.com/cdn/shop/files/SUMMER_SALE.png?v=1719482589&width=750"
+    b1,
+    b2,
+    b3
   ]
   const[index,setIndex]=useState(0);
 

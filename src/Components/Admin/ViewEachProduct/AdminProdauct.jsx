@@ -5,6 +5,7 @@ import { addCart, getCartById, getUserById } from '../../../Api/UserHelpers/User
 import { UserContext } from '../../../Contexts/UserContext';
 import Header from '../../Header';
 import EditProduct from '../ViewProducs/EditProduct';
+import { toast } from 'react-toastify';
 
 
 function AdminProdauct() {
@@ -30,13 +31,14 @@ function AdminProdauct() {
   function handleDelete(){
     deleteProductById(id)
     navigate('/viewproducts')
+    toast.success("Product Deleted")
   }
 
   useEffect(()=>{
     getProductsById(id)
     .then((res)=>setObj(res.data))
     .catch((error)=>console.log(error))
-  },[handelEdit,handleDelete])
+  },[editStatus])
   
 
   return (
@@ -44,13 +46,13 @@ function AdminProdauct() {
       
       <div style={{marginTop:"8rem"}} className="main flex  w-[80%] relative">
                     <div className="image-details  rounded flex border bg-white shadow-md flex-col md:flex-row">
-                <div className="image md:w-1/2 flex flex-col items-center ">
+                <div className="image md:w-1/2 flex flex-col items-center">
                     {
                       Obj.images && Obj.images[imgcount]?(
                         <img src={Obj.images[imgcount]} className="big-image bg-white w-[90%] h-96  m-6 rounded hover:transform hover:scale-105  transition-all duration-500 ease-in-out"/>
                     
                       ):
-                      <span>No Image Available</span>
+                      <span className='w-[25rem] h-96'>No Image Available</span>
                     }
                      <div className='sm-image w-[90%] h-20 bg-white space-x-20 flex overflow-scroll overflow-y-hidden custom-scrollbar'>
                      {

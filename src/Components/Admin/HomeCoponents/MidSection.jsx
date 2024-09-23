@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { getProducts } from '../../../Api/ProductHelper/ProductConnection'
 import { useNavigate } from 'react-router-dom';
+import Graph from './Graph';
 
 function MidSection() {
   const [data,setData]=useState([]);
@@ -15,7 +16,7 @@ function MidSection() {
 
       <div style={{marginLeft:"18%"}} className=' p-5 grid md:grid-cols-6  md:gap-x-5 gap-y-5 '>
             <div className="box w-full h-[380px] bg-white rounded shadow-md md:col-span-2 md:row-span-2 col-span-4 overflow-hidden">
-              <img src="https://wpdean.com/wp-content/uploads/2023/08/Tailwind-CSS-Chart-%E2%80%93-Soft-UI.jpg" alt="" className='w-[] h-[25rem]'/>
+              <Graph/>
             </div>
             <div className="box flex flex-col p-5 w-full h-[380px] bg-white rounded shadow-md col-span-4 overflow-scroll custom-scrollbar space-y-3">
                 <div className='flex justify-between'><h1 className='text-xl font-bold'>Product Overview</h1>
@@ -30,7 +31,7 @@ function MidSection() {
                 </div>
     
               {
-                data.map((Obj)=>{
+                data.slice(0).reverse().map((Obj)=>{
                   return(
                     <div className='grid grid-cols-6 items-center'>
                       <div className='flex justify-center h-20' ><img src={Obj.images[0]} alt="" /></div>

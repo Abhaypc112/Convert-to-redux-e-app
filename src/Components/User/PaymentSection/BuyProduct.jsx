@@ -4,6 +4,7 @@ import { UserContext } from '../../../Contexts/UserContext';
 import { addAddress, addOrder, deleteItem, getAddressById, getCartById, getOrdersById} from '../../../Api/UserHelpers/UsersConnection';
 import { useNavigate } from 'react-router-dom';
 import { totalSales } from '../../../Api/ProductHelper/ProductConnection';
+import { toast } from 'react-toastify';
 
 function BuyProduct() {
   const [totalPrice, setTotalPrice] = useState(0);
@@ -72,7 +73,9 @@ function BuyProduct() {
       updatedOrders=[...currentOrders,dataSet]
     }
     addOrder(userInfo,{orders:updatedOrders})
-    totalSales({totalPrice})
+    .then(()=>{
+      totalSales({totalPrice})
+    })
     deleteItem(userInfo,{ cart:[]})
     .then((res)=>{setData(res.data)
       if(carts){
@@ -81,35 +84,24 @@ function BuyProduct() {
         setCart(true)
       }
     nav('/orders')
+    toast.success("Item Orders Sucessfully")
     })
     }else{
       if(data.length===0){
-        setState('Add Iteam to Cart ❗')
-        modalRef.current.style.top="200px"
-        setTimeout(() => {
-          modalRef.current.style.top="0px"
-        },1000);
+       toast.error('Add Iteam to Cart ❗')
       }
       else if(!userData){
-        setState('Fill The Address ❗')
-        modalRef.current.style.top="200px"
-        setTimeout(() => {
-          modalRef.current.style.top="0px"
-        },1000);
+       toast.error('Fill The Address ❗')
         
       }else if(!paymentMethode){
-        setState('Fill The Payment Methode ❗')
-        modalRef.current.style.top="200px"
-        setTimeout(() => {
-          modalRef.current.style.top="0px"
-        }, 1000);
+       toast.error('Fill The Payment Methode ❗')
       }
     }
   }
 
   return (
     <div>
-      <div style={{ marginTop: '10rem' }}>
+      <div style={{ marginTop: '8rem' }}>
       <div className="main flex justify-center">
         <div className="image-details w-[80%] rounded flex flex-col md:flex-row">
           <div style={{height:"40rem"}} className=' md:w-1/2 flex flex-col justify-between'>
@@ -220,9 +212,6 @@ function BuyProduct() {
             <div className="cart-buy md:space-x-3 space-y-3 w-[100%]">
               <button onClick={addOrderData}  className="bg-yellow-400 font-bold text-xl text-black px-6 py-3 rounded-lg w-full  hover:bg-black hover:text-yellow-400">Pay now</button>
             </div>
-            <div ref={modalRef} className="absolute left-[40%]  w-[210px] text-center bg-black p-2 rounded shadow-lg z-40 top-0 transition-all duration-500 ease-in-out">
-                             <span className='text-center text-yellow-400 '> {state}</span>
-                       </div>
           </div>
         </div>
       </div>

@@ -1,6 +1,7 @@
 import { createContext, useEffect, useId, useState} from "react";
 import { addUserData, getAllUsers, getCartById } from "../Api/UserHelpers/UsersConnection";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 export const UserContext = createContext();
 
@@ -22,6 +23,7 @@ export const UserProvider=({children})=>{
             await addUserData(user)
             const updatedUsers = await getAllUsers();
             setUserData(updatedUsers.data)
+            .then(()=>toast.success("Account Created"))
         }catch(err){
             console.log(err)
         }
@@ -45,6 +47,7 @@ export const UserProvider=({children})=>{
             if(user){
                 localStorage.setItem('userId', user.id);
                 setUserInfo(user.id)
+                toast.success("Login Sucessfull")
             }
         }
         return error;

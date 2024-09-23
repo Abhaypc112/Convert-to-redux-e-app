@@ -20,13 +20,12 @@ function HomePage() {
       totalSales(res.data);
       setOrderCount(res.data.length)
     })
-    console.log("hoome");
+    console.log("lop");
     
   },[])
   function totalSales(arr){
     let total=arr.reduce((acc,value)=>acc+ value.totalPrice,0)
     setSales(total);
-    
   }
   return (
     <div className='flex w-[100%] bg-slate-100 '> 

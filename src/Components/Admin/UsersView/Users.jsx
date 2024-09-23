@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { blockUserById, deleteUserById, getAllUsers } from '../../../Api/UserHelpers/UsersConnection'
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 function Users() {
   const [users,setUsers]=useState([]);
@@ -15,6 +16,7 @@ function Users() {
     .then(()=>{
       getAllUsers()
     .then((res)=>setUsers(res.data))
+    toast.success("User Deleted")
     })
   }
   function handelBlock(id,status){
@@ -23,6 +25,7 @@ function Users() {
       getAllUsers()
     .then((res)=>setUsers(res.data))
     })
+    toast.success(status?"User Unblocked":"User Blocked")
   }
   useEffect(()=>{
     getAllUsers()
@@ -64,7 +67,7 @@ function Users() {
               </div>
             
             {
-             filterdUsers.map((Obj)=>{
+             filterdUsers.slice(0).reverse().map((Obj)=>{
                 return(
                   <div className='grid grid-cols-7 items-center w-[67rem] '>
                     <span className='text-center'>#{Obj.id}</span>

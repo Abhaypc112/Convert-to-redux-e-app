@@ -4,6 +4,7 @@ import { getProductsById } from '../../../Api/ProductHelper/ProductConnection'
 import { addCart, getCartById, getUserById } from '../../../Api/UserHelpers/UsersConnection';
 import { UserContext } from '../../../Contexts/UserContext';
 import Header from '../../Header';
+import { toast } from 'react-toastify';
 
 
 function ProductDetails() {
@@ -41,18 +42,14 @@ function ProductDetails() {
        }
        addCart(userInfo,{cart:updatedCart})
        .then(()=>{
-        modalRef.current.style.top="200px"
         if(carts){
           setCart(false)
         }else{
           setCart(true)
         }
-       setTimeout(() => {
-        modalRef.current.style.top="0px"
-      }, 1000);
+          toast.success("Item Added To Cart",{position:"bottom-right"});
         
        })
-       
       }
     else{
       nav('/login')
@@ -60,7 +57,7 @@ function ProductDetails() {
   }
   return (
     <div>
-      <div style={{marginTop:"10rem"}} className="main flex justify-center">
+      <div style={{marginTop:"8rem"}} className="main flex justify-center">
                     <div className="image-details w-[80%] rounded flex border flex-col md:flex-row">
                 <div className="image md:w-1/2 flex flex-col items-center ">
                     {
@@ -105,13 +102,6 @@ function ProductDetails() {
                         <span className='font-bold'>Pay Online</span>
                         <p>Secure payments through credit card or UPI</p>
                       </div>
-
-                     
-                      <div ref={modalRef} className="absolute left-[40%]  w-[20%] text-center bg-black p-2 rounded shadow-lg z-40 top-0 transition-all duration-500 ease-in-out">
-                             <span className='text-center text-yellow-400 '> Item added to Cart ✅</span>
-                       </div>
-                      
-
                     </div>
                 </div>
               </div>

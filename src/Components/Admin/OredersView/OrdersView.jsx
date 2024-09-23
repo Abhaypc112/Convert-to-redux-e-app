@@ -23,7 +23,7 @@ function OrdersView() {
                     <h1 className='font-bold text-center '>Pay</h1>
                 </div>
              {
-              users.map((user)=>{
+              users.slice(0).reverse().map((user)=>{
                 return (user.orders).map((order)=>{
                   return (order.Items).map((item)=>{
                     return(
