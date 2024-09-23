@@ -72,16 +72,16 @@ function AdminProducts() {
              {
               filterdProducts.slice(0).reverse().map((product)=>{
                 return(
-                  <div  className='grid grid-cols-8 items-center w-[67rem]'>
-                  <div  onClick={()=>navigate(`/viewproduct/${product.id}`)} className='flex justify-center cursor-pointer' ><img src={product.images[0]} alt="" className='w-16' /></div>
-                  <span onClick={()=>navigate(`/viewproduct/${product.id}`)} className='col-span-2 text-center cursor-pointer'>{product.name}</span>
-                  <span className='text-center '>#{product.id}</span>
-                  <span className='text-center'>$ {product.price}</span>
-                  <span className='text-center'>{product.stock}</span>
-                  <div  className='col-span-2 flex justify-evenly'>
-                  <button onClick={()=>handelEdit(product.id)} className='bg-yellow-400 w-[30%] p-1 rounded'>Edit</button>
-                  <button onClick={()=>handleDelete(product.id)} className='bg-black text-white w-[30%] p-1 rounded'>Delete</button>
-                  </div>
+                  <div key={product.id} className='grid grid-cols-8 items-center w-[67rem]'>
+                    <div  onClick={()=>navigate(`/viewproduct/${product.id}`)} className='flex justify-center cursor-pointer' ><img src={product.images[0]} alt="" className='w-16' /></div>
+                      <span onClick={()=>navigate(`/viewproduct/${product.id}`)} className='col-span-2 text-center cursor-pointer'>{product.name}</span>
+                      <span className='text-center '>#{product.id}</span>
+                      <span className='text-center'>$ {product.price}</span>
+                      <span className='text-center'>{product.stock}</span>
+                    <div  className='col-span-2 flex justify-evenly'>
+                      <button onClick={()=>handelEdit(product.id)} className='bg-yellow-400 w-[30%] p-1 rounded'>Edit</button>
+                      <button onClick={()=>handleDelete(product.id)} className='bg-black text-white w-[30%] p-1 rounded'>Delete</button>
+                    </div>
                   </div>
                 )
               })

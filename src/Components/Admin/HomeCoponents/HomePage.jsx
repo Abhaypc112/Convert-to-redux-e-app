@@ -20,8 +20,6 @@ function HomePage() {
       totalSales(res.data);
       setOrderCount(res.data.length)
     })
-    console.log("lop");
-    
   },[])
   function totalSales(arr){
     let total=arr.reduce((acc,value)=>acc+ value.totalPrice,0)

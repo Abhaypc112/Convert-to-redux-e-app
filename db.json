@@ -2,11 +2,19 @@
   "sales": [
     {
       "id": "9053",
-      "totalPrice": 5400
+      "totalPrice": 5400,
+      "date": {
+        "day": "Thu Sep 19 2024",
+        "time": "12:05:52 PM"
+      }
     },
     {
       "id": "d6db",
-      "totalPrice": 2850
+      "totalPrice": 2850,
+      "date": {
+        "day": "Thu Sep 19 2024",
+        "time": "12:06:41 PM"
+      }
     },
     {
       "id": "1019",
@@ -618,7 +626,7 @@
       "description": "Bed frame with 2 storage boxes, white,",
       "category": "beds",
       "price": 850,
-      "stock": 8,
+      "stock": "100",
       "rating": 4.6,
       "material": "Solid Wood",
       "image": "https://www.ikea.com/in/en/images/products/songesand-bed-frame-with-2-storage-boxes-white__1151019_pe884760_s5.jpg?f=l",

@@ -69,7 +69,7 @@ function Users() {
             {
              filterdUsers.slice(0).reverse().map((Obj)=>{
                 return(
-                  <div className='grid grid-cols-7 items-center w-[67rem] '>
+                  <div key={Obj.id} className='grid grid-cols-7 items-center w-[67rem] '>
                     <span className='text-center'>#{Obj.id}</span>
                     <span className='text-center'>{Obj.name}</span>
                     <span className='text-center '>{Obj.username}</span>

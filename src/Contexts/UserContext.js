@@ -9,7 +9,8 @@ export const UserProvider=({children})=>{
     const[userData,setUserData]=useState([]);
     const[userInfo,setUserInfo]=useState('');
     const[carts,setCart]=useState(false);
-    const[editStatus,setEditStatus]=useState(false)
+    const[editStatus,setEditStatus]=useState(false);
+    const[deleteCartItem,setDeleteCartItem]=useState(false);
   
     useEffect(()=>{
         getAllUsers()
@@ -51,12 +52,14 @@ export const UserProvider=({children})=>{
             }
         }
         return error;
+
+
     }
 
     
 
     return(
-        <UserContext.Provider value={{editStatus,setEditStatus,activeUser,userInfo,addUser,carts,setCart}}>
+        <UserContext.Provider value={{editStatus,setEditStatus,activeUser,userInfo,addUser,carts,setCart,deleteCartItem,setDeleteCartItem}}>
             {children}
         </UserContext.Provider>
     )

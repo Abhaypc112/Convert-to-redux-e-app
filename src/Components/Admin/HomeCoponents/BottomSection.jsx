@@ -16,8 +16,6 @@ function BottomSection() {
     .then((res)=>setData((res.data).sort((a,b)=>{
       return b.rating-a.rating
     })))
-    console.log("bottum");
-    
   },[])
   return (
     <div>
@@ -37,7 +35,7 @@ function BottomSection() {
                   return (value.orders).map((ord)=>{
                     return (ord.Items).map((Obj)=>{ 
                       return(
-                        <div className='grid grid-cols-3 mt-5 '>
+                        <div key={Obj.id} className='grid grid-cols-3 mt-5 '>
                         <div className='flex'>
                         <div className='' ><img src={Obj.images[0]} alt="" className='w-10 h-10' /></div>
                         <span className='text-center'>{Obj.name}</span>
@@ -66,7 +64,7 @@ function BottomSection() {
               {
                 data.map((Obj)=>{
                   return(
-                    <div className='grid grid-cols-2 mt-5 '>
+                    <div key={Obj.id} className='grid grid-cols-2 mt-5 '>
                       <div className='flex'>
                       <div className='' ><img src={Obj.image} alt="" className='w-10 h-10' /></div>
                       <div>

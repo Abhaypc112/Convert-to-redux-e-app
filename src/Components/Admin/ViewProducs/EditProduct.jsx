@@ -35,9 +35,11 @@ function EditProduct({id}) {
     }
 
     useEffect(()=>{
-        getProductsById(id)
+        if(id){
+            getProductsById(id)
         .then((res)=>setProductDetails(res.data)) 
-    },[])
+        }
+    },[id])
   return (
     <div className=" form-div md:w-[90%] w-[90%] h-[35rem] space-y-3 shadow-md p-10 bg-gray-300 mb-32 rounded z-50 absolute top-5  overflow-scroll custom-scrollbar ">
              <div className='flex justify-between'>
@@ -61,7 +63,7 @@ function EditProduct({id}) {
                     <label htmlFor="name">Category</label>
                     <div className='border p-2   rounded-md bg-white focus:outline-yellow-400'>
                 <select onChange={handleCghange} name="category" id="category" value={productDetails.category} className='w-[100%] focus:outline-none '>
-                    <option value="" selected>Choose category</option>
+                    <option value="no selection" selected>Choose category</option>
                     <option value="beds">beds</option>
                     <option value="sofas">sofas</option>
                     <option value="chairs">chairs</option>
@@ -87,7 +89,7 @@ function EditProduct({id}) {
                 {
                     productDetails.images.slice(1).map((img,index)=>{
                         return(
-                        <div className='flex flex-col'>
+                        <div key={index} className='flex flex-col'>
                             
                             <label htmlFor="image">Image Url</label>
                             <div className='flex  space-x-2'>
