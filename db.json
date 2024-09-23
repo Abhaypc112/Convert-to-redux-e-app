@@ -301,15 +301,6 @@
       "password": "123456",
       "cart": [],
       "orders": []
-    },
-    {
-      "id": "4b51",
-      "name": "ZC",
-      "username": "panda",
-      "email": "zc@gmial.com",
-      "password": "123456",
-      "cart": [],
-      "orders": []
     }
   ],
   "categorys": [
