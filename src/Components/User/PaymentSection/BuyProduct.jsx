@@ -75,14 +75,15 @@ function BuyProduct() {
     addOrder(userInfo,{orders:updatedOrders})
     .then(()=>{
       totalSales({totalPrice})
+      deleteItem(userInfo,{ cart:[]})
+      .then((res)=>{setData(res.data)
+        if(carts){
+          setCart(false)
+        }else{
+          setCart(true)
+        }
     })
-    deleteItem(userInfo,{ cart:[]})
-    .then((res)=>{setData(res.data)
-      if(carts){
-        setCart(false)
-      }else{
-        setCart(true)
-      }
+   
     nav('/orders')
     toast.success("Item Orders Sucessfully")
     })

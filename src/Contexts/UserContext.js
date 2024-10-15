@@ -51,13 +51,8 @@ export const UserProvider=({children})=>{
                 toast.success("Login Sucessfull")
             }
         }
-        return error;
-
-
+        return error;                       
     }
-
-    
-
     return(
         <UserContext.Provider value={{editStatus,setEditStatus,activeUser,userInfo,addUser,carts,setCart,deleteCartItem,setDeleteCartItem}}>
             {children}

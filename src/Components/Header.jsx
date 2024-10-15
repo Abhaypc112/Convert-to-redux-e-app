@@ -9,12 +9,12 @@ import { getProducts } from '../Api/ProductHelper/ProductConnection';
 
 
 function Header() {
-  const [data, setData] = useState({});
-  const nav = useNavigate();
- const {carts} = useContext(UserContext);
- const userInfo=localStorage.getItem("userId");
- const[cart,setCart]=useState([]);
- const [searchTerm, setSearchTerm] = useState("");
+const [data, setData] = useState({});
+const nav = useNavigate();
+const {carts} = useContext(UserContext);
+const userInfo=localStorage.getItem("userId");
+const[cart,setCart]=useState([]);
+const [searchTerm, setSearchTerm] = useState("");
 const [products, setProducts] = useState([]);
 const [showModal, setShowModal] = useState(false);
 

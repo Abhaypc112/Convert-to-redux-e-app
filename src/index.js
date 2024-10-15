@@ -7,10 +7,14 @@ import { BrowserRouter } from 'react-router-dom';
 import { UserProvider } from './Contexts/UserContext';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.min.css';
+import store from './store';
+import { Provider } from 'react-redux';
+
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
+  <Provider store={store}>
   <UserProvider>
   <BrowserRouter>
     <React.StrictMode>
@@ -19,6 +23,7 @@ root.render(
     </React.StrictMode>
   </BrowserRouter>
   </UserProvider>
+  </Provider>
 );
 
 // If you want to start measuring performance in your app, pass a function

@@ -13,7 +13,7 @@ function EditProduct({id}) {
         setProductDetails(pre=>({
             ...pre,images:[...pre.images,""]
         }))
-    }
+    } 
     function handleImageChange(e,index){
         const updatedImage=[...productDetails.images];
         updatedImage[index]=e.target.value;
@@ -96,7 +96,7 @@ function EditProduct({id}) {
                             <img src={img} alt="" className='w-10 h-10' />
                             <input onChange={(e)=>handleImageChange(e,index+1)} type="text" value={img} name='images'className='border p-2   rounded-md w-full focus:outline-yellow-400'/>
                             </div>
-                            
+                             
                         </div>
                         )
                     })
