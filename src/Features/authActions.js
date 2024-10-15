@@ -32,7 +32,6 @@ export const login = (loginInfo) => async (dispatch) => {
             dispatch(loginSuccess(user));
             localStorage.setItem("userId",user.id)
         }
-        
     } catch (error) {
         dispatch(loginFailure(error));
     }

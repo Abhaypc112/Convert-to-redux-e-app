@@ -14,8 +14,6 @@ function Login() {
   const adminId=localStorage.getItem('adminId');
   const dispatch=useDispatch();
   const {user, isAuthenticated, loading ,error}=useSelector((state)=>state.auth)
-
-  console.log(loading);
   
   function doSignup(e){
     e.preventDefault();
