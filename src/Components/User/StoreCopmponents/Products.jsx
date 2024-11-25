@@ -1,23 +1,18 @@
-import React, { useEffect,useState } from 'react'
-import { NavLink, useParams } from 'react-router-dom'
-import { getProducts } from '../../../Api/ProductHelper/ProductConnection'
-import { CgHeart } from "react-icons/cg";
-import { FcLike } from "react-icons/fc";
+import React, { useEffect,useState } from 'react';
+import { NavLink, useParams } from 'react-router-dom';
+import { getProducts, getProductsByCategory } from '../../../Api/ProductHelper/ProductConnection';
 
 function Products() {
   const[data,setData]=useState([]);
   const[storeData,setStoreData]=useState([]);
-  const[wishlist,setWishlist]=("");
   const {category}=useParams();
   
   useEffect(()=>{
    if(category){
-    getProducts()
-    .then((res)=>setData((res.data).filter((value)=>{
-      return value.category===category
-    })))
+    getProductsByCategory(category)
+    .then((res)=>setData(res.data))
    }else{
-    getProducts()
+    getProductsByCategory("")
     .then((res)=>setStoreData(res.data))
    }
   },[category])
@@ -29,7 +24,7 @@ function Products() {
         {
           ((!category)?storeData:data).map((Obj)=>{
             return(
-                  <NavLink to={`/product/${Obj.id}`}>
+                  <NavLink to={`/product/${Obj._id}`}>
               <div style={{width:"20rem",height:"26rem"}} className=' rounded shadow border hover:transform hover:scale-105  transition-all duration-500 ease-in-out'>
               <img src={Obj.images[0]} alt="" className='w-[100%] h-[70%] bg-black rounded relative ' />
               <div className='flex flex-col ml-1 justify-between'>

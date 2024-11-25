@@ -6,32 +6,39 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import { UserContext } from '../Contexts/UserContext';
 import { getCartById, getUserById } from '../Api/UserHelpers/UsersConnection';
 import { getProducts } from '../Api/ProductHelper/ProductConnection';
+import { useSelector } from 'react-redux';
 
 
 function Header() {
 const [data, setData] = useState({});
 const nav = useNavigate();
 const {carts} = useContext(UserContext);
-const userInfo=localStorage.getItem("userId");
-const[cart,setCart]=useState([]);
+const userRole = localStorage.getItem("userRole");
+const [cart,setCart] = useState(0);
 const [searchTerm, setSearchTerm] = useState("");
 const [products, setProducts] = useState([]);
 const [showModal, setShowModal] = useState(false);
+const name = localStorage.getItem('name');
 
  
- 
   useEffect(() => {
-    if (userInfo) {
-        getUserById(userInfo)
-        .then((res) => setData(res.data))
-        .catch((err) => console.error('Error fetching user data:', err)); 
-          getCartById(userInfo)
-          .then((res)=>{
-            setCart(res)
-          })
+    if (userRole) {
+     async function findUser(){
+      try{
+        const carts = await getCartById();
+        setCart(carts.data.data.products.length);
+      }catch(error){console.log(error)}
+    }
+    findUser();
+        
+        // .catch((error) => console.error(error.respose.data)); 
+        //   getCartById()
+        //   .then((res)=>{
+        //     setCart(res)
+        //   })
     }
     
-  },[userInfo,carts]);
+  },[userRole,carts]);
 
   useEffect(()=>{
     async function fetchProducts(){
@@ -179,7 +186,7 @@ function handleProductClick(id){
 
             <div className="flex space-x-5">
                   <div className="mx-auto w-30 ">
-                    <button onClick={()=>userInfo?nav('/profile'):nav('/login')} className="text-white flex items-center">
+                    <button onClick={()=>userRole?nav('/profile'):nav('/login')} className="text-white flex items-center">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         className="h-6 w-6 text-white  hover:text-yellow-400"
@@ -194,11 +201,11 @@ function handleProductClick(id){
                           d="M12 11c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-3.31 0-6 2.69-6 6v1h12v-1c0-3.31-2.69-6-6-6z"
                         />
                       </svg>
-                      <span className="md:visible">{data.name}</span>
+                      <span className="md:visible">{name}</span>
                     </button>
                   </div>
                   <div className="mx-auto w-20 ">
-                    <button onClick={()=>userInfo?nav('/cart'):nav('/login')}  className="text-white flex items-center ">
+                    <button onClick={()=>userRole?nav('/cart'):nav('/login')}  className="text-white flex items-center ">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         className="h-6 w-6 text-white hover:text-yellow-400"
@@ -214,8 +221,8 @@ function handleProductClick(id){
                         />
                       </svg>
                       {
-                        cart.length>0?
-                        <span className='absolute bg-yellow-500 rounded-lg text-xs w-4 text-center top-1/2'>{cart.length}</span>
+                        cart>0?
+                        <span className='absolute bg-yellow-500 rounded-lg text-xs w-4 text-center top-1/2'>{cart}</span>
                         :null
                       }
                       <span  className='relative'>Cart</span>

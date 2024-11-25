@@ -1,101 +1,65 @@
 
-import React, { useContext, useEffect, useRef, useState } from 'react';
-import { UserContext } from '../../../Contexts/UserContext';
-import { addAddress, addOrder, deleteItem, getAddressById, getCartById, getOrdersById} from '../../../Api/UserHelpers/UsersConnection';
+import React, { useEffect, useState } from 'react';
+import { addAddress, addOrder, getAddressById, getCartById} from '../../../Api/UserHelpers/UsersConnection';
 import { useNavigate } from 'react-router-dom';
-import { totalSales } from '../../../Api/ProductHelper/ProductConnection';
 import { toast } from 'react-toastify';
 
 function BuyProduct() {
-  const [totalPrice, setTotalPrice] = useState(0);
   const [data, setData] = useState([]);
-  const userInfo=localStorage.getItem("userId");
+  const userRole = localStorage.getItem("userRole");
+  const [updateAddress,setUpdateAddress] = useState({fullName:'',address:'',pincode:'',phone:''});
   const nav = useNavigate();
-  const [fname,setFname]=useState('');
-  const [lname,setLname]=useState('');
-  const [address,setAddress]=useState('');
-  const [town,setTown]=useState('');
-  const [zipcode,setZipcode]=useState('');
-  const [mobile,setMobile]=useState('');
-  const [email,setEmail]=useState('');
-  const [userData,setUSerData]=useState({});
-  const [paymentMethode,setPaymentMethod]=useState('')
-  const d= new Date()
-  const[state,setState]=useState('')
-  const modalRef=useRef();
-  const {carts,setCart}=useContext(UserContext)
+  const [userData,setUSerData] = useState({});
+  const [paymentMethode,setPaymentMethod] = useState('');
 
-
-
+  // Fetch cart and address
   useEffect(() => {
-    if (userInfo) {
-      getCartById(userInfo)
-      .then((res)=>{
-        setData(res)
-        calculateTotalPrice(res)
-      })
-      getAddressById(userInfo)
-      .then((res)=>setUSerData(res))
+    if (userRole) {
+      getCartById()
+        .then((res) => setData(res.data.data))
+        .catch((error) => console.log(error));
+        getAddressById()
+        .then((res)=>setUSerData(res.data.addressDetails))
+        .catch(error => setUSerData(null))
     }
-  }, [userInfo]);
-  function calculateTotalPrice(cart) {
-    if (cart) {
-      const total = cart.reduce((acc, item) => acc + item.totalPrice, 0);
-      setTotalPrice(total);
-    }
+  }, [userRole]);
+
+  // Handel onChange
+  function handelOnChange(event){
+    const {name,value} = event.target;
+    setUpdateAddress({...updateAddress,[name]:value});
   }
+
+  // Add address and update
   function addAddressData(){
-    const name=fname+lname;
-    const data={name,address,town,zipcode,mobile,email}
-    addAddress(userInfo,{address:data})
-    .then((res)=>setUSerData(res.data.address))
+    addAddress(updateAddress)
+    .then((res)=>setUSerData(res.data.data.addressDetails))
   }
   function editAddress(){
-    addAddress(userInfo,{address:null})
-    .then((res)=>setUSerData(res.data.address))
+    setUpdateAddress(userData)
+    setUSerData(null)
   }
+
+  // Payment section
   function payMethode(status,value){
     if(status){
       setPaymentMethod(value);
     }
   }
+
+  // Add order
   async function addOrderData(){
-    if(data.length>0 && userData && paymentMethode){
-      const day=d.toDateString();
-    const time=d.toLocaleTimeString();
-    const date={day,time}
-    const currentOrders= await getOrdersById(userInfo)
-    let updatedOrders;
-    const dataSet={id:Date.now(),Items:data,date,userData,paymentMethode,totalPrice}
-    if(!currentOrders){
-      updatedOrders=[dataSet]
-    }else{
-      updatedOrders=[...currentOrders,dataSet]
-    }
-    addOrder(userInfo,{orders:updatedOrders})
-    .then(()=>{
-      totalSales({totalPrice})
-      deleteItem(userInfo,{ cart:[]})
-      .then((res)=>{setData(res.data)
-        if(carts){
-          setCart(false)
-        }else{
-          setCart(true)
-        }
-    })
-   
-    nav('/orders')
-    toast.success("Item Orders Sucessfully")
+    if(userData && paymentMethode){
+    addOrder({paymentMethode})
+    .then(()=> { nav('/orders')
+    toast.success("Item Orders Sucessfully",{position:'bottom-right'})
     })
     }else{
-      if(data.length===0){
-       toast.error('Add Iteam to Cart ❗')
-      }
-      else if(!userData){
-       toast.error('Fill The Address ❗')
+      if(!userData){
+       toast.error('Fill The Address ❗',{position:'bottom-right'})
         
       }else if(!paymentMethode){
-       toast.error('Fill The Payment Methode ❗')
+       toast.error('Fill The Payment Methode ❗',{position:'bottom-right'})
       }
     }
   }
@@ -110,17 +74,17 @@ function BuyProduct() {
             <div className="md:flex flex-col space-y-5">
                   
                   {
-                    data.map((value)=>(
+                    data.products && data.products.map((value)=>(
                       <div className="image-details border flex w-[100%] p-3 justify-evenly">
-                    <img src={value.images[0]} className="big-image bg-white w-32  rounded hover:transform hover:scale-105  transition-all duration-500 ease-in-out"alt=''/>
+                    <img src={value.productId.images[0]} className="big-image bg-white w-32  rounded hover:transform hover:scale-105  transition-all duration-500 ease-in-out"alt=''/>
                     <div className='flex justify-between w-[60%] '>
                        <div>
-                            <h1 className='font-bold'>{value.name}</h1>
-                            <h1 className='text-xs'>{value.description}</h1>
+                            <h1 className='font-bold'>{value.productId.name}</h1>
+                            <h1 className='text-xs'>{value.productId.description}</h1>
                        </div>
                         <div>
-                            <p className='font-bold'>${value.price}</p>
-                            <p className='text-xs'>Quantity : {value.count}</p>
+                            <p className='font-bold'>${value.productId.price}</p>
+                            <p className='text-xs'>Quantity : {value.quantity}</p>
                         </div>
                     </div>
                   </div>
@@ -135,15 +99,14 @@ function BuyProduct() {
                          <div className='flex justify-between'>
                     <h1 className='font-bold text-xl'>Delivery Information</h1>
                     
-                    <button onClick={editAddress} className='bg-gray-200 p-1 w-20 text-sm rounded-md'>Edit</button>
+                    <button onClick={()=>editAddress(userData._id)} className='bg-gray-200 p-1 w-20 text-sm rounded-md'>Edit</button>
                     </div>
                     <hr/>
                     <div>
-                        <h3 className='font-bold'>{userData.name}</h3>
+                        <h3 className='font-bold'>{userData.fullName}</h3>
                         <p >{userData.address}</p>
-                        <p>{userData.zipcode}</p>
-                        <p>+91 {userData.mobile}</p>
-                        <p>{userData.email}</p>
+                        <p>{userData.pincode}</p>
+                        <p>+91 {userData.phone}</p>
                     </div>
                     </>
                     :
@@ -155,17 +118,14 @@ function BuyProduct() {
                     </div>
                   
                       <div className='flex justify-between w-[90%]'>
-                        <input onChange={(e)=>setFname(e.target.value)} value={fname} type="text" placeholder='Firstname'  className='p-3 w-[48%] border rounded-md h-10  focus:outline-yellow-400' />
-                        <input onChange={(e)=>setLname(e.target.value)} value={lname} type="text"placeholder='Lastname'  className='p-3 w-[48%] border rounded-md h-10  focus:outline-yellow-400'/>
+                        <input onChange={handelOnChange} value={updateAddress.fullName} name='fullName' type="text" placeholder='Firstname'  className='p-3 w-[48%] border rounded-md h-10  focus:outline-yellow-400' />
                       </div>
-                      <div className=''><input onChange={(e)=>setAddress(e.target.value)} value={address} type="text"placeholder='Address'  className='p-3 w-[90%] border rounded-md h-10  focus:outline-yellow-400 '/></div>
+                      <div className=''><input onChange={handelOnChange} value={updateAddress.address} name='address' type="text"placeholder='Address'  className='p-3 w-[90%] border rounded-md h-10  focus:outline-yellow-400 '/></div>
                       <div className='flex justify-between w-[90%]'>
-                        <input onChange={(e)=>setTown(e.target.value)} value={town} type="text" placeholder='City / Towm'  className='p-3 w-[48%] border rounded-md h-10  focus:outline-yellow-400' />
-                        <input onChange={(e)=>setZipcode(e.target.value)} value={zipcode} type="numbert"placeholder='Zip Code'  className='p-3 w-[48%] border rounded-md h-10  focus:outline-yellow-400'/>
+                        <input onChange={handelOnChange} value={updateAddress.pincode} name='pincode' type="numbert"placeholder='Pincode'  className='p-3 w-[48%] border rounded-md h-10  focus:outline-yellow-400'/>
                       </div>
                       <div className='flex justify-between w-[90%]'>
-                        <input onChange={(e)=>setMobile(e.target.value)} value={mobile} type="number" placeholder='Enter Mobile'  className='p-3 w-[48%] border rounded-md h-10  focus:outline-yellow-400' />
-                        <input onChange={(e)=>setEmail(e.target.value)} value={email} type="text"placeholder='Enter Email'  className='p-3 w-[48%] border rounded-md h-10  focus:outline-yellow-400'/>
+                        <input onChange={handelOnChange} value={updateAddress.phone} name='phone' type="number" placeholder='Enter Mobile'  className='p-3 w-[48%] border rounded-md h-10  focus:outline-yellow-400' />
                       </div>
                       
                     </div>
@@ -186,13 +146,13 @@ function BuyProduct() {
             </div>
             <div className="total flex flex-col justify-evenly space-y-3 border p-5">
             <div className="flex justify-between">
-                <span>MRP ({data ? data.length : 0} items)</span>
-                <span>${totalPrice}</span>
+                <span>MRP ({data.products ? data.products.length : 0} items)</span>
+                <span>${data.totalCartPrice}</span>
               </div>
               <hr />
               <div className="flex justify-between">
                 <span className="font-bold">Total</span>
-                <span className="font-bold">${totalPrice}</span>
+                <span className="font-bold">${data.totalCartPrice}</span>
               </div>
             </div>
             <hr />

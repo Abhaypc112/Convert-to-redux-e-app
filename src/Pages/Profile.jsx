@@ -3,45 +3,49 @@ import { addAddress, getAddressById, getUserById } from '../Api/UserHelpers/User
 import { useNavigate } from 'react-router-dom'
 import Header from '../Components/Header'
 import Footer from '../Components/Footer'
+import { useDispatch, useSelector } from 'react-redux'
+import { logOut } from '../Slices/authSlice';
 
 function Profile() {
-  const userInfo=localStorage.getItem("userId")
+  const token = localStorage.getItem("token");
   const[user,setUser]=useState({})
   const nav=useNavigate();
-  const [fname,setFname]=useState('');
-  const [lname,setLname]=useState('');
-  const [address,setAddress]=useState('');
-  const [town,setTown]=useState('');
-  const [zipcode,setZipcode]=useState('');
-  const [mobile,setMobile]=useState('');
-  const [email,setEmail]=useState('');
+  const [updateAddress,setUpdateAddress] = useState({fullName:'',address:'',pincode:'',phone:''})
   const [userData,setUSerData]=useState({});
+  const dispatch = useDispatch();
 
     useEffect(()=>{
-        if(userInfo){
-            getUserById(userInfo)
+        if(token){
+            getUserById()
             .then((res)=>setUser(res.data))
-            getAddressById(userInfo)
-            .then((res)=>setUSerData(res))
+            getAddressById()
+            .then((res)=>setUSerData(res.data.addressDetails))
+            .catch(error => {
+              console.log(error)
+              setUSerData(null) 
+            })
         }else{
           nav('/login')
         }
-    },[userInfo,nav])
+    },[token])
 
-    function addAddressData(){
-      const name=fname+lname;
-      const data={name,address,town,zipcode,mobile,email}
-      addAddress(userInfo,{address:data})
-      .then((res)=>setUSerData(res.data.address))
-    }
-    function editAddress(){
-      addAddress(userInfo,{address:null})
-      .then((res)=>setUSerData(res.data.address))
-    }
-    function logout(){
-      localStorage.removeItem("userId")
-      nav('/home')
-    }
+function handelOnChange(event){
+  const {name,value} = event.target;
+  setUpdateAddress({...updateAddress,[name]:value});
+}
+
+function addAddressData(){
+  addAddress(updateAddress)
+  .then((res)=>setUSerData(res.data.data.addressDetails))
+}
+function editAddress(){
+  setUpdateAddress(userData)
+    setUSerData(null)
+}
+function logout(){
+  dispatch(logOut())
+  nav('/login')
+}
   return (
     
      <div>
@@ -66,15 +70,14 @@ function Profile() {
                          <div className='flex justify-between '>
                     <h1 className='font-bold text-xl'>Address</h1>
                     
-                    <button onClick={editAddress} className='bg-gray-200 p-1 w-20 text-sm rounded-md'>Edit</button>
+                    <button onClick={()=>editAddress(userData._id)} className='bg-gray-200 p-1 w-20 text-sm rounded-md'>Edit</button>
                     </div>
                     <hr/>
                     <div className='space-y-1'>
-                        <h3 className='font-bold'>{userData.name}</h3>
+                        <h3 className='font-bold'>{userData.fullName}</h3>
                         <p >{userData.address}</p>
-                        <p>{userData.zipcode}</p>
-                        <p>+91 {userData.mobile}</p>
-                        <p>{userData.email}</p>
+                        <p>{userData.pincode}</p>
+                        <p>+91 {userData.phone}</p>
                     </div>
                     </div>
                     :
@@ -85,17 +88,12 @@ function Profile() {
                       <button onClick={addAddressData} className='bg-gray-200 p-1 w-20 text-sm rounded-md'>Add</button>
                     </div>
                       <div className='flex justify-between w-[90%]'>
-                        <input onChange={(e)=>setFname(e.target.value)} value={fname} type="text" placeholder='Firstname'  className='p-3 w-[48%] border rounded-md h-10  focus:outline-yellow-400' />
-                        <input onChange={(e)=>setLname(e.target.value)} value={lname} type="text"placeholder='Lastname'  className='p-3 w-[48%] border rounded-md h-10  focus:outline-yellow-400'/>
+                        <input onChange={handelOnChange} name='fullName' value={updateAddress.fullName} type="text" placeholder='Enter Fullname'  className='p-3 w-[48%] border rounded-md h-10  focus:outline-yellow-400' />
                       </div>
-                      <div className=''><input onChange={(e)=>setAddress(e.target.value)} value={address} type="text"placeholder='Address'  className='p-3 w-[90%] border rounded-md h-10  focus:outline-yellow-400 '/></div>
+                      <div className=''><input onChange={handelOnChange} name='address' value={updateAddress.address} type="text"placeholder='Address'  className='p-3 w-[90%] border rounded-md h-10  focus:outline-yellow-400 '/></div>
                       <div className='flex justify-between w-[90%]'>
-                        <input onChange={(e)=>setTown(e.target.value)} value={town} type="text" placeholder='City / Towm'  className='p-3 w-[48%] border rounded-md h-10  focus:outline-yellow-400' />
-                        <input onChange={(e)=>setZipcode(e.target.value)} value={zipcode} type="numbert"placeholder='Zip Code'  className='p-3 w-[48%] border rounded-md h-10  focus:outline-yellow-400'/>
-                      </div>
-                      <div className='flex justify-between w-[90%]'>
-                        <input onChange={(e)=>setMobile(e.target.value)} value={mobile} type="number" placeholder='Enter Mobile'  className='p-3 w-[48%] border rounded-md h-10  focus:outline-yellow-400' />
-                        <input onChange={(e)=>setEmail(e.target.value)} value={email} type="text"placeholder='Enter Email'  className='p-3 w-[48%] border rounded-md h-10  focus:outline-yellow-400'/>
+                        <input onChange={handelOnChange} name='pincode' value={updateAddress.pincode} type="numbert"placeholder='Pincode'  className='p-3 w-[48%] border rounded-md h-10  focus:outline-yellow-400'/>
+                        <input onChange={handelOnChange} name='phone' value={updateAddress.phone} type="number" placeholder='Enter Phone'  className='p-3 w-[48%] border rounded-md h-10  focus:outline-yellow-400' />
                       </div>
                     </div>
                     </>

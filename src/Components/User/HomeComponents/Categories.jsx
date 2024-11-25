@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { NavLink } from 'react-router-dom'
-import { getCategory } from '../../../Api/ProductHelper/ProductConnection'
+import { getCategory} from '../../../Api/ProductHelper/ProductConnection'
 
 function Categories() {
   const[data,setData]=useState([]);

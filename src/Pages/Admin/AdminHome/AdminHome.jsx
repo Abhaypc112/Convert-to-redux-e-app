@@ -7,7 +7,7 @@ import SideBar from '../../../Components/Admin/Header&Footer/SideBar'
 import { useNavigate } from 'react-router-dom'
 
 function AdminHome() {
-  const adminId=localStorage.getItem("adminId");
+  const adminId = localStorage.getItem("userRole");
   const navigate=useNavigate();
   useEffect(()=>{
     if(!adminId){

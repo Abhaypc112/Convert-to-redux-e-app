@@ -1,55 +1,52 @@
-import React, { useContext,useEffect,useState } from 'react';
+import React, { useEffect,useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
-import { UserContext } from '../Contexts/UserContext';
-import { checkUserName } from '../Api/UserHelpers/UsersConnection';
 import Header from '../Components/Header';
 import Footer from '../Components/Footer';
+import { addUser } from '../Api/UserHelpers/UsersConnection';
 
 function SignUp() {
+    const [inputData,setInputData]=useState({name:"",username:"",email:"",password:""})
+    const[errors,setError]=useState({});
     const navigate=useNavigate();
-    const[name,setName]=useState('');
-    const[username,setUsername]=useState('');
-    const[email,setEmail]=useState('');
-    const[password,setPassword]=useState('');
-    const[error,setError]=useState({});
-    const {addUser}=useContext(UserContext);
-    const userInfo=localStorage.getItem('userId');
-    const[usernameAlredy,setUsernameAlerdy]=useState(false);
-    useEffect(()=>{
-        checkUserName(username)
-        .then((res)=>setUsernameAlerdy(res))
-    },[username])
-    function addUserData(e){
+    const [serverError,setServerError] = useState('') ;
+  
+    function handelOnChange(event){
+        const {name,value} = event.target;
+        setInputData({...inputData,[name]:value})
+    }
+    async function addUserData (e){
         e.preventDefault()
         const errors={}
-        if(name.trim()===""){
+        if(inputData.name.trim()===""){
             errors.name="Name Required *";
         }
-        if(username.trim()===""){
+        if(inputData.username.trim()===""){
             errors.username="Username Required *";
-        }else if(usernameAlredy){
-            errors.username="Alredy Taken *";
         }
-        if(email.trim()===""){
+        if(inputData.email.trim()===""){
             errors.email="Email Required *";
         }
-        if(password.trim()===""){
+        if(inputData.password.trim()===""){
             errors.password="Password Required *";
-        }else if(password.length<6){
+        }else if(inputData.password.length<6){
             errors.password="Must 6 Char *"
         }
         setError(errors)
         if(Object.keys(errors).length===0){
-            const data = { name,username,email,password, cart: [],orders:[],block:false };
-            addUser(data);
-            navigate('/login');
+            try{
+                const result = await addUser(inputData);
+                console.log(result);
+                
+                if(result) navigate('/login');
+            }catch(error){
+                console.log(error);
+                setServerError('Already taken !')
+                errors.username = 'Already taken !'
+                setError(errors);
+            }
         }
     }
-    useEffect(()=>{
-        if(userInfo){
-          navigate('/home')
-        }
-      },[userInfo])
+
   return (
     <div>
         <Header/> 
@@ -61,21 +58,22 @@ function SignUp() {
                         <div className='flex justify-between'>
                             <div className='flex flex-col'>
                             <label htmlFor="name">Name</label>
-                            <input style={{width:"11rem"}} type="text" name='name' onChange={(e)=>setName(e.target.value)} className='border p-2   rounded-md  focus:outline-yellow-400'/>
-                            <p className='text-xs text-red-500 font-bold mb-4'>{error.name}</p>
+                            <input style={{width:"11rem"}} type="text" name='name' onChange={handelOnChange} className='border p-2   rounded-md  focus:outline-yellow-400'/>
+                            <p className='text-xs text-red-500 font-bold mb-4'>{errors.name}</p>
                             </div>
                             <div className='flex flex-col'>
                             <label htmlFor="username">Username</label>
-                            <input style={{width:"11rem"}} type="text" name='username' onChange={(e)=>setUsername(e.target.value)} className='border p-2 rounded-md  focus:outline-yellow-400' />
-                            <p className='text-xs text-red-500 font-bold mb-4'>{error.username}</p>
+                            <input style={{width:"11rem"}} type="text" name='username' onChange={handelOnChange} className='border p-2 rounded-md  focus:outline-yellow-400' />
+                            {!errors.username ? serverError && <p className='text-xs text-red-500 font-bold mb-4'>{serverError}</p>: null}
+                            {errors.username && <p className='text-xs text-red-500 font-bold mb-4'>{errors.username}</p>}
                             </div>
                         </div>
                         <label htmlFor="email">Email</label>
-                        <input type="email" name='email' onChange={(e)=>setEmail(e.target.value)} className='border rounded-md p-2 h-10 focus:outline-yellow-400' />
-                        <p className='text-xs text-red-500 font-bold mb-4'>{error.email}</p>
+                        <input type="text" name='email' onChange={handelOnChange} className='border rounded-md p-2 h-10 focus:outline-yellow-400' />
+                        <p className='text-xs text-red-500 font-bold mb-4'>{errors.email}</p>
                         <label htmlFor="password">Password</label>
-                        <input type="password" name='password' onChange={(e)=>setPassword(e.target.value)} className='border p-2 rounded-md h-10  focus:outline-yellow-400' />
-                        <p className='text-xs text-red-500 font-bold mb-4'>{error.password}</p>
+                        <input type="password" name='password' onChange={handelOnChange} className='border p-2 rounded-md h-10  focus:outline-yellow-400' />
+                        <p className='text-xs text-red-500 font-bold mb-4'>{errors.password}</p>
                         <div>
                             <input type="checkbox" name='checkbox' className='border mb-5 'required/>
                             <label htmlFor="checkbox" className='text-gray-600'> I agree with Dribble's</label>

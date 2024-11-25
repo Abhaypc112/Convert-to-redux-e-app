@@ -1,124 +1,77 @@
-import React, { useContext, useEffect, useRef, useState } from 'react';
-import { UserContext } from '../../../Contexts/UserContext';
-import { addCart, deleteItem, getCartById, getUserById } from '../../../Api/UserHelpers/UsersConnection';
+import React, { useEffect, useState } from 'react';
+import { adjustCount, deleteItem, getCartById, } from '../../../Api/UserHelpers/UsersConnection';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
 function CartSection() {
-  const [totalPrice, setTotalPrice] = useState(0);
   const [data, setData] = useState({});
-  const {carts,setCart} = useContext(UserContext);
-  const userInfo=localStorage.getItem("userId");
+  const userRole = localStorage.getItem("userRole");
   const nav = useNavigate();
-  const[id,setId]=useState('');
-  const modalRef=useRef();
 
 
+  // Fetch cart products
   useEffect(() => {
-    if (userInfo) {
-      getUserById(userInfo)
-        .then((res) => {
-          setData(res.data);
-          calculateTotalPrice(res.data.cart);
-        })
+    if (userRole) {
+      getCartById()
+        .then((res) => setData(res.data.data))
         .catch((error) => console.log(error));
     }
-  }, [userInfo]);
+  }, [userRole]);
 
-  function calculateTotalPrice(cart) {
-    if (cart) {
-      const total = cart.reduce((acc, item) => acc + item.totalPrice, 0);
-      setTotalPrice(total);
-    }
-  }
-
-  function deleteCartItem(cartId) {
-    setId(cartId)
-    modalRef.current.style.top="200px"
-    setTimeout(()=>{
-      modalRef.current.style.top="0px"
-    },3000)
-      
-  }
-  function CheckedState(){
-    modalRef.current.style.top="0px"
-    const updatedCart = data.cart.filter((value) => value.id !== id);
-       const updatedData = { ...data, cart: updatedCart };
-        deleteItem(data.id, { cart: updatedCart })
-        .then(() => {
-          setData(updatedData);
-          calculateTotalPrice(updatedCart);
-          if(carts){
-            setCart(false)
-          }else{
-            setCart(true)
-          }
-          toast.success("Cart Iteam Deleted")
-        })
-        .catch((error) => console.log(error));
-  }
-  function stateCancel(){
-    modalRef.current.style.top="0px"
-  }
-  async function increment(productId){
-    const currentCart = await getCartById(userInfo)
-    const updatedCart=currentCart.map((value)=>
-      productId===value.id?{...value,count:value.count+1,totalPrice:value.price*(value.count+1)}:value)
-    await addCart(userInfo,{cart:updatedCart})
-    .then((res)=>{
-      setData(res.data)
-      calculateTotalPrice(res.data.cart)
-  })
-  }
-  async function decrement(productId) {
-    const currentCart = await getCartById(userInfo)
-    const updatedCart=currentCart.map((value)=>
-      productId===value.id?{...value,count:value.count===1?1:value.count-1,totalPrice:value.price*(value.count===1?1:value.count-1)}:value)
-    await addCart(userInfo,{cart:updatedCart})
-    .then((res)=>{
-      setData(res.data)
-      calculateTotalPrice(res.data.cart)
-  })
+  // Delete product
+  async function deleteCartItem(productId) {
+    await deleteItem(productId)
+    .then((res) =>{
+      setData(res.data.data);
+      toast.success("Item deleted",{position:'bottom-right'});
+    })
   }
 
-  if (!userInfo) {
+  // Change product count
+  async function changeProductCount(productId,adjust){
+    await adjustCount(productId,adjust)
+    .then((res) => setData(res.data.data))
+  }
+
+  //Role verification
+  if (!userRole) {
     nav('/login');
     return null;
   }
 
+  // Order section
   function buyOrder(){
-   if(data.cart.length>0){
+   if(data.products.length>0){
     nav('/payment')
    }else{
-    toast.error("Cart is Empty")
+    toast.error("Cart is Empty",{position:'bottom-right'});
    }
   }
-
 
   return (
     <div style={{ marginTop: '8rem' }}>
       <div className="main flex justify-center">
         <div className="image-details w-[80%] rounded flex flex-col md:flex-row">
           <div style={{ height: '40rem' }}className="image space-y-5 md:w-1/2  flex flex-col border overflow-scroll overflow-x-hidden custom-scrollbar">
-            {data.cart && data.cart.length > 0 ? (
-              data.cart.map((value) => (
+            {data.products && data.products.length > 0 ? (
+              data.products.map((value) => (
                 <div key={value.id} className="md:flex flex-col">
                   <div className="image-details md:flex w-full md:w-[100%] md:m-6 space-y-3">
-                    <img src={value.images[0]} className="big-image bg-white w-full md:w-[40%] md:h-[80%] rounded hover:transform hover:scale-105  transition-all duration-500 ease-in-out"alt={value.name} onClick={()=>nav(`/product/${value.id}`)}/>
+                    <img src={value.productId.images[0]} className="big-image bg-white w-full md:w-[40%] md:h-[80%] rounded hover:transform hover:scale-105  transition-all duration-500 ease-in-out"alt={value.name} onClick={()=>nav(`/product/${value.id}`)}/>
                     <div className="md:ml-5 ml-2 flex flex-col space-y-3">
-                      <h1 className="text-md font-bold">{value.name}</h1>
-                      <p className="text-sm max-w-[70%]">{value.description}</p>
+                      <h1 className="text-md font-bold">{value.productId.name}</h1>
+                      <p className="text-sm max-w-[70%]">{value.productId.description}</p>
                       <div className="count border w-28 h-9 flex justify-evenly items-center rounded-2xl">
-                        <button onClick={()=>decrement(value.id)} className="rounded-lg w-10 h-7">-</button>
-                        <span>{value.count}</span>
-                        <button onClick={()=>increment(value.id)} className="rounded-lg w-10 h-7">+</button>
+                        <button onClick={()=>changeProductCount(value.productId._id,'decrement')} className="rounded-lg w-10 h-7">-</button>
+                        <span>{value.quantity}</span>
+                        <button onClick={()=>changeProductCount(value.productId._id,'increment')} name='decrement' className="rounded-lg w-10 h-7">+</button>
                       </div>
-                      <span  className="text-xl font-bold">${value.totalPrice}</span>
+                      <span  className="text-xl font-bold">${value.totalProductPrice}</span>
                     </div>
                   </div>
                   <div className="delete-wishlist space-y-3 md:space-y-0 mb-5 md:flex-row flex flex-col justify-between md:justify-evenly">
                     <button className="text-black   py-3 rounded-lg w-full md:w-[40%] border">Wishlist</button>
-                    <button onClick={() => deleteCartItem(value.id)}className="text-black  py-3 rounded-lg w-full md:w-[40%] border">Delete</button>
+                    <button onClick={() => deleteCartItem(value.productId._id)}className="text-black  py-3 rounded-lg w-full md:w-[40%] border">Delete</button>
                   </div>
                 </div>
               ))
@@ -138,22 +91,19 @@ function CartSection() {
                 <span className="text-xl font-bold">Cart Summary</span>
               </div>
               <div className="flex justify-between">
-                <span>MRP ({data.cart ? data.cart.length : 0} items)</span>
-                <span>${totalPrice}</span>
+                <span>MRP ({data.products ? data.products.length : 0} items)</span>
+                <span>${data.totalCartPrice}</span>
               </div>
               <hr />
               <div className="flex justify-between">
                 <span className="font-bold">Sub Total</span>
-                <span className="font-bold">${totalPrice}</span>
+                <span className="font-bold">${data.totalCartPrice}</span>
               </div>
               <hr />
-              <div>
-                <span>Plant a tree for Rs.60 only!</span>
-              </div>
               <hr />
               <div className="flex justify-between">
                 <span className="font-bold text-xl">TOTAL</span>
-                <span className="font-bold text-xl">${totalPrice}</span>
+                <span className="font-bold text-xl">${data.totalCartPrice}</span>
               </div>
             </div>
             <div className="cart-buy md:space-x-3 space-y-3 w-[100%]">
@@ -168,14 +118,6 @@ function CartSection() {
                 <span className="font-bold">Pay Online</span>
                 <p>Secure payments through credit card or UPI</p>
               </div>
-              
-              <div ref={modalRef} className="absolute  left-[35%] h-[90px] flex flex-col justify-between w-[300px] bg-black p-3 rounded shadow-lg z-40 top-0 transition-all duration-500 ease-in-out">
-                            <span className='text-center text-yellow-400 '> Item Delete to Cart ❌</span>
-                              <div className='flex justify-center  space-x-5'>
-                              <button onClick={CheckedState} className=' w-20 rounded font-bold bg-yellow-400'>Ok</button>
-                              <button onClick={stateCancel} className='bg-white w-20 rounded font-bold'>Cancel</button>
-                             </div>
-                       </div>
             </div>
           </div>
         </div>

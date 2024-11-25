@@ -9,6 +9,7 @@ function BestSellers() {
     .then((res)=>setData((res.data).sort((a,b)=>{
       return b.rating - a.rating
     })))
+    
   },[])
   return (
     <div>
@@ -19,7 +20,7 @@ function BestSellers() {
           data.map((Obj,index)=>{
            if(index<14){
             return (
-              <NavLink to={`/product/${Obj.id}`}>
+              <NavLink to={`/product/${Obj._id}`}>
                   <div>
                   <img src={Obj.images[0]} className=' bg-gray-200 h-40 w-40 rounded hover:transform hover:scale-105  transition-all duration-500 ease-in-out'/>
                   <span>⭐{Obj.rating}</span>

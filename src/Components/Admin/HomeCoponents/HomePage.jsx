@@ -14,7 +14,7 @@ function HomePage() {
   ;
   useEffect(()=>{
     getAllUsers()
-    .then((res)=>setUserCount(res.data))
+    .then((res)=>console.log(res.data))
     getTotalSales()
     .then((res)=>{
       totalSales(res.data);

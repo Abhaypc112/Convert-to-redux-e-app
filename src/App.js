@@ -18,6 +18,7 @@ import AdminUserView from './Pages/Admin/AdminHome/AdminUserView';
 import AddUsers from './Pages/Admin/AdminHome/AddUsers';
 import Error from './Pages/Error';
 import ViewProduct from './Pages/Admin/AdminHome/ViewProduct';
+import Test from './Pages/Test';
 
 function App() {
   const adminId=localStorage.getItem("adminId")
@@ -29,11 +30,12 @@ function App() {
           {/* UserSide */}
 
           
+            <Route path='/test' element={<Test/>}/>
             <Route path='/' element={<Home/>}/>
             <Route path='/home' element={<Home/>}/>
             <Route path='/store/:category' element={<Store/>}/>
             <Route path='/store' element={<Store/>}/>
-            <Route path='/product/:id' element={<Product/>}/>
+            <Route path='/product/:_id' element={<Product/>}/>
             <Route path='/cart' element={<Cart/>}/>
             <Route path='/profile' element={<Profile/>}/>
             <Route path='/payment' element={<Payment/>}/>
@@ -41,7 +43,7 @@ function App() {
 
             <Route path='/login' element={<Login/>}/>
             <Route path='/signup' element={<SignUp/>}/>
-            <Route path='/home/:id' element={<Home/>}/>
+            <Route path='/home/:_id' element={<Home/>}/>
 
 
             {/* Admin Side */}

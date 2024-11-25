@@ -3,7 +3,7 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import Header from '../Components/Header';
 import Footer from '../Components/Footer';
 import { useDispatch, useSelector } from 'react-redux';
-import { login } from '../Features/authActions';
+import { loginUser } from '../Slices/authSlice';
 
 
 function Login() {
@@ -11,9 +11,10 @@ function Login() {
   const [password,setPassword]=useState('');
   const nav=useNavigate();
   const [errorr,setErrorr]=useState({});
-  const adminId=localStorage.getItem('adminId');
   const dispatch=useDispatch();
-  const {user, isAuthenticated, loading ,error}=useSelector((state)=>state.auth)
+  const {user,error} = useSelector((state)=>state.auth)
+ const userRole = localStorage.getItem('userRole')
+  
   
   function doSignup(e){
     e.preventDefault();
@@ -29,23 +30,23 @@ function Login() {
     setErrorr(errors)
     if(Object.keys(errors).length===0){
       const data={username,password};
-      dispatch(login(data))
+      dispatch(loginUser(data))
       setUsername('')
       setPassword('')
-      if(error){
-        setErrorr({fetch:error})
-      }
     }
-    }
+  }
     
   useEffect(()=>{
-    if(isAuthenticated){
+    if(error){
+      setErrorr({fetch:error})
+    }
+    if(userRole === 'user'){
       nav('/home')
     }
-    else if(adminId){
+    else if(userRole === 'admin'){
       nav('/admin')
     }
-  },[isAuthenticated,adminId])
+  },[userRole])
   
   
   return (

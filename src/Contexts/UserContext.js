@@ -1,5 +1,5 @@
 import { createContext, useEffect, useId, useState} from "react";
-import { addUserData, getAllUsers, getCartById } from "../Api/UserHelpers/UsersConnection";
+import { addUser, getAllUsers, getCartById } from "../Api/UserHelpers/UsersConnection";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
@@ -21,7 +21,7 @@ export const UserProvider=({children})=>{
 
     const addUser=async (user)=>{
         try{
-            await addUserData(user)
+            await addUser(user)
             const updatedUsers = await getAllUsers();
             setUserData(updatedUsers.data)
             .then(()=>toast.success("Account Created"))

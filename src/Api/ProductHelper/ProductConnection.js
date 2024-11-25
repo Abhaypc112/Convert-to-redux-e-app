@@ -2,18 +2,24 @@ import axios from 'axios'
 
 
 const PRODUCTS_LIST="http://localhost:5000/products";
-const CATEGORY_LIST="http://localhost:5000/categorys";
 const SALES="http://localhost:5000/sales";
 
-export function getCategory(){
-    return axios.get(CATEGORY_LIST)
+export async function getCategory(){
+    const res = await axios.get('http://localhost:3001/api/products/categorys');
+    return res.data;
 }
-export function getProducts(){
-    return axios.get(PRODUCTS_LIST)
+export async function getProducts(){
+    const res = await axios.get('http://localhost:3001/api/products');
+    return res.data;
+}
+export async function getProductsByCategory(category){
+    const res = await axios.get(`http://localhost:3001/api/products?category=${category}`);
+    return res.data;
 }
 
-export function getProductsById(id){
-    return axios.get(`${PRODUCTS_LIST}/${id}`)
+export async function getProductsById(_id){
+    const res = await axios.get(`http://localhost:3001/api/product/${_id}`);
+    return res.data;
 }
 
 export async function totalSales(data){

@@ -19,7 +19,7 @@ function Budget() {
         data.map((Obj,index)=>{
           if(index<7){
             return(
-              <NavLink to={`/product/${Obj.id}`}>
+              <NavLink to={`/product/${Obj._id}`}>
                   <div className=' h-40 w-40 rounded'>
                   <img src={Obj.images[0]} alt="" className=' bg-gray-200 h-40 w-40 rounded hover:transform hover:scale-105  transition-all duration-500 ease-in-out'/>
                   <span className='font-bold'>$ {Obj.price}</span>
