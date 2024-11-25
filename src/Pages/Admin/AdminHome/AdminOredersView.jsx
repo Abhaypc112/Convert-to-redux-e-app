@@ -5,7 +5,7 @@ import OrdersView from '../../../Components/Admin/OredersView/OrdersView'
 import { useNavigate } from 'react-router-dom';
 
 function AdminOredersView() {
-    const adminId=localStorage.getItem("adminId");
+    const adminId=localStorage.getItem("userRole");
     const navigate=useNavigate();
     useEffect(()=>{
       if(!adminId){

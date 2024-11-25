@@ -6,7 +6,8 @@ const token = localStorage.getItem('token');
 const authorization = {headers: { 'authorization':token }};
 
 export function getAllUsers(){
-    return axios.get('http://localhost:3001/api/admin/totalusers')
+    const res = axios.get('http://localhost:3001/api/admin/totalusers',authorization);
+    return res
 }
 export async function checkUser(userInfo){
     const res = await axios.post('http://localhost:3001/api/user/login',userInfo);

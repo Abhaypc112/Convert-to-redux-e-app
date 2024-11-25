@@ -4,7 +4,7 @@ import { FiShoppingBag } from "react-icons/fi";
 import { IoIosPeople } from "react-icons/io";
 import { IoDocumentOutline } from "react-icons/io5";
 import { getAllUsers } from '../../../Api/UserHelpers/UsersConnection';
-import { getTotalSales } from '../../../Api/ProductHelper/ProductConnection';
+import { getTotalOrders, getTotalSales } from '../../../Api/ProductHelper/ProductConnection';
 
 function HomePage() {
   const [pData,setPData]=useState([]);
@@ -14,17 +14,15 @@ function HomePage() {
   ;
   useEffect(()=>{
     getAllUsers()
-    .then((res)=>console.log(res.data))
+    .then((res)=>setUserCount(res.data.data))
     getTotalSales()
     .then((res)=>{
-      totalSales(res.data);
-      setOrderCount(res.data.length)
+      setSales(res.data.data[0].totalSales);
     })
+    getTotalOrders()
+    .then((res) => setOrderCount(res.data.data.length) )
   },[])
-  function totalSales(arr){
-    let total=arr.reduce((acc,value)=>acc+ value.totalPrice,0)
-    setSales(total);
-  }
+ 
   return (
     <div className='flex w-[100%] bg-slate-100 '> 
       <div className='w-[100%]'>

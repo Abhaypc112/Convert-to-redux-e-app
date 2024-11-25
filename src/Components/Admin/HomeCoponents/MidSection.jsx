@@ -23,7 +23,7 @@ function MidSection() {
                 <div className='grid grid-cols-6 '>
                     <h1 className='font-bold text-center'>Image</h1>
                     <h1 className='font-bold text-center col-span-2'>Name</h1>
-                    <h1 className='font-bold text-center '>Id</h1>
+                    <h1 className='font-bold text-center '>Category</h1>
                     <h1 className='font-bold text-center'>Price</h1>
                     <h1 className='font-bold text-center'>Stock</h1>
                 </div>
@@ -34,7 +34,7 @@ function MidSection() {
                     <div key={Obj.id} className='grid grid-cols-6 items-center'>
                       <div className='flex justify-center h-20' ><img src={Obj.images[0]} alt="" /></div>
                       <span className='col-span-2 text-center'>{Obj.name}</span>
-                      <span className='text-center '>{Obj.id}</span>
+                      <span className='text-center '>{Obj.category}</span>
                       <span className='text-center'>{Obj.price}</span>
                       <span className='text-center'>{Obj.stock}</span>
                     </div>

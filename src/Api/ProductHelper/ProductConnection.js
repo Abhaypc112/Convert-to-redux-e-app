@@ -1,5 +1,7 @@
 import axios from 'axios'
 
+const token = localStorage.getItem('token');
+const authorization = {headers: { 'authorization':token }};
 
 const PRODUCTS_LIST="http://localhost:5000/products";
 const SALES="http://localhost:5000/sales";
@@ -27,7 +29,10 @@ export async function totalSales(data){
     
 }
 export function getTotalSales(){
-    return axios.get(SALES)  
+    return axios.get("http://localhost:3001/api/admin/totalsales",authorization)  
+}
+export function getTotalOrders(){
+    return axios.get("http://localhost:3001/api/admin/totalorders",authorization)  
 }
 export function deleteProductById(id){
     return axios.delete(`${PRODUCTS_LIST}/${id}`)  

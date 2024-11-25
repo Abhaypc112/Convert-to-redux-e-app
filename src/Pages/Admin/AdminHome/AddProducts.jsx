@@ -5,7 +5,7 @@ import AddProduct from '../../../Components/Admin/AddProductComponents/AddProduc
 import { useNavigate } from 'react-router-dom';
 
 function AddProducts() {
-  const adminId=localStorage.getItem("adminId");
+  const adminId=localStorage.getItem("userRole");
   const navigate=useNavigate();
   useEffect(()=>{
     if(!adminId){

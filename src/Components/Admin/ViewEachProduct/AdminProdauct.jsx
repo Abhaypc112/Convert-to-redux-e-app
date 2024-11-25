@@ -16,7 +16,7 @@ function AdminProdauct() {
   const[count,setCount]=useState(1);
   const[imgcount,setImgCount]=useState(0);
   const {id}=useParams();
-  const adminId=localStorage.getItem("adminId");
+  const adminId=localStorage.getItem("userRole");
   const [products,setProducts]=useState([]);
   const navigate=useNavigate();
   const {editStatus,setEditStatus}=useContext(UserContext);

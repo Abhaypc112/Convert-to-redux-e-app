@@ -11,8 +11,8 @@ function Graph() {
   useEffect(()=>{
     getTotalSales()
     .then((res)=>{
-       let result= (res.data).map((price)=>price.totalPrice)
-       setProfit(result)
+      //  let result= (res.data).map((price)=>price.totalPrice)
+      //  setProfit(result)
     })
   },[])
   const data = {

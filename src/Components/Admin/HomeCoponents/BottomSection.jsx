@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { getAllUsers } from '../../../Api/UserHelpers/UsersConnection';
 import { AdminContext } from '../../../Contexts/AdminContext';
-import { getProducts } from '../../../Api/ProductHelper/ProductConnection';
+import { getProducts, getTotalOrders } from '../../../Api/ProductHelper/ProductConnection';
 import { useNavigate } from 'react-router-dom';
 
 function BottomSection() {
@@ -10,8 +10,8 @@ function BottomSection() {
   const navigate=useNavigate();
   // const {setTotalOrders}=useContext(AdminContext)
   useEffect(()=>{
-    getAllUsers()
-    .then((res)=> setItems(res.data))
+    getTotalOrders()
+    .then((res)=> setItems(res.data.data))
     getProducts()
     .then((res)=>setData((res.data).sort((a,b)=>{
       return b.rating-a.rating
@@ -32,22 +32,21 @@ function BottomSection() {
     
               {
                 items.slice(0).reverse().map((value)=>{
-                  return (value.orders).map((ord)=>{
-                    return (ord.Items).map((Obj)=>{ 
+                  return (value.products).map((Obj)=>{ 
                       return(
                         <div key={Obj.id} className='grid grid-cols-3 mt-5 '>
                         <div className='flex'>
-                        <div className='' ><img src={Obj.images[0]} alt="" className='w-10 h-10' /></div>
+                        <div className='' ><img src={Obj.productId.images[0]} alt="" className='w-10 h-10' /></div>
                         <span className='text-center'>{Obj.name}</span>
                         </div>
-                        <span className='text-center '>{ord.date.time}</span>
-                        <span className='text-center '>{value.name}</span>
+                        <span className='text-center text-xs '>{value.date}</span>
+                        <span className='text-center '>{value.userId.name}</span>
                         </div>  
                       ) 
                                   })
                     
                   })
-                })
+          
                  
               }
               
@@ -66,7 +65,7 @@ function BottomSection() {
                   return(
                     <div key={Obj.id} className='grid grid-cols-2 mt-5 '>
                       <div className='flex'>
-                      <div className='' ><img src={Obj.image} alt="" className='w-10 h-10' /></div>
+                      <div className='' ><img src={Obj.images[0]} alt="" className='w-10 h-10' /></div>
                       <div>
                       <span className='text-center'>{Obj.name}</span>
                       <p className='text-xs'>{Obj.stock} Left</p>

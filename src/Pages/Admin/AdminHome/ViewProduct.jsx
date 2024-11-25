@@ -5,7 +5,7 @@ import AdminHeader from '../../../Components/Admin/Header&Footer/AdminHeader';
 import SideBar from '../../../Components/Admin/Header&Footer/SideBar';
 
 function ViewProduct() {
-    const adminId=localStorage.getItem("adminId");
+    const adminId=localStorage.getItem("userRole");
     const navigate=useNavigate();
     useEffect(()=>{
       if(!adminId){
