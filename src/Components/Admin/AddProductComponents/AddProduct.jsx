@@ -3,7 +3,7 @@ import { addProduct } from '../../../Api/ProductHelper/ProductConnection';
 import { toast } from 'react-toastify';
 
 function AddProduct() {
-    const data={name:"",price:null,category:"",stock:null,description:"",rating:0,images:[""]}
+    const data={name:"",price:null,category:"",stock:null,description:"",rating:0,images:[""],material:"",tags:[""]}
     const [productDetails,setProductDetails]=useState(data)
 
     function addImageInput(){
@@ -20,9 +20,9 @@ function AddProduct() {
     }
     function handleCghange(e){
         const{name,value,type,checked}=e.target;
-            setProductDetails(prev=>(
-                {...prev,[name]:value}
-            )) 
+            setProductDetails(
+                {...productDetails,[name]:value}
+            ) 
         
     }
     function handleSubmit(e){
@@ -83,7 +83,13 @@ function AddProduct() {
                     })
                 }
                  <button type='button' onClick={addImageInput} className=' text-black w-[50%] p-3 rounded bg-yellow-400 font-bold'>Add Image</button>
-          
+                
+            <div className='flex flex-col'>
+                <label htmlFor="material">Meterial</label>
+                <input onChange={handleCghange} name="material" value={productDetails.material} id="" className='border p-2   rounded-md  focus:outline-yellow-400' />
+                <label htmlFor="tags">Tags</label>
+                <input onChange={handleCghange} name="tags" value={productDetails.tags} id="" className='border p-2   rounded-md  focus:outline-yellow-400' />
+            </div>
             <div className='flex flex-col'>
                 <label htmlFor="description">Description</label>
                 <textarea onChange={handleCghange} name="description" value={productDetails.description} id="" className='border p-2   rounded-md  focus:outline-yellow-400'></textarea>

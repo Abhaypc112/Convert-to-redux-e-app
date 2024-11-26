@@ -6,11 +6,15 @@ import { IoIosPeople } from "react-icons/io";
 import { HiOutlineDocumentAdd } from "react-icons/hi";
 import { FaSignOutAlt } from "react-icons/fa";
 import { useNavigate } from 'react-router-dom';
+import {logOut} from '../../../Slices/authSlice'
+import {useDispatch} from 'react-redux';
+
 
 function SideBar() {
+     const dispatch = useDispatch();
      const navigate=useNavigate();
      function signout(){
-          localStorage.removeItem("adminId")
+          dispatch(logOut())
           navigate('/login')
      }
   return (

@@ -57,10 +57,10 @@ function AdminProducts() {
           <input type="text" placeholder='Search Products' onChange={(e)=>setSearchTerm(e.target.value)} className='className="w-40 md:w-48 py-2 bg-transparent text-black focus:outline-none border-black outline-none border-b focus:w-64 transition-all duration-500 ease-in-out"' />
           <button onClick={()=>navigate('/addproduct')} className='bg-green-500 rounded p-2 text-white font-bold text-sm'>Add Product</button>
         </div>
-        <div className='grid grid-cols-8 w-[67rem] '>
+        <div className='grid grid-cols-7 w-[67rem] '>
                     <h1 className='font-bold text-center '>Image</h1>
                     <h1 className='font-bold text-center col-span-2'>Name</h1>
-                    <h1 className='font-bold text-center '>Id</h1>
+                    {/* <h1 className='font-bold text-center'>Id</h1> */}
                     <h1 className='font-bold text-center'>Price</h1>
                     <h1 className='font-bold text-center'>Quantity</h1>
                     <div className='flex justify-evenly col-span-2'>
@@ -72,15 +72,15 @@ function AdminProducts() {
              {
               filterdProducts.slice(0).reverse().map((product)=>{
                 return(
-                  <div key={product.id} className='grid grid-cols-8 items-center w-[67rem]'>
-                    <div  onClick={()=>navigate(`/viewproduct/${product.id}`)} className='flex justify-center cursor-pointer' ><img src={product.images[0]} alt="" className='w-16' /></div>
-                      <span onClick={()=>navigate(`/viewproduct/${product.id}`)} className='col-span-2 text-center cursor-pointer'>{product.name}</span>
-                      <span className='text-center '>#{product.id}</span>
+                  <div key={product.id} className='grid grid-cols-7 items-center w-[67rem]'>
+                    <div  onClick={()=>navigate(`/viewproduct/${product._id}`)} className='flex justify-center cursor-pointer' ><img src={product.images[0]} alt="" className='w-16' /></div>
+                      <span onClick={()=>navigate(`/viewproduct/${product._id}`)} className='col-span-2 text-center cursor-pointer'>{product.name}</span>
+                      {/* <span className='text-center '>#{product.id}</span> */}
                       <span className='text-center'>$ {product.price}</span>
                       <span className='text-center'>{product.stock}</span>
                     <div  className='col-span-2 flex justify-evenly'>
-                      <button onClick={()=>handelEdit(product.id)} className='bg-yellow-400 w-[30%] p-1 rounded'>Edit</button>
-                      <button onClick={()=>handleDelete(product.id)} className='bg-black text-white w-[30%] p-1 rounded'>Delete</button>
+                      <button onClick={()=>handelEdit(product._id)} className='bg-yellow-400 w-[30%] p-1 rounded'>Edit</button>
+                      <button onClick={()=>handleDelete(product._id)} className='bg-black text-white w-[30%] p-1 rounded'>Delete</button>
                     </div>
                   </div>
                 )

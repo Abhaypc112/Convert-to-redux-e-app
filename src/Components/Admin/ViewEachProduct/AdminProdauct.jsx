@@ -13,7 +13,6 @@ function AdminProdauct() {
 
 
   const[Obj,setObj]=useState({});
-  const[count,setCount]=useState(1);
   const[imgcount,setImgCount]=useState(0);
   const {id}=useParams();
   const adminId=localStorage.getItem("userRole");

@@ -4,7 +4,7 @@ import { EditProductById, getProductsById } from '../../../Api/ProductHelper/Pro
 import { toast } from 'react-toastify'
 
 function EditProduct({id}) {
-    const data={name:"",price:null,category:"",stock:null,description:"",rating:0,images:[""]}
+    const data={name:"",price:0,category:"",stock:0,description:"",rating:0,images:[""]}
     const [productDetails,setProductDetails]=useState(data)
     const {editStatus,setEditStatus}=useContext(UserContext);
 
@@ -23,13 +23,14 @@ function EditProduct({id}) {
     }
     function handleCghange(e){
         const{name,value,type,checked}=e.target;
-            setProductDetails(prev=>(
-                {...prev,[name]:value}
-            ))    
+            setProductDetails(
+                {...productDetails,[name]:value}
+            )    
     }
     function handleSubmit(e){
         e.preventDefault();
        EditProductById(id,productDetails)
+       .then((res) => console.log(res.data))
        setEditStatus(false)
        toast.success("Upadated Product Details")
     }

@@ -62,8 +62,8 @@ function AdminHeader() {
               <ul className="divide-y divide-gray-300">
                 {products.map((product) => (
                   <li 
-                    key={product.id}
-                    onClick={() => handleProductClick(product.id)}
+                    key={product._id}
+                    onClick={() => handleProductClick(product._id)}
                     className="cursor-pointer p-2 hover:bg-yellow-400 border-none text-black"
                   >
                     <p>{product.name}</p>

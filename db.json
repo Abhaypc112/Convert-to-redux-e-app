@@ -1480,6 +1480,20 @@
         "https://www.ikea.com/in/en/images/products/soederhamn-chaise-longue-viarp-beige-brown__0803568_pe768914_s5.jpg?f=xl",
         "https://www.ikea.com/in/en/images/products/soederhamn-chaise-longue-viarp-beige-brown__0803570_pe768913_s5.jpg?f=xl"
       ]
+    },
+    {
+      "id": "5bdf",
+      "name": "wegFWGFGFG",
+      "price": "4534",
+      "category": "sofas",
+      "stock": "45",
+      "description": "GEWGGWERGWGWg",
+      "rating": 0,
+      "images": [
+        "https://www.syncfusion.com/blogs/wp-content/uploads/2022/02/10-JavaScript-Naming-Conventions-Every-Developer-Should-Know.png",
+        "https://www.syncfusion.com/blogs/wp-content/uploads/2022/02/10-JavaScript-Naming-Conventions-Every-Developer-Should-Know.png",
+        "https://www.syncfusion.com/blogs/wp-content/uploads/2022/02/10-JavaScript-Naming-Conventions-Every-Developer-Should-Know.png"
+      ]
     }
   ]
 }
