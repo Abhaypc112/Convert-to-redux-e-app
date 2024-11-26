@@ -21,7 +21,7 @@ function BottomSection() {
     <div>
       <div style={{marginLeft:"18%"}} className=' p-5 grid md:grid-cols-6  md:gap-x-5 gap-y-5 '>
             <div className="box p-5 w-full h-[380px] bg-white rounded shadow-md md:col-span-2 md:row-span-2 col-span-4 overflow-y-scroll custom-scrollbar ">
-            <div onClick={()=>navigate('/vieworders')} className='flex justify-between'><h1 className='text-xl font-bold'>Orders</h1>
+            <div onClick={()=>navigate('/admin/view-orders')} className='flex justify-between'><h1 className='text-xl font-bold'>Orders</h1>
             <button className='bg-yellow-400 rounded p-1 w-14 text-black font-bold text-xs'>View</button>
             </div>
             <div className='grid grid-cols-3 p-2'>

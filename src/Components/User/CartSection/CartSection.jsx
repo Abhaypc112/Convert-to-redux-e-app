@@ -57,7 +57,7 @@ function CartSection() {
               data.products.map((value) => (
                 <div key={value.id} className="md:flex flex-col">
                   <div className="image-details md:flex w-full md:w-[100%] md:m-6 space-y-3">
-                    <img src={value.productId.images[0]} className="big-image bg-white w-full md:w-[40%] md:h-[80%] rounded hover:transform hover:scale-105  transition-all duration-500 ease-in-out"alt={value.name} onClick={()=>nav(`/product/${value.id}`)}/>
+                    <img src={value.productId.images[0]} className="big-image bg-white w-full md:w-[40%] md:h-[80%] rounded hover:transform hover:scale-105  transition-all duration-500 ease-in-out"alt={value.name} onClick={()=>nav(`/product/${value.productId._id}`)}/>
                     <div className="md:ml-5 ml-2 flex flex-col space-y-3">
                       <h1 className="text-md font-bold">{value.productId.name}</h1>
                       <p className="text-sm max-w-[70%]">{value.productId.description}</p>

@@ -50,12 +50,12 @@ function App() {
 
               <Route path='*' element={<Error/>}/>
               <Route path='/admin' element={<AdminHome/>}/>
-              <Route path='/addproduct' element={<AddProducts/>} />
-              <Route path='/viewproducts' element={<ViewProducts/>}/>
-              <Route path='/vieworders' element={<AdminOredersView/>}/>
-              <Route path='/viewusers' element={<AdminUserView/>}/>
-              <Route path='/adduser' element={<AddUsers/>}/>
-              <Route path='/viewproduct/:id' element={<ViewProduct/>}/>
+              <Route path='/admin/add-product' element={<AddProducts/>} />
+              <Route path='/admin/view-products' element={<ViewProducts/>}/>
+              <Route path='/admin/view-orders' element={<AdminOredersView/>}/>
+              <Route path='/admin/view-users' element={<AdminUserView/>}/>
+              <Route path='/admin/add-user' element={<AddUsers/>}/>
+              <Route path='/admin/view-product/:id' element={<ViewProduct/>}/>
               
           </Routes>
     </div>

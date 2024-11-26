@@ -18,7 +18,7 @@ function MidSection() {
             </div>
             <div className="box flex flex-col p-5 w-full h-[380px] bg-white rounded shadow-md col-span-4 overflow-scroll custom-scrollbar space-y-3">
                 <div className='flex justify-between'><h1 className='text-xl font-bold'>Product Overview</h1>
-                <button onClick={()=>navigate('/addproduct')} className='bg-green-500 rounded p-2 text-white font-bold text-sm'>Add Product</button>
+                <button onClick={()=>navigate('/admin/add-product')} className='bg-green-500 rounded p-2 text-white font-bold text-sm'>Add Product</button>
                 </div>
                 <div className='grid grid-cols-6 '>
                     <h1 className='font-bold text-center'>Image</h1>

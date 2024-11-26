@@ -25,9 +25,9 @@ function SideBar() {
             <h1 className='md:text-2xl hidden md:flex font-semibold ext-gray-500'>Admin</h1>
       </div>
        <div className="mid space-y-5 flex flex-col items-center">
-            <div onClick={()=>navigate('/viewproducts')} className='bg-slate-100 md:p-2 cursor-pointer rounded-md font-semibold flex items-center space-x-5 h-10 w-10 md:h-full lg:w-full lg:justify-start justify-center'><MdOutlineShoppingCart className='w-7 h-7'/> <span className='hidden lg:flex'>Ecommerce</span></div>
-            <div onClick={()=>navigate('/vieworders')} className='bg-slate-100 md:p-2 cursor-pointer rounded-md font-semibold flex items-center space-x-5 h-10 w-10 md:h-full lg:w-full lg:justify-start justify-center'><HiOutlineDocumentAdd className='w-7 h-7'/> <span className='hidden lg:flex'>Orders</span></div>
-            <div onClick={()=>navigate('/viewusers')} className='bg-slate-100 md:p-2 cursor-pointer rounded-md font-semibold flex items-center space-x-5 h-10 w-10 md:h-full lg:w-full lg:justify-start justify-center'><IoIosPeople className='w-7 h-7'/> <span className='hidden lg:flex'>Users</span></div>
+            <div onClick={()=>navigate('/admin/view-products')} className='bg-slate-100 md:p-2 cursor-pointer rounded-md font-semibold flex items-center space-x-5 h-10 w-10 md:h-full lg:w-full lg:justify-start justify-center'><MdOutlineShoppingCart className='w-7 h-7'/> <span className='hidden lg:flex'>Ecommerce</span></div>
+            <div onClick={()=>navigate('/admin/view-orders')} className='bg-slate-100 md:p-2 cursor-pointer rounded-md font-semibold flex items-center space-x-5 h-10 w-10 md:h-full lg:w-full lg:justify-start justify-center'><HiOutlineDocumentAdd className='w-7 h-7'/> <span className='hidden lg:flex'>Orders</span></div>
+            <div onClick={()=>navigate('/admin/view-users')} className='bg-slate-100 md:p-2 cursor-pointer rounded-md font-semibold flex items-center space-x-5 h-10 w-10 md:h-full lg:w-full lg:justify-start justify-center'><IoIosPeople className='w-7 h-7'/> <span className='hidden lg:flex'>Users</span></div>
             <div onClick={()=>navigate('/admin')} className='bg-slate-100 md:p-2 cursor-pointer rounded-md font-semibold flex items-center space-x-5 h-10 w-10 md:h-full lg:w-full lg:justify-start justify-center'><MdCategory className='w-7 h-7'/> <span className='hidden lg:flex'>Home</span></div>
        </div>
        <div className='bottom flex flex-col items-center'>

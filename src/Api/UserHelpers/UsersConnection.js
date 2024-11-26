@@ -1,53 +1,49 @@
-import axios from 'axios'
-
-const token = localStorage.getItem('token');
-const authorization = {headers: { 'authorization':token }};
-
+import axiosInstance from '../axiosInstance';
 
 // Api connection
 export function getAllUsers(){
-    const res = axios.get('http://localhost:3001/api/admin/totalusers',authorization);
+    const res = axiosInstance.get('/admin/total-users');
     return res
 }
 export async function checkUser(userInfo){
-    const res = await axios.post('http://localhost:3001/api/user/login',userInfo);
+    const res = await axiosInstance.post('/user/login',userInfo);
     return res.data
 }
 export async function checkUserName(userData){
-    const res = await axios.post(`http://localhost:3001/api/user/signup`,userData);
+    const res = await axiosInstance.post(`/user/signup`,userData);
     return res.data;
 }
 export async function addUser(userData){
-    return await axios.post(`http://localhost:3001/api/user/signup`,userData);
+    return await axiosInstance.post(`/user/signup`,userData);
 }
 export function getUserById(){
-   return axios.get('http://localhost:3001/api/user',authorization);
+   return axiosInstance.get('/user');
 }
 export function getCartById(){
-   return axios.get('http://localhost:3001/api/users/cart',authorization);
+   return axiosInstance.get('/users/cart');
 }
 export function adjustCount(productId,adjust){
-   return axios.patch(`http://localhost:3001/api/users/cart/${productId}/${adjust}`,adjust,authorization);
+   return axiosInstance.patch(`/users/cart/${productId}/${adjust}`);
 }
 export function addCart(_id,quantity){
-    return axios.post(`http://localhost:3001/api/users/cart/${_id}`,quantity,authorization);
+    return axiosInstance.post(`/users/cart/${_id}`,quantity);
 }
 export function deleteItem(_id){
-    return axios.delete(`http://localhost:3001/api/users/cart/${_id}`,authorization);
+    return axiosInstance.delete(`/users/cart/${_id}`);
 }
 export function addAddress(updateAddress){
-    return axios.post(`http://localhost:3001/api/users/address`,updateAddress,authorization)
+    return axiosInstance.post(`/users/address`,updateAddress)
 }
 export async function getAddressById(){
-    const res= await axios.get('http://localhost:3001/api/users/address',authorization);
+    const res= await axiosInstance.get('/users/address');
     return res.data;
 }
 export function addOrder(updateOrder){
-    return axios.post(`http://localhost:3001/api/users/order`,updateOrder,authorization)
+    return axiosInstance.post(`/users/order`,updateOrder)
 }
 export async function getOrdersById(){
-    return await axios.get(`http://localhost:3001/api/users/order`,authorization);
+    return await axiosInstance.get(`/users/order`);
 }
 export function blockUserById(id,status){
-    return axios.patch(`http://localhost:3001/api/admin/${id}/${status}`,{},authorization)
+    return axiosInstance.patch(`/admin/${id}/${status}`)
 }

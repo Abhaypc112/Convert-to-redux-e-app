@@ -34,7 +34,7 @@ function AdminHeader() {
   function handleProductClick(id){
     setShowModal(false)
     setSearchTerm('')
-    nav(`/viewproduct/${id}`)
+    nav(`/view-product/${id}`)
   }
   return (
     <div>

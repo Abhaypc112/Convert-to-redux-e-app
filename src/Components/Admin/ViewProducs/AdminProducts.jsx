@@ -73,8 +73,8 @@ function AdminProducts() {
               filterdProducts.slice(0).reverse().map((product)=>{
                 return(
                   <div key={product.id} className='grid grid-cols-7 items-center w-[67rem]'>
-                    <div  onClick={()=>navigate(`/viewproduct/${product._id}`)} className='flex justify-center cursor-pointer' ><img src={product.images[0]} alt="" className='w-16' /></div>
-                      <span onClick={()=>navigate(`/viewproduct/${product._id}`)} className='col-span-2 text-center cursor-pointer'>{product.name}</span>
+                    <div  onClick={()=>navigate(`/admin/view-product/${product._id}`)} className='flex justify-center cursor-pointer' ><img src={product.images[0]} alt="" className='w-16' /></div>
+                      <span onClick={()=>navigate(`/admin/view-product/${product._id}`)} className='col-span-2 text-center cursor-pointer'>{product.name}</span>
                       {/* <span className='text-center '>#{product.id}</span> */}
                       <span className='text-center'>$ {product.price}</span>
                       <span className='text-center'>{product.stock}</span>

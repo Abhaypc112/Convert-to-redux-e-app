@@ -1,37 +1,34 @@
-import axios from 'axios'
-
-const token = localStorage.getItem('token');
-const authorization = {headers: { 'authorization':token }};
+import axiosInstance from '../axiosInstance';
 
 // Appi connection
 export async function getCategory(){
-    const res = await axios.get('http://localhost:3001/api/products/categorys');
+    const res = await axiosInstance.get('/products/categorys');
     return res.data;
 }
 export async function getProducts(){
-    const res = await axios.get('http://localhost:3001/api/products');
+    const res = await axiosInstance.get('/products');
     return res.data;
 }
 export async function getProductsByCategory(category){
-    const res = await axios.get(`http://localhost:3001/api/products?category=${category}`);
+    const res = await axiosInstance.get(`/products?category=${category}`);
     return res.data;
 }
 export async function getProductsById(_id){
-    const res = await axios.get(`http://localhost:3001/api/product/${_id}`);
+    const res = await axiosInstance.get(`/product/${_id}`);
     return res.data;
 }
 export function getTotalSales(){
-    return axios.get("http://localhost:3001/api/admin/totalsales",authorization)  
+    return axiosInstance.get("/admin/total-sales");  
 }
 export function getTotalOrders(){
-    return axios.get("http://localhost:3001/api/admin/totalorders",authorization)  
+    return axiosInstance.get("/admin/total-orders");  
 }
 export function deleteProductById(id){
-    return axios.delete(`http://localhost:3001/api/admin/${id}`,authorization)  
+    return axiosInstance.delete(`/admin/${id}`);  
 }
 export function addProduct(data){
-    return axios.post('http://localhost:3001/api/admin/product',data,authorization)
+    return axiosInstance.post('/admin/product',data);
 }
 export function EditProductById(id,data){
-    return axios.patch(`http://localhost:3001/api/admin/${id}`,data,authorization)
+    return axiosInstance.patch(`/admin/${id}`,data);
 }
