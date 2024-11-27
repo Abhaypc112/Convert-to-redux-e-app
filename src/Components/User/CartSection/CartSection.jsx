@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { adjustCount, deleteItem, getCartById, } from '../../../Api/UserHelpers/UsersConnection';
+import { addWishlist, adjustCount, deleteItem, getCartById, } from '../../../Api/UserHelpers/UsersConnection';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { UserContext } from '../../../Contexts/UserContext';
@@ -51,6 +51,11 @@ function CartSection() {
    }
   }
 
+  const addTowishlist = (_id) =>{
+    addWishlist(_id)
+    .then((res) => toast.success("Added to wishlist",{position:'bottom-right'}))
+  }
+
   return (
     <div style={{ marginTop: '8rem' }}>
       <div className="main flex justify-center">
@@ -73,7 +78,7 @@ function CartSection() {
                     </div>
                   </div>
                   <div className="delete-wishlist space-y-3 md:space-y-0 mb-5 md:flex-row flex flex-col justify-between md:justify-evenly">
-                    <button className="text-black   py-3 rounded-lg w-full md:w-[40%] border">Wishlist</button>
+                    <button onClick={()=>addTowishlist(value.productId._id)} className="text-black   py-3 rounded-lg w-full md:w-[40%] border">Wishlist</button>
                     <button onClick={() => deleteCartItem(value.productId._id)}className="text-black  py-3 rounded-lg w-full md:w-[40%] border">Delete</button>
                   </div>
                 </div>

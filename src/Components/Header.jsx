@@ -152,8 +152,10 @@ function handleProductClick(id){
             >
               Store
             </Button>
-            <Button className="w-full justify-center hover:text-yellow-400 rounded-md px-3 py-2 text-sm font-bold text-white shadow-sm hidden md:flex">
-              What'sNew
+            <Button 
+            onClick={() => nav('/wishlist')}
+            className="w-full justify-center hover:text-yellow-400 rounded-md px-3 py-2 text-sm font-bold text-white shadow-sm hidden md:flex">
+              Wishlist
             </Button>
           </nav>
 

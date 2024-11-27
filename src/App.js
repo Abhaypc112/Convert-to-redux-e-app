@@ -19,6 +19,7 @@ import AddUsers from './Pages/Admin/AdminHome/AddUsers';
 import Error from './Pages/Error';
 import ViewProduct from './Pages/Admin/AdminHome/ViewProduct';
 import Test from './Pages/Test';
+import Wishlists from './Pages/Wishlists';
 
 function App() {
   return (
@@ -39,6 +40,7 @@ function App() {
             <Route path='/profile' element={<Profile/>}/>
             <Route path='/payment' element={<Payment/>}/>
             <Route path='/orders' element={<Orders/>}/>
+            <Route path='/wishlist' element={<Wishlists/>}/>
           
             <Route path='/login' element={<Login/>}/>
             <Route path='/signup' element={<SignUp/>}/>

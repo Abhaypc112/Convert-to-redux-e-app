@@ -52,3 +52,12 @@ export async function createOrder(data){
 export async function verifyPayment (data){
     return axiosInstance.post(`/verify-payment`,data)
 }
+export async function getWishlist (){
+    return axiosInstance.get(`/users/wishlist`);
+}
+export async function deleteWishlist (_id){
+    return axiosInstance.delete(`/users/wishlist/${_id}`)
+}
+export async function addWishlist (_id){
+    return axiosInstance.post(`/users/wishlist/${_id}`)
+}
