@@ -47,3 +47,9 @@ export async function getOrdersById(){
 export function blockUserById(id,status){
     return axiosInstance.patch(`/admin/${id}/${status}`)
 }
+export async function createOrder(data){
+    return await axiosInstance.post(`/payments/create-order`,data)
+}
+export async function verifyPayment (data){
+    return axiosInstance.post(`/verify-payment`,data)
+}

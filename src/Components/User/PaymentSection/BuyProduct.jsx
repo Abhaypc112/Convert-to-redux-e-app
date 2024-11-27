@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { addAddress, addOrder, getAddressById, getCartById} from '../../../Api/UserHelpers/UsersConnection';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import axios from 'axios';
 
 function BuyProduct() {
   const [data, setData] = useState([]);
@@ -11,6 +12,70 @@ function BuyProduct() {
   const nav = useNavigate();
   const [userData,setUSerData] = useState({});
   const [paymentMethode,setPaymentMethod] = useState('');
+
+    useEffect(() => {
+      const script = document.createElement('script');
+      script.src = 'https://checkout.razorpay.com/v1/checkout.js';
+      script.async = true;
+      script.onload = () => {
+        console.log('Razorpay script loaded successfully');
+      };
+      document.body.appendChild(script);
+    }, []);
+  
+    const handlePayment = async () => {
+     
+      try {
+        // Create an order on the backend
+        const { data: order } = await axios.post('http://localhost:3001/api/payment', {
+          amount: data.totalCartPrice,
+        });
+        const options = {
+          key: 'rzp_test_czxwLsdvB0eVMr',
+          amount: order.amount,
+          currency: order.currency,
+          name: 'LuxeLounge',
+          description: 'Transaction',
+          order_id: order.id,
+          handler: async function (response) {
+            // Verify the payment on the backend
+            const verificationResponse = await axios.post(
+              'http://localhost:3001/api/verify-payment',
+              response
+            );
+  
+            if (verificationResponse.data.success) {
+              alert('Payment Successful!');
+            } else {
+              alert('Payment Verification Failed!');
+            }
+          },
+          prefill: {
+            name: 'John Doe', // User's name
+            email: 'johndoe@example.com', // User's email
+            contact: '9876543210', // User's phone
+          },
+          theme: {
+            color: '#FFFF00', // Custom color for Razorpay Checkout
+          },
+        };
+  
+        // Open Razorpay Checkout
+        const razorpay = new window.Razorpay(options);
+        console.log(razorpay);
+        
+        razorpay.open();
+  
+        // Add a handler for payment failure
+        razorpay.on('payment.failed', function (response) {
+          alert(`Payment Failed: ${response.error.reason}`);
+        });
+      } catch (error) {
+        console.error('Payment Error:', error);
+        alert('Payment Initialization Failed!');
+      }
+    };
+    
 
   // Fetch cart and address
   useEffect(() => {
@@ -50,10 +115,21 @@ function BuyProduct() {
   // Add order
   async function addOrderData(){
     if(userData && paymentMethode){
-    addOrder({paymentMethode})
-    .then(()=> { nav('/orders')
-    toast.success("Item Orders Sucessfully",{position:'bottom-right'})
-    })
+      if(paymentMethode !== "Cash on delivery"){
+        const payment = await handlePayment()
+          if (payment){
+            addOrder({paymentMethode})
+            .then(()=> { nav('/orders')
+            toast.success("Item Orders Sucessfully",{position:'bottom-right'})
+          })
+          }else console.log("haii")
+      }
+      else{
+        addOrder({paymentMethode})
+        .then(()=> { nav('/orders')
+        toast.success("Item Orders Sucessfully",{position:'bottom-right'})
+      })
+      }
     }else{
       if(!userData){
        toast.error('Fill The Address ❗',{position:'bottom-right'})

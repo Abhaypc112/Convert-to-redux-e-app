@@ -21,7 +21,6 @@ import ViewProduct from './Pages/Admin/AdminHome/ViewProduct';
 import Test from './Pages/Test';
 
 function App() {
-  const adminId=localStorage.getItem("adminId")
   return (
     <div className="App">
       
@@ -40,7 +39,7 @@ function App() {
             <Route path='/profile' element={<Profile/>}/>
             <Route path='/payment' element={<Payment/>}/>
             <Route path='/orders' element={<Orders/>}/>
-
+          
             <Route path='/login' element={<Login/>}/>
             <Route path='/signup' element={<SignUp/>}/>
             <Route path='/home/:_id' element={<Home/>}/>
