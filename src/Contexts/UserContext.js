@@ -12,12 +12,12 @@ export const UserProvider=({children})=>{
     const[editStatus,setEditStatus]=useState(false);
     const[deleteCartItem,setDeleteCartItem]=useState(false);
   
-    useEffect(()=>{
-        getAllUsers()
-        .then((res)=>setUserData(res.data))
-        .catch(error=>console.log(error))
+    // useEffect(()=>{
+    //     getAllUsers()
+    //     .then((res)=>setUserData(res.data))
+    //     .catch(error=>console.log(error))
         
-    },[])
+    // },[])
 
     const addUser=async (user)=>{
         try{

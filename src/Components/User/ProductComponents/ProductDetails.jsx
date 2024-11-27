@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { getProductsById } from '../../../Api/ProductHelper/ProductConnection'
 import { addCart } from '../../../Api/UserHelpers/UsersConnection';
 import { toast } from 'react-toastify';
+import { UserContext } from '../../../Contexts/UserContext';
 
 
 function ProductDetails() {
@@ -12,6 +13,7 @@ function ProductDetails() {
   const {_id} = useParams();
   const userRole = localStorage.getItem("userRole");
   const nav = useNavigate();
+  const {setCart,carts} = useContext(UserContext);
  
 // Fetch product
   useEffect(()=>{
@@ -25,6 +27,7 @@ async function addItemCart(_id){
   if(userRole){
     addCart(_id,{quantity:count})
     .then((res)=>{
+      setCart(!carts)
       if(res.data) toast.success("Item added to cart",{position:'bottom-right'})})}
   else nav('/login')
 }

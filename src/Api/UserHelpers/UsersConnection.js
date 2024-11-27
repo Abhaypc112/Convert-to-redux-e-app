@@ -2,8 +2,7 @@ import axiosInstance from '../axiosInstance';
 
 // Api connection
 export function getAllUsers(){
-    const res = axiosInstance.get('/admin/total-users');
-    return res
+    return axiosInstance.get('/admin/total-users');  
 }
 export async function checkUser(userInfo){
     const res = await axiosInstance.post('/user/login',userInfo);

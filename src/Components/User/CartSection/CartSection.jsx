@@ -1,12 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { adjustCount, deleteItem, getCartById, } from '../../../Api/UserHelpers/UsersConnection';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import { UserContext } from '../../../Contexts/UserContext';
 
 function CartSection() {
-  const [data, setData] = useState({});
+  const [data, setData] = useState([]);
   const userRole = localStorage.getItem("userRole");
   const nav = useNavigate();
+  const {setCart,carts} = useContext(UserContext);
 
 
   // Fetch cart products
@@ -23,6 +25,7 @@ function CartSection() {
     await deleteItem(productId)
     .then((res) =>{
       setData(res.data.data);
+      setCart(!carts)
       toast.success("Item deleted",{position:'bottom-right'});
     })
   }
