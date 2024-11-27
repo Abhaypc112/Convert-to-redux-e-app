@@ -9,6 +9,7 @@ function BestSellers() {
     .then((res)=>setData((res.data).sort((a,b)=>{
       return b.rating - a.rating
     })))
+    .catch((error) => console.log(error));
     
   },[])
   return (

@@ -28,12 +28,14 @@ function CartSection() {
       setCart(!carts)
       toast.success("Item deleted",{position:'bottom-right'});
     })
+    .catch((error) => console.log(error));
   }
 
   // Change product count
   async function changeProductCount(productId,adjust){
     await adjustCount(productId,adjust)
     .then((res) => setData(res.data.data))
+    .catch((error) => console.log(error));
   }
 
   //Role verification
@@ -54,6 +56,7 @@ function CartSection() {
   const addTowishlist = (_id) =>{
     addWishlist(_id)
     .then((res) => toast.success("Added to wishlist",{position:'bottom-right'}))
+    .catch((error) => console.log(error));
   }
 
   return (

@@ -99,6 +99,7 @@ function BuyProduct() {
   function addAddressData(){
     addAddress(updateAddress)
     .then((res)=>setUSerData(res.data.data.addressDetails))
+    .catch((error) => console.log(error));
   }
   function editAddress(){
     setUpdateAddress(userData)

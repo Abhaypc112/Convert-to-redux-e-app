@@ -9,6 +9,7 @@ function Budget() {
     .then((res)=>setData((res.data).sort((a,b)=>{
       return a.price - b.price
     })))
+    .catch((error) => console.log(error));
   },[])
   return (
     <div>

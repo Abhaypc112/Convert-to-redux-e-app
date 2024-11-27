@@ -7,6 +7,7 @@ function Categories() {
   useEffect(()=>{
     getCategory()
     .then((res)=>setData(res.data))
+    .catch((error) => console.log(error));
   },[])
   return (
     <div id='home' >

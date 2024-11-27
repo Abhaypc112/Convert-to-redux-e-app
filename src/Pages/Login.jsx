@@ -46,7 +46,7 @@ function Login() {
     else if(userRole === 'admin'){
       nav('/admin')
     }
-  },[userRole])
+  },[userRole,error])
   
   
   return (

@@ -14,6 +14,7 @@ function Orders() {
     if(userRole){
         getOrdersById()
         .then((res)=> setOrders(res.data)) 
+        .catch((error) => console.log(error));
        }
     },[userRole]);
 

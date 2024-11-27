@@ -28,7 +28,9 @@ async function addItemCart(_id){
     addCart(_id,{quantity:count})
     .then((res)=>{
       setCart(!carts)
-      if(res.data) toast.success("Item added to cart",{position:'bottom-right'})})}
+      if(res.data) toast.success("Item added to cart",{position:'bottom-right'})})
+      .catch((error) => console.log(error));
+    }
   else nav('/login')
 }
   return (

@@ -18,6 +18,7 @@ function Profile() {
         if(token){
             getUserById()
             .then((res)=>setUser(res.data))
+            .catch((error) => console.log(error));
             getAddressById()
             .then((res)=>setUSerData(res.data.addressDetails))
             .catch(error => {
@@ -37,6 +38,7 @@ function handelOnChange(event){
 function addAddressData(){
   addAddress(updateAddress)
   .then((res)=>setUSerData(res.data.data.addressDetails))
+  .catch((error) => console.log(error));
 }
 function editAddress(){
   setUpdateAddress(userData)

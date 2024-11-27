@@ -14,6 +14,7 @@ function Wishlist() {
         if(userRole){
             getWishlist()
             .then((res) => setWishData(res.data.data))
+            .catch((error) => console.log(error));
         }
     },[userRole])
     const addItemCart = (_id) => {
@@ -21,7 +22,9 @@ function Wishlist() {
             addCart(_id,{quantity:1})
             .then((res)=>{
               setCart(!carts)
-              if(res.data) toast.success("Item added to cart",{position:'bottom-right'})})}
+              if(res.data) toast.success("Item added to cart",{position:'bottom-right'})})
+            .catch((error) => console.log(error));
+            }
           else nav('/login')
     }
     const deleteWishItem = (_id) => {
@@ -31,6 +34,7 @@ function Wishlist() {
             .then((res) => setWishData(res.data.data))
             toast.success("Remove from wishlist",{position:'bottom-right'})
     })
+    .catch((error) => console.log(error));
     }
   return (
     <div>
@@ -38,7 +42,9 @@ function Wishlist() {
       <h2 className="text-2xl font-semibold mb-4 text-center">Wishlist</h2>
       <div className="flex gap-5 mx-10 flex-wrap justify-center">
         {
+        
          wishData.products && wishData.products.map((Obj)=>{
+            
             return(
                   
               <div style={{width:"20rem",height:"26rem"}} className=' rounded shadow border hover:transform hover:scale-105  transition-all duration-500 ease-in-out'>

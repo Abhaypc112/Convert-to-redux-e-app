@@ -16,13 +16,17 @@ function Products() {
    if(category){
     getProductsByCategory(category)
     .then((res)=>setData(res.data))
+    .catch((error) => console.log(error));
     getWishlist()
     .then((res) => setWishData(res.data.data))
+    .catch((error) => console.log(error));
   }else{
     getProductsByCategory("")
     .then((res)=>setStoreData(res.data))
+    .catch((error) => console.log(error));
     getWishlist()
     .then((res) => setWishData(res.data.data))
+    .catch((error) => console.log(error));
   }
   },[category])
   const addtoWishlist = (_id) =>{
@@ -30,6 +34,7 @@ function Products() {
     .then((res)=>{
       getWishlist()
       .then((res) => setWishData(res.data.data))
+      .catch((error) => console.log(error));
   })
   } 
   return (
@@ -38,8 +43,8 @@ function Products() {
       {/* <h2 className="text-2xl font-semibold mb-4">Produts</h2> */}
       <div className="flex gap-5 mx-10 flex-wrap justify-center">
         {
-          ((!category)?storeData:data).map((Obj)=>{
-            const data = wishDta.products && wishDta.products.find((item) => item.productId._id == Obj._id)
+          (storeData || data) && ((!category)?storeData:data).map((Obj)=>{
+            const data = wishDta && wishDta.products.find((item) => item.productId._id == Obj._id)
             if(data){
               return(
                 <div style={{width:"20rem",height:"26rem"}} className=' rounded shadow border hover:transform hover:scale-105  transition-all duration-500 ease-in-out'>
