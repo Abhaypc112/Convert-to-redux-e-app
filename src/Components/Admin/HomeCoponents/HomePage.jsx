@@ -15,12 +15,15 @@ function HomePage() {
   useEffect(()=>{
     getAllUsers()
     .then((res)=>setUserCount(res.data.data))
+    .catch((error) => console.log(error));
     getTotalSales()
     .then((res)=>{
       setSales(res.data.data[0].totalSales);
     })
+    .catch((error) => console.log(error));
     getTotalOrders()
     .then((res) => setOrderCount(res.data.data.length) )
+    .catch((error) => console.log(error));
   },[])
  
   return (

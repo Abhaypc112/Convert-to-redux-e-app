@@ -12,10 +12,12 @@ function BottomSection() {
   useEffect(()=>{
     getTotalOrders()
     .then((res)=> setItems(res.data.data))
+    .catch((error) => console.log(error));
     getProducts()
     .then((res)=>setData((res.data).sort((a,b)=>{
       return b.rating-a.rating
     })))
+    .catch((error) => console.log(error));
   },[])
   return (
     <div>
@@ -31,8 +33,8 @@ function BottomSection() {
                 </div>
     
               {
-                items.slice(0).reverse().map((value)=>{
-                  return (value.products).map((Obj)=>{ 
+                items && items.slice(0).reverse().map((value)=>{
+                  return value && (value.products).map((Obj)=>{ 
                       return(
                         <div key={Obj.id} className='grid grid-cols-3 mt-5 '>
                         <div className='flex'>

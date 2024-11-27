@@ -26,12 +26,15 @@ function AdminProducts() {
     .then(()=>{
       getProducts()
     .then((res)=>setProducts(res.data))
+    .catch((error) => console.log(error));
     toast.success("Product Deleted")
     })
+    .catch((error) => console.log(error));
   }
   useEffect(()=>{
     getProducts()
     .then((res)=>setProducts(res.data))
+    .catch((error) => console.log(error));
   },[editStatus])
 
   useEffect(()=>{
@@ -55,7 +58,7 @@ function AdminProducts() {
         <div className='flex justify-between w-[67rem]'>
           <h1 className='text-2xl font-bold'>Products</h1>
           <input type="text" placeholder='Search Products' onChange={(e)=>setSearchTerm(e.target.value)} className='className="w-40 md:w-48 py-2 bg-transparent text-black focus:outline-none border-black outline-none border-b focus:w-64 transition-all duration-500 ease-in-out"' />
-          <button onClick={()=>navigate('/addproduct')} className='bg-green-500 rounded p-2 text-white font-bold text-sm'>Add Product</button>
+          <button onClick={()=>navigate('/admin/add-product')} className='bg-green-500 rounded p-2 text-white font-bold text-sm'>Add Product</button>
         </div>
         <div className='grid grid-cols-7 w-[67rem] '>
                     <h1 className='font-bold text-center '>Image</h1>

@@ -7,6 +7,7 @@ function OrdersView() {
   useEffect(()=>{
     getTotalOrders()
     .then((res)=>setUsers(res.data.data))
+    .catch((error) => console.log(error));
   })
   return (
     <div style={{marginTop:"7rem"}} className='w-[88%] md:w-[80%] flex justify-center bg-slate-100 h-lvh'>

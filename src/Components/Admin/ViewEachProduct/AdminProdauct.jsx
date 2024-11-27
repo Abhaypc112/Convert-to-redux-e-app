@@ -29,7 +29,7 @@ function AdminProdauct() {
 
   function handleDelete(){
     deleteProductById(id)
-    navigate('/viewproducts')
+    navigate('/admin/view-products')
     toast.success("Product Deleted")
   }
 

@@ -9,6 +9,7 @@ function MidSection() {
   useEffect(()=>{
     getProducts()
     .then((res)=>setData(res.data))
+    .catch((error) => console.log(error));
   },[])
   return (
 
@@ -29,7 +30,7 @@ function MidSection() {
                 </div>
     
               {
-                data.slice(0).reverse().map((Obj)=>{
+                data && data.slice(0).reverse().map((Obj)=>{
                   return(
                     <div key={Obj.id} className='grid grid-cols-6 items-center'>
                       <div className='flex justify-center h-20' ><img src={Obj.images[0]} alt="" /></div>

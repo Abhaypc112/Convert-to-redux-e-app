@@ -30,8 +30,10 @@ function EditProduct({id}) {
     function handleSubmit(e){
         e.preventDefault();
        EditProductById(id,productDetails)
-       .then((res) => console.log(res.data))
-       setEditStatus(false)
+       .then((res) => {
+            setEditStatus(false)
+       })
+       .catch((error) => console.log(error));
        toast.success("Upadated Product Details")
     }
 
@@ -39,6 +41,7 @@ function EditProduct({id}) {
         if(id){
             getProductsById(id)
         .then((res)=>setProductDetails(res.data)) 
+        .catch((error) => console.log(error));
         }
     },[id])
   return (

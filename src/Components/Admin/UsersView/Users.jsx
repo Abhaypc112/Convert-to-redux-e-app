@@ -26,7 +26,9 @@ function Users() {
       .then((res)=>{
         getAllUsers()
       .then((res)=>setUsers(res.data.data))
+      .catch((error) => console.log(error));
     })
+    .catch((error) => console.log(error));
   }  
     else if(!status) {
       blockUserById(id,"block")
@@ -34,12 +36,14 @@ function Users() {
       getAllUsers()
     .then((res)=>setUsers(res.data.data))
     })
+    .catch((error) => console.log(error));
   }
   toast.success(status?"User Unblocked":"User Blocked")
   }
   useEffect(()=>{
     getAllUsers()
     .then((res)=>setUsers(res.data.data))
+    .catch((error) => console.log(error));
   },[])
 
   useEffect(()=>{
