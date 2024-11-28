@@ -43,7 +43,7 @@ function Wishlist() {
       <div className="flex gap-5 mx-10 flex-wrap justify-center">
         {
         
-         wishData.products && wishData.products.map((Obj)=>{
+        wishData && wishData.products && wishData.products.map((Obj)=>{
             
             return(
                   

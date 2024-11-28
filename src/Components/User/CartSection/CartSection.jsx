@@ -46,7 +46,7 @@ function CartSection() {
 
   // Order section
   function buyOrder(){
-   if(data.products.length>0){
+   if(data  && data.products.length>0 ){
     nav('/payment')
    }else{
     toast.error("Cart is Empty",{position:'bottom-right'});
@@ -64,7 +64,7 @@ function CartSection() {
       <div className="main flex justify-center">
         <div className="image-details w-[80%] rounded flex flex-col md:flex-row">
           <div style={{ height: '40rem' }}className="image space-y-5 md:w-1/2  flex flex-col border overflow-scroll overflow-x-hidden custom-scrollbar">
-            {data.products && data.products.length > 0 ? (
+            {data && data.products && data.products.length > 0 ? (
               data.products.map((value) => (
                 <div key={value.id} className="md:flex flex-col">
                   <div className="image-details md:flex w-full md:w-[100%] md:m-6 space-y-3">
@@ -102,19 +102,19 @@ function CartSection() {
                 <span className="text-xl font-bold">Cart Summary</span>
               </div>
               <div className="flex justify-between">
-                <span>MRP ({data.products ? data.products.length : 0} items)</span>
-                <span>${data.totalCartPrice}</span>
+                <span>MRP ({data && data.products ? data.products.length : 0} items)</span>
+                <span>${data && data.totalCartPrice}</span>
               </div>
               <hr />
               <div className="flex justify-between">
                 <span className="font-bold">Sub Total</span>
-                <span className="font-bold">${data.totalCartPrice}</span>
+                <span className="font-bold">${data && data.totalCartPrice}</span>
               </div>
               <hr />
               <hr />
               <div className="flex justify-between">
                 <span className="font-bold text-xl">TOTAL</span>
-                <span className="font-bold text-xl">${data.totalCartPrice}</span>
+                <span className="font-bold text-xl">${data && data.totalCartPrice}</span>
               </div>
             </div>
             <div className="cart-buy md:space-x-3 space-y-3 w-[100%]">

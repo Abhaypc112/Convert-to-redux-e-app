@@ -7,15 +7,16 @@ import { addWishlist, getWishlist } from '../../../Api/UserHelpers/UsersConnecti
 import { toast } from 'react-toastify';
 
 function Products() {
-  const[data,setData]=useState([]);
+  const[product,setProduct]=useState([]);
   const[wishDta,setWishData] = useState([]);
   const[storeData,setStoreData]=useState([]);
   const {category}=useParams();
+  const userRole = localStorage.getItem('userRole');
   
   useEffect(()=>{
    if(category){
     getProductsByCategory(category)
-    .then((res)=>setData(res.data))
+    .then((res)=>setProduct(res.data))
     .catch((error) => console.log(error));
     getWishlist()
     .then((res) => setWishData(res.data.data))
@@ -28,7 +29,7 @@ function Products() {
     .then((res) => setWishData(res.data.data))
     .catch((error) => console.log(error));
   }
-  },[category])
+  },[category,userRole])
   const addtoWishlist = (_id) =>{
     addWishlist(_id)
     .then((res)=>{
@@ -43,8 +44,8 @@ function Products() {
       {/* <h2 className="text-2xl font-semibold mb-4">Produts</h2> */}
       <div className="flex gap-5 mx-10 flex-wrap justify-center">
         {
-          (storeData || data) && ((!category)?storeData:data).map((Obj)=>{
-            const data = wishDta && wishDta.products.find((item) => item.productId._id == Obj._id)
+          (storeData || product) && ((!category)?storeData:product).map((Obj)=>{
+            const data = (wishDta && wishDta.products && userRole) && wishDta.products.find((item) => item.productId._id == Obj._id)
             if(data){
               return(
                 <div style={{width:"20rem",height:"26rem"}} className=' rounded shadow border hover:transform hover:scale-105  transition-all duration-500 ease-in-out'>
@@ -78,7 +79,7 @@ function Products() {
                   <span className='text-xs'>{Obj.rating}⭐</span>
                   <div className='flex justify-between items-center h-10'>
                     <span className='text-xl font-bold'>$ {Obj.price}</span>
-                    <FaRegHeart onClick={()=>addtoWishlist(Obj._id)} className='h-6 w-6 hover:h-7 w-7 text-red-600 hover:transform hover:scale-105  transition-all duration-500 ease-in-out'/>
+                    {userRole && <FaRegHeart onClick={()=>addtoWishlist(Obj._id)} className='h-6 w-6 hover:h-7 w-7 text-red-600 hover:transform hover:scale-105  transition-all duration-500 ease-in-out'/>}
                     {/* <FaHeart className='h-6 w-6 hover:h-7 w-7 text-red-600 hover:transform hover:scale-105  transition-all duration-500 ease-in-out'/> */}
                   </div>
                   </div>
