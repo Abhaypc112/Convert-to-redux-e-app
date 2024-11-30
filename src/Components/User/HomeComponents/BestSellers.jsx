@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react'
-import { getProducts } from '../../../Api/ProductHelper/ProductConnection'
+import { getHomeProducts } from '../../../Api/ProductHelper/ProductConnection'
 import { NavLink } from 'react-router-dom';
 
 function BestSellers() {
   const[data,setData]=useState([]);
   useEffect(()=>{
-    getProducts()
-    .then((res)=>setData((res.data).sort((a,b)=>{
+    getHomeProducts()
+    .then((res)=>setData((res.data.products).sort((a,b)=>{
       return b.rating - a.rating
     })))
     .catch((error) => console.log(error));
@@ -19,7 +19,7 @@ function BestSellers() {
       <div className="flex flex-wrap gap-10 mx-10 justify-center">
         {
           data.map((Obj,index)=>{
-           if(index<14){
+           if(index<7){
             return (
               <NavLink to={`/product/${Obj._id}`}>
                   <div>

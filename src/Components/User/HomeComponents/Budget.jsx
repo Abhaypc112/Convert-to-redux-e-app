@@ -1,12 +1,12 @@
 import React, { useEffect,useState } from 'react'
-import { getProducts } from '../../../Api/ProductHelper/ProductConnection'
+import { getHomeProducts } from '../../../Api/ProductHelper/ProductConnection'
 import { NavLink } from 'react-router-dom';
 
 function Budget() {
   const[data,setData]=useState([]);
   useEffect(()=>{
-    getProducts()
-    .then((res)=>setData((res.data).sort((a,b)=>{
+    getHomeProducts()
+    .then((res)=>setData((res.data.products).sort((a,b)=>{
       return a.price - b.price
     })))
     .catch((error) => console.log(error));

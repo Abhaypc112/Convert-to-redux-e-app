@@ -4,6 +4,7 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import { UserContext } from '../../../Contexts/UserContext';
 import { toast } from 'react-toastify';
 
+// This code 
 function Wishlist() {
     const [wishData,setWishData] = useState([]);
     const userRole = localStorage.getItem('userRole');

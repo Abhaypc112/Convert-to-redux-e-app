@@ -1,5 +1,5 @@
 import React, { useEffect,useState } from 'react';
-import { NavLink, useParams } from 'react-router-dom';
+import { NavLink, useParams, useSearchParams } from 'react-router-dom';
 import { getProducts, getProductsByCategory } from '../../../Api/ProductHelper/ProductConnection';
 import { FaRegHeart } from "react-icons/fa";
 import { FaHeart } from "react-icons/fa";
@@ -12,24 +12,36 @@ function Products() {
   const[storeData,setStoreData]=useState([]);
   const {category}=useParams();
   const userRole = localStorage.getItem('userRole');
+  const [totalPages, setTotalPages] = useState(0);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [searchParams,setSearchParams] = useSearchParams();
+  const limit = 8;
   
   useEffect(()=>{
+    const page = parseInt(searchParams.get('page')) || 1;
+    setCurrentPage(page)
    if(category){
-    getProductsByCategory(category)
-    .then((res)=>setProduct(res.data))
+    getProductsByCategory(category,page,limit)
+    .then((res)=>{
+      setProduct(res.data.products)
+      setTotalPages(res.data.totalPages);
+    })
     .catch((error) => console.log(error));
     getWishlist()
     .then((res) => setWishData(res.data.data))
     .catch((error) => console.log(error));
   }else{
-    getProductsByCategory("")
-    .then((res)=>setStoreData(res.data))
+    getProductsByCategory("",page,limit)
+    .then((res)=>{
+      setStoreData(res.data.products)
+      setTotalPages(res.data.totalPages)
+    })
     .catch((error) => console.log(error));
     getWishlist()
     .then((res) => setWishData(res.data.data))
     .catch((error) => console.log(error));
   }
-  },[category,userRole])
+  },[category,userRole,searchParams])
   const addtoWishlist = (_id) =>{
     addWishlist(_id)
     .then((res)=>{
@@ -38,6 +50,10 @@ function Products() {
       .catch((error) => console.log(error));
   })
   } 
+
+  function handlePageChange (page){
+    setSearchParams({page})
+  }
   return (
     <div>
       <div style={{marginTop:"7rem"}} className="p-6 ">
@@ -90,6 +106,19 @@ function Products() {
             
           }) 
         }
+      </div>
+      <div className='flex justify-center mt-10'>
+        <div className='w-[10%] flex justify-between'>
+          {
+            
+            
+            [...Array(totalPages)].map((_,index) => (
+              
+              <button key={index} onClick={()=>handlePageChange(index+1)} className={`rounded-md px-3 p-1 ${currentPage === index + 1 ? "text-yellow-400 bg-black":"bg-yellow-400 text-black"}`}>{index+1}</button>
+              
+            ))
+          }
+        </div>
       </div>
     </div>
     </div>

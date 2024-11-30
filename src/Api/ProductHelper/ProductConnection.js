@@ -2,15 +2,19 @@ import axiosInstance from '../axiosInstance';
 
 // Appi connection
 export async function getCategory(){
-    const res = await axiosInstance.get('/products/categorys');
+    const res = await axiosInstance.get(`/products/categorys`);
     return res.data;
 }
-export async function getProducts(){
-    const res = await axiosInstance.get('/products');
+export async function getProducts(page,limit){
+    const res = await axiosInstance.get(`/products?page=${page}&limit=${limit}`);
     return res.data;
 }
-export async function getProductsByCategory(category){
-    const res = await axiosInstance.get(`/products?category=${category}`);
+export async function getHomeProducts(){
+    const res = await axiosInstance.get(`/products/home`);
+    return res.data;
+}
+export async function getProductsByCategory(category,page,limit){
+    const res = await axiosInstance.get(`/products?category=${category}&page=${page}&limit=${limit}`);
     return res.data;
 }
 export async function getProductsById(_id){

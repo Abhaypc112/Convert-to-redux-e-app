@@ -3,17 +3,24 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import Header from '../Components/Header';
 import Footer from '../Components/Footer';
 import { addUser } from '../Api/UserHelpers/UsersConnection';
+import { FaEye , FaEyeSlash} from "react-icons/fa";
+
 
 function SignUp() {
     const [inputData,setInputData]=useState({name:"",username:"",email:"",password:""})
     const[errors,setError]=useState({});
     const navigate=useNavigate();
     const [serverError,setServerError] = useState('') ;
+    const [passwordVisible,setPasswordVisible] = useState(false)
   
     function handelOnChange(event){
         const {name,value} = event.target;
         setInputData({...inputData,[name]:value})
     }
+
+    function togglePasswordVisibility (){
+        setPasswordVisible(!passwordVisible)
+      }
     async function addUserData (e){
         e.preventDefault()
         const errors={}
@@ -72,7 +79,13 @@ function SignUp() {
                         <input type="text" name='email' onChange={handelOnChange} className='border rounded-md p-2 h-10 focus:outline-yellow-400' />
                         <p className='text-xs text-red-500 font-bold mb-4'>{errors.email}</p>
                         <label htmlFor="password">Password</label>
-                        <input type="password" name='password' onChange={handelOnChange} className='border p-2 rounded-md h-10  focus:outline-yellow-400' />
+                        <div className='flex justify-between items-center border rounded px-3 focus:border-yellow-400'>
+                            <input type={passwordVisible?"text":"password"} name='password' onChange={handelOnChange} className=' w-[100%] h-10 border-none focus:outline-none' />
+                                {
+                                    passwordVisible?<FaEye onClick={togglePasswordVisibility} className='cursor-pointer'/>
+                                    :<FaEyeSlash onClick={togglePasswordVisibility} className='cursor-pointer' />
+                                }
+                        </div>
                         <p className='text-xs text-red-500 font-bold mb-4'>{errors.password}</p>
                         <div>
                             <input type="checkbox" name='checkbox' className='border mb-5 'required/>

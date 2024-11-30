@@ -4,6 +4,7 @@ import Header from '../Components/Header';
 import Footer from '../Components/Footer';
 import { useDispatch, useSelector } from 'react-redux';
 import { loginUser } from '../Slices/authSlice';
+import { FaEye , FaEyeSlash} from "react-icons/fa";
 
 
 function Login() {
@@ -13,6 +14,7 @@ function Login() {
   const [errorr,setErrorr]=useState({});
   const dispatch=useDispatch();
   const {user,error} = useSelector((state)=>state.auth)
+  const [passwordVisible,setPasswordVisible] = useState(false)
  const userRole = localStorage.getItem('userRole')
   
   
@@ -34,6 +36,10 @@ function Login() {
       setUsername('')
       setPassword('')
     }
+  }
+
+  function togglePasswordVisibility (){
+    setPasswordVisible(!passwordVisible)
   }
     
   useEffect(()=>{
@@ -62,7 +68,15 @@ function Login() {
               <input onChange={(e)=>setUsername(e.target.value)} value={username} type="text" name='username' className='border p-3 h-10 rounded-md  focus:outline-yellow-400' />
               <p className='font-bold text-xs text-red-500 mb-4'>{errorr.username}</p>
               <label htmlFor="password">Password</label>
-              <input onChange={(e)=>setPassword(e.target.value)} value={password} type="password" name='password' className='p-3 border rounded-md h-10  focus:outline-yellow-400' />
+              <div className='flex justify-between items-center border rounded px-3 focus:border-yellow-400'>
+                <input onChange={(e)=>setPassword(e.target.value)} value={password} type={passwordVisible?"text":"password"} name='password' className=' w-[100%] h-10 border-none focus:outline-none' />
+                {
+                  passwordVisible?<FaEye onClick={togglePasswordVisibility} className='cursor-pointer'/>
+                  :<FaEyeSlash onClick={togglePasswordVisibility} className='cursor-pointer' />
+                }
+                
+              </div>
+          
               <p className='font-bold text-xs text-red-500 mb-4'>{errorr.password}</p>
               <a href="" className='mb-5 text-yellow-500 '>Forgot your password?</a>
               <div>
